@@ -1,0 +1,214 @@
+@extends('plantilla.layaout')
+@section('content')
+<script src="js/scripts/horario.js"> </script>
+<div class="panel-body">
+  <form name="frmHorario" id="frmHorario" action="create_horario" method="post">
+  {{ csrf_field() }}
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="col-lg-5 control-label pill-left">Grados</label>
+          <div class="col-lg-10">
+            <select name="cmbGrado" id="cmbGrado" class="form-control">
+              <option>Seleccione</option>
+              @foreach ($grado as $grados)
+              <option value="{{ $grados->idgrado }}">{{ $grados->grado }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>    
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="col-lg-5 control-label pill-left">Materias</label>
+          <div class="col-lg-10">
+            <select name="cmbMateria" id="cmbMateria" class="form-control">
+              <option>Seleccione</option>
+            </select>
+          </div>
+        </div>    
+      </div>
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="col-lg-5 control-label pill-left">Profesor</label>
+          <div class="col-lg-10">
+            <select name="cmbProfesor" id="cmbProfesor" class="form-control">
+              <option>Seleccione</option>
+              @foreach ($profesor as $prof)
+              <option value="{{ $prof->idprofesor }}">{{ $prof->nombre_profesor }}</option>
+              @endforeach
+            </select>
+          </div>
+        </div>    
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="form-group">
+          <label class="col-lg-5 control-label pill-left">Sección</label>
+          <div class="col-lg-10">
+           <select name="cmbSeccion" id="cmbSeccion" class="form-control">
+            <option>Seleccione</option>
+            @foreach ($seccion as $secciones)
+            <option value="{{ $secciones->idseccion }}">{{ $secciones->seccion }}</option>
+            @endforeach
+          </select>
+        </div>
+      </div>    
+    </div>
+    <div class="col-sm-3">
+      <div class="form-group">
+        <label class="col-lg-5 control-label pill-left">Aulas</label>
+        <div class="col-lg-10">
+         <select name="cmbAula" id="cmbAula" class="form-control">
+          <option>Seleccione</option>
+          @foreach ($aula as $aulas)
+          <option value="{{ $aulas->idaula }}">{{ $aulas->aula }}</option>
+          @endforeach
+        </select>
+      </div>
+    </div>    
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label class="col-lg-5 control-label pill-left">Dias</label>
+      <div class="col-lg-10">
+       <select name="cmbDia" id="cmbDia" class="form-control">
+        <option>Seleccione</option>
+        <option value="2013-30-12">Lunes</option>
+        <option value="2013-31-12">Martes</option>
+        <option value="2014-01-01">Miercoles</option>
+        <option value="2014-01-02">Jueves</option>
+        <option value="2014-01-03">Viernes</option>
+        <option value="2014-01-04">Sabado</option>
+        <option value="2014-01-05">Domingo</option>
+      </select>
+    </div>
+  </div>    
+</div>
+</div>
+<div class="row">
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label class="col-lg-5 control-label pill-left">Hora Inicial</label>
+      <div class="col-lg-10">
+        <div class='input-group date' id='horaInicial'>
+          <input type='text' class="form-control" name="txtHoraInicial" />
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+      </div>
+    </div>   
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label class="col-lg-5 control-label pill-left">Hora Final</label>
+      <div class="col-lg-10">
+        <div class='input-group date' id='horaFinal'>
+          <input type='text' class="form-control" name="txtHoraFinal" />
+          <span class="input-group-addon">
+            <span class="glyphicon glyphicon-time"></span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-3">
+    <div class="form-group">
+      <label class="col-lg-5 control-label pill-left">__________</label>
+      <div class="col-lg-10">
+       <button class="btn btn-primary" type="submit">Guardar</button>
+     </div>
+   </div>    
+ </div>
+</div>
+</form>
+
+<hr>
+<div class="row">
+  <div id='calendar'></div>
+</div>
+</div>
+<script type="text/javascript">
+
+ $(document).ready(function() {
+
+   var calendar = $('#calendar').fullCalendar({
+    header: {
+     left: '',
+     right:'',
+     center:''
+   },
+   allDaySlot: false,
+   weekNumberTitle: 'A',
+   lang: 'es',
+   slotMinutes: 40,
+   defaultDate : "2014-01-01",
+   minTime : '07:00:00',
+   maxTime : '22:00:00',
+   firstDay : 1,
+   titleFormat:"D/MMM/YYYY",
+   defaultView:'agendaWeek',
+   monthNamesShort : ['Enero' , 'Febrero' , 'Marzo' , 'Abril' , 'Mayo' , 'Junio' , 'Julio' ,
+   'Agosto' , 'Septiembre' , 'Octubre' , 'Noviembre' , 'Diciembre' ],
+   dayNamesShort : ['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+   dayNames:['Domingo', 'Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'],
+   buttonText:{
+     today:    'Hoy',
+     month:    'Mes',
+     week:     'Semana',
+     day:      'Dia'
+   },
+   events: "getHorario",      
+   eventRender: function(event, element)
+   { 
+     element.find('.fc-title').append("<br/>" + event.description); 
+   },
+   windowResize: function(view) {
+
+   },
+   resourceAreaWidth:"30%",
+   editable: false,
+   views: {
+    basic: {
+            // options apply to basicWeek and basicDay views
+          },
+          agenda: {
+            columnFormat:'dddd',
+            // options apply to agendaWeek and agendaDay views
+          },
+          week: {
+            // options apply to basicWeek and agendaWeek views
+          },
+          day: {
+            // options apply to basicDay and agendaDay views
+          }
+        }
+
+
+      /* eventClick:  function(event, jsEvent, view) {
+        $('#modalTitle').html(event.title);
+        $('#modalBody').html(event.description+'<br><br>Fecha: '+event.fecha+'<br><br>Hora: '+event.hora);
+        $('#eventUrl').attr('href',event.url);
+        $('#fullCalModal').modal();
+      }*/
+
+
+    });
+
+$('#horaInicial').datetimepicker({
+  format: 'LT',
+  format: 'HH:mm'
+
+});
+$('#horaFinal').datetimepicker({
+  format: 'LT',
+  format: 'HH:mm'
+
+});
+});
+
+</script>
+@stop
+
