@@ -38,37 +38,36 @@
 
 <li>
   <a href="#"><i class="fa fa-credit-card-alt"></i> Pagos <span class="fa fa-chevron-down"></a>
-              {{-- <ul class="nav nav-second-level">
-                <li>
-                  <a href="flot.html">Registrar Pagos</a>
-                </li>
-                <li>
-                  <a href="morris.html">Mostrar Pagos</a>
-                </li>
-              </ul> --}}
-              <!-- /.nav-second-level -->
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-calendar"></i> Horarios <span class="fa fa-chevron-down"></span></a>
-              <ul class="nav child_menu">                
-                <li>
-                  <a href="{{ asset('/config_horarios') }}">Crear Horario</a>
-                </li>
-                <li>
-                  <a href="{{ asset('/config_horarios/consultar') }}">Consultar Horario</a>
-                </li>
-                <li>
-                 {{--  <a href="morris.html">Mostrar Horarios</a> --}}
-               </li>
-             </ul>
-             <!-- /.nav-second-level -->
-           </li>
-           <li>
-            <a href="{{ asset('mensajes') }}"><i class="fa fa-envelope"></i> Mensajes <span class="fa fa-chevron-down"></span></a>            
-            <!-- /.nav-second-level -->
-          </li>
-          <li>
-            <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">></span></a>
+  <ul class="nav child_menu">
+  <li><a href="{{ asset('/pagos/registrar') }}">Registrar Pagos</a></li>
+    <li><a href="{{ asset('/config_cuotas') }}">Verificar Pagos</a></li>
+    <li><a href="{{ asset('/config_cuotas') }}">Pagos Procesados</a></li>
+    <li><a href="{{ asset('/config_cuotas') }}">Pagos Pendientes</a></li>
+    <li><a href="{{ asset('/config_cuotas') }}">Pagos de Inscripcion</a></li>
+     <li><a href="{{ asset('/config_cuotas') }}">Buscar</a></li>
+  </ul>
+  <!-- /.nav-second-level -->
+</li>
+<li>
+  <a href="#"><i class="fa fa-calendar"></i> Horarios <span class="fa fa-chevron-down"></span></a>
+  <ul class="nav child_menu">                
+    <li>
+      <a href="{{ asset('/config_horarios') }}">Crear Horario</a>
+    </li>
+    <li>
+      <a href="{{ asset('/config_horarios/consultar') }}">Consultar Horario</a>
+    </li>
+
+  </ul>
+  <!-- /.nav-second-level -->
+</li>
+<li>
+  <a href="{{ asset('mensajes') }}"><i class="fa fa-envelope"></i> Mensajes <span class="fa fa-chevron-down"></span></a>            
+  <!-- /.nav-second-level -->
+</li>
+<li>
+  <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">           
+  </span></a>
              {{--  <ul class="nav nav-second-level">
                 <li>
                   <a href="flot.html">Notas</a>
