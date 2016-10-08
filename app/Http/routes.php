@@ -181,7 +181,7 @@ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasControlle
   Route::get('config_periodo/desactivar/{id}', 'configuracion\periodoController@desactivar');
 
 
- 
+  Route::get('pagos/registrar', 'pagos\pagosController@registrar');
 
 });
 //Mensajes

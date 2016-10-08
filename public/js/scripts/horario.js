@@ -10,6 +10,15 @@
           $("#cmbMateria").append(`<option value=${element.idmateria}> ${element.materia} </option>`);
         });
       });
+
+      $.get(`seccion/${event.target.value}`, function(res, sta){
+        $("#cmbSeccion").empty();
+        $("#contenido_seccion").empty();     
+        $("#cmbSeccion").append(`<option value='0'> Seleccione...</option>`);
+        res.forEach(element => {
+          $("#cmbSeccion").append(`<option value=${element.idseccion}> ${element.seccion} </option>`);
+        });
+      });
     });
 
     $("#cmbMateria").change(event => {
@@ -73,15 +82,15 @@ $("#btnProcesar").click(function(){
       {
         errorAlert("Seccion sin disponiblidad","Las Secciones Creada no pueden ver clases este dia");
         return;
-      }
-      if(eval(data.seccion) == false)
-      {
-        errorAlert("Secciones Agotadas","No hay seccion disponible para esta materia ");
-        return;
-      }
+      }      
       if(eval(data.horas) == false)
       {
         errorAlert("Limite de horas Superadas","Las horas asignadas es mayor a las horas de la materia");
+        return;
+      }
+      if(eval(data.seccion) == false)
+      {
+        errorAlert("Secciones Agotadas","Seccion no disponible.");
         return;
       }
       var profesor_id=$('#cmbProfesor').val();

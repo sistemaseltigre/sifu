@@ -8,13 +8,13 @@
       <div class="clearfix"></div>
     </div>
     <div class="x_content">    
-      <form name="frmHorario" id="frmHorario" class="form-lineal">
+      <form name="frmHorario" id="frmHorario" class="form-horizontal">
         {{ csrf_field() }}
         <div class="row">    
-          <div class="col-sm-4 col-xs-12">
+          <div class="col-sm-12 col-xs-12">
             <div class="form-group">
-              <label class="col-lg-5 control-label pill-left">Profesor</label>
-              <div class="col-lg-10">
+              <label class="col-lg-2 control-label pull-left">Profesor</label>
+              <div class="col-lg-5">
                 <select name="cmbProfesor" id="cmbProfesor" class="form-control">
                   <option>Seleccione</option>
                   @foreach ($profesor as $prof)
@@ -24,9 +24,11 @@
               </div>
             </div>    
           </div>
+          </div>
+          <div class="row">
           <div class="col-sm-4 col-xs-12">
             <div class="form-group">
-              <label class="col-lg-5 control-label pill-left">Grados</label>
+              <label class="col-lg-5 control-label pull-left">Grados</label>
               <div class="col-lg-10">
                 <select name="cmbGrado" id="cmbGrado" class="form-control">
                   <option>Seleccione</option>
@@ -39,9 +41,19 @@
           </div>
           <div class="col-sm-4 col-xs-12">
             <div class="form-group">
-              <label class="col-lg-5 control-label pill-left">Materias</label>
+              <label class="col-lg-5 control-label pull-left">Materias</label>
               <div class="col-lg-10">
                 <select name="cmbMateria" id="cmbMateria" class="form-control">
+                  <option>Seleccione</option>
+                </select>
+              </div>
+            </div>    
+          </div>
+          <div class="col-sm-4 col-xs-12">
+            <div class="form-group">
+              <label class="col-lg-5 control-label pull-left">Sección</label>
+              <div class="col-lg-10">
+                <select name="cmbSeccion" id="cmbSeccion" class="form-control">
                   <option>Seleccione</option>
                 </select>
               </div>
@@ -51,7 +63,7 @@
         <div class="row">
           <div class="col-sm-4 col-xs-12">
             <div class="form-group">
-              <label class="col-lg-5 control-label pill-left">Dias</label>
+              <label class="col-lg-5 control-label pull-left">Dias</label>
               <div class="col-lg-10">
                <select name="cmbDia" id="cmbDia" class="form-control">
                 <option>Seleccione</option>
@@ -68,7 +80,7 @@
         </div>
         <div class="col-sm-4 col-xs-12">
           <div class="form-group">
-            <label class="col-lg-7 control-label pill-left">Hora Inicial</label>
+            <label class="col-lg-7 control-label pull-left">Hora Inicial</label>
             <div class="col-lg-10">
               <div class='input-group date' id='horaInicio'>
                 <input type='text' class="form-control" name="txtHoraInicio" id="txtHoraInicio" />
@@ -81,7 +93,7 @@
         </div>
         <div class="col-sm-4 col-xs-12">
           <div class="form-group">
-            <label class="col-lg-7 control-label pill-left">Hora Final</label>
+            <label class="col-lg-7 control-label pull-left">Hora Final</label>
             <div class="col-lg-10">
               <div class='input-group date' id='horaFinal'>
                 <input type='text' class="form-control" name="txtHoraFinal" id="txtHoraFinal" />

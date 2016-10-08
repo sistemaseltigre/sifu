@@ -28,26 +28,21 @@ class horarioController extends Controller
     $horasDisponibles='';    
     $dias_validacion=false;
     $seccion_id=false;
-    $secciones=seccionModel::getSeccion($request['cmbGrado']);  
-    foreach ($secciones as $seccion)
-    { 
-      $choque_materias=horarioModel::validarChoque_materias($request, $seccion->idseccion);
-     // echo $choque_materias.'<br>';
-      if($choque_materias!=0) 
-      {
-        continue;
-      }
 
-      $dia=horarioModel::validarDia($seccion->idseccion,$request);
+   $choque_materias=horarioModel::validarChoque_materias($request);
+  
+     // echo $choque_materias.'<br>';
+      if($choque_materias==0) 
+      {        
+      $dia=horarioModel::validarDia($request);
      // echo '<br> seccion= '.$seccion->idseccion;
      // echo '<br> dia= '.$dia;
 
       if($dia==0)
       {
         $dias_validacion=true;
-        $seccion_id=$seccion->idseccion; 
       //  echo ' <br> dia= '.$dia.' si dia es igual a cero entonces esta disponible el dia';
-        $materia=horarioModel::validarMateria($seccion_id,$request);
+        $materia=horarioModel::validarMateria($request);
        // echo ' <br> materia= '.$materia.' si materia es mayor que cero, la seccion tiene materia asignada';
 
         $tiempoM=materiaModel::tiempo($request['cmbMateria']);
@@ -55,13 +50,13 @@ class horarioController extends Controller
 
         if($materia>0)
         {        
-          $profesor=horarioModel::validarProfesor($seccion_id,$request); 
+          $profesor=horarioModel::validarProfesor($request); 
         //  echo ' <br> Profesor= '.$profesor.' si profesor es igual a cero, el profesor seleccionado no puede impartir clases en esa seccion<br><br>';     
 
         //si profesor es mayor a cero se busca cuantas horas tiene asignado
           if($profesor!=0)
           {
-            $horas=horarioModel::validarHoras($seccion_id,$request);
+            $horas=horarioModel::validarHoras($request);
             $horas_impartidas="00:00:00";
             foreach ($horas as $hora) {
               $horas_impartidas=date("H:i:s", strtotime($horas_impartidas) + strtotime($hora->hora_final) - strtotime($hora->hora_inicio));
@@ -75,6 +70,7 @@ class horarioController extends Controller
             if(date("H:i:s",strtotime($tiempoMateria))>=date("H:i:s",strtotime($tiempoTotal)))
             {
               $horasDisponibles=true;
+              $seccion_id=true;
             }
             else
             {
@@ -83,12 +79,7 @@ class horarioController extends Controller
 
            // echo '<br> Horas Materia: '.$tiempoMateria;
            // echo '<br> Horas Asignadas + actual: '.$tiempoTotal.'<br>';
-
-           // echo 'Horas Asignadas: '. $horas_impartidas; 
-            if($horasDisponibles==true)
-            {              
-              break;
-            }
+           
           } 
           else
           {
@@ -106,12 +97,12 @@ class horarioController extends Controller
           if(date("H:i:s",strtotime($tiempoMateria))>=date("H:i:s",strtotime($tiempoTotal)))
           {
             $horasDisponibles=true;
+            $seccion_id=true;
           }
           else
           {
             $horasDisponibles=false;
           }
-          break;
         }
 
       }
@@ -120,9 +111,8 @@ class horarioController extends Controller
         $dias_validacion=false;
         $seccion_id=false;
       }
-
-      
     }
+
     $choque=horarioModel::validarChoque($request);
 
     $data=array(
@@ -140,7 +130,7 @@ class horarioController extends Controller
       $horario->materia_id=$request['cmbMateria'];
       $horario->profesor_id=$request['cmbProfesor'];
       $horario->dia=$request['cmbDia'];
-      $horario->seccion_id=$seccion_id;
+      $horario->seccion_id=$request['cmbSeccion'];
       $horario->hora_inicio=$request['txtHoraInicio'];
       $horario->hora_final=$request['txtHoraFinal'];
       $horario->horas_curso=date("H:i:s", strtotime("00:00:00") + strtotime($request['txtHoraFinal']) - strtotime($request['txtHoraInicio']));
