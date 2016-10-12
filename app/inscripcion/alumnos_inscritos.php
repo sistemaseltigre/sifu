@@ -17,4 +17,14 @@ class alumnos_inscritos extends Model
   protected $primaryKey='id';
   public $timestamps = false; 
   protected $fillable = array('alumno_id','cuota_id','fecha','periodo_id','seguro','condicion');
+
+public function periodo()
+{
+  return $this->belongsTo('App\configuracion\periodoModel');
+}
+
+public function alumno()
+{
+  return $this->belongsTo('App\datos\alumnoModel');
+}
 }

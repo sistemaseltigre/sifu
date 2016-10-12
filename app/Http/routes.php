@@ -182,6 +182,8 @@ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasControlle
 
 
   Route::get('pagos/registrar', 'pagos\pagosController@registrar');
+  Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');
+  Route::post('pagos/procesar_pagos', 'pagos\pagosController@procesar_pagos');
 
 });
 //Mensajes

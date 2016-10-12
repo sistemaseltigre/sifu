@@ -35,10 +35,10 @@ class horarioModel extends Model
     return $num;
 
   }
-  public static function validarChoque_materias($request,$seccion_id)
+  public static function validarChoque_materias($request)
   {
     $num=horarioModel::where('dia','=',$request['cmbDia'])
-    ->where('seccion_id','=',$seccion_id)
+    ->where('seccion_id','=',$request['cmbSeccion'])
     ->where( function  ( $query) use ($request)  { 
       $query->where ('hora_inicio','<=',$request['txtHoraInicio'])
       ->where ('hora_final','>=',$request['txtHoraInicio'])
@@ -49,33 +49,33 @@ class horarioModel extends Model
     return $num;
 
   }
-  public static function validarDia($idseccion,$request)
+  public static function validarDia($request)
   {
     $num=horarioModel::where('dia','=',$request['cmbDia'])
-    ->where('seccion_id','=',$idseccion)
+    ->where('seccion_id','=',$request['cmbSeccion'])
     ->where('materia_id','=',$request['cmbMateria'])->count();
     return $num;
   }
-  public static function validarMateria($idseccion,$request)
+  public static function validarMateria($request)
   {
     $num=horarioModel::where('materia_id','=',$request['cmbMateria'])
-    ->where('seccion_id','=',$idseccion)->count();
+    ->where('seccion_id','=',$request['cmbSeccion'])->count();
     return $num;
 
                      //si el numero es mayor a 0 es porque la seccion tiene materia asignada, a su vez tiene profesor
 
   }
-  public static function validarProfesor($idseccion,$request)
+  public static function validarProfesor($request)
   {
     $num=horarioModel::where('materia_id','=',$request['cmbMateria'])
-    ->where('seccion_id','=',$idseccion)
+    ->where('seccion_id','=',$request['cmbSeccion'])
     ->where('profesor_id','=',$request['cmbProfesor'])->count();
     return $num;
   }
-  public static function validarHoras($idseccion,$request)
+  public static function validarHoras($request)
   {
     $horas=horarioModel::where('materia_id','=',$request['cmbMateria'])
-    ->where('seccion_id','=',$idseccion)->get();
+    ->where('seccion_id','=',$request['cmbSeccion'])->get();
     return $horas;
   }
   public static function getHoras($idseccion,$idmateria)

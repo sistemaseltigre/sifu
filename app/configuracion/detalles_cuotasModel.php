@@ -16,5 +16,5 @@ class detalles_cuotasModel extends Model
  protected $table='detalles_cuotas';
  protected $primaryKey='id';
  public $timestamps = false; 
- protected $fillable = array('descripcion','monto','cuota_id');
+ protected $fillable = array('descripcion','monto','cuota_id','fecha');
 }

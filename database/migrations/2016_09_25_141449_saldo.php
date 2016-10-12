@@ -18,6 +18,7 @@ class Saldo extends Migration
              $table->integer('representante_id');
              $table->integer('delegado_id');
              $table->integer('alumno_id');
+             $table->string('saldo',30);
             $table->rememberToken();
             $table->timestamps();
         });

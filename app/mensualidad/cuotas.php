@@ -17,4 +17,8 @@ class cuotas extends Model
  protected $primaryKey='id';
  public $timestamps = false; 
  protected $fillable = array('detalles_cuotas_id','alumno_id','pagos_id','estatus');
+ public function detalles()
+{
+  return $this->belongsTo('App\configuracion\detalles_cuotasModel','detalles_cuotas_id','id');
+}
 }
