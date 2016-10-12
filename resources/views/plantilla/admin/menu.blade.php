@@ -68,7 +68,7 @@
             <!-- /.nav-second-level -->
           </li>
           <li>
-            <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">></span></a>
+            <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down"></span></a>
              {{--  <ul class="nav nav-second-level">
                 <li>
                   <a href="flot.html">Notas</a>
@@ -84,4 +84,14 @@
                 </li>
               </ul> --}}
               <!-- /.nav-second-level -->
+            </li>
+            <!--menu aula virtual-->
+              <li>
+            <a href="#"><i class="fa fa-file"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ asset('crear_aula') }}">Crear</a>
+                </li>
+              </ul> 
+              <!-- menu aula virtual -->
             </li>
