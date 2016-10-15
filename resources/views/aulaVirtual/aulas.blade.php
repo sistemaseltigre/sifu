@@ -10,7 +10,8 @@
                </tr>
            </thead>
            <tbody id="contenido">
-           <?php  
+           <?php
+           $dbname = Session::get('dbName');  
            $idusuario = Auth::user()->id;$aulas = \App\aulaVirtual\aulaVirtualModel::where('idusuario', '=', $idusuario)->paginate(5);   ?>
                @foreach ($aulas as $aula)
                <tr>
@@ -18,7 +19,7 @@
                    <td>{{ $aula->descripcion }}</td>
                    <td>{{ $aula->cantidad }}</td>
                    <td>{{ $aula->fecha }}</td>
-                   <td><button class="btn btn-success btn-sm" onclick=""> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Entrar</button></td>
+                   <td><button class="btn btn-success btn-sm" onclick="crearAulaVirtual('{{ $aula->id }}','{{ $idusuario }}','{{ $dbname }}')"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Entrar</button></td>
                </tr>
                @endforeach      
            </tbody>

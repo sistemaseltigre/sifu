@@ -118,6 +118,7 @@ Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorar
 //aula virtual
 Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
 Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
+Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
 
 
 //crud Seccion

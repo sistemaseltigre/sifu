@@ -20,3 +20,16 @@ function crear_aula(){
         console.log(responseText);
 	});
 }
+
+
+
+function crearAulaVirtual(id,iduser,dbname){
+	var _token = $("input[name='_token']").val();
+	$.post("aula", {id:id,iduser:iduser,dbname:dbname,_token:_token}, function(result){   
+    })
+    .done(function(result) {
+     url =	window.location.origin+':8080/'+dbname+'_'+iduser+id;
+     window.open(url, '_blank');
+  	 console.log(result);
+  	});
+}

@@ -34,4 +34,8 @@ class aulaVirtualController extends Controller
 		$aulaVirtual->fecha 		= $request->fecha;	
 		$aulaVirtual->save();
 	}
+
+	public function aula(Request $request){
+		return view('aulaVirtual.aula',$request);
+	}
 }
