@@ -112,9 +112,13 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
  Route::get('generarHorario/{id}', 'configuracion\horarioController@generarHorario');
 
  //consulta horario desde el administrdor
- Route::get('generarHorario_seccion/{id}', 'configuracion\horarioController@generarHorario_seccion');
-  Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
+Route::get('generarHorario_seccion/{id}', 'configuracion\horarioController@generarHorario_seccion');
+Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
 
+//aula virtual
+Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
+Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
+Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
 
 
 //crud Seccion
