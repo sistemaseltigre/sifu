@@ -1,0 +1,101 @@
+#menuaula{
+	z-index: 100;  
+	position: relative;
+	margin-top: -500px;
+	width: 80px;
+	height: 45px;
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;
+	float: right;
+	right: 0px;
+}
+#pantalla{
+	margin-left: -25px;
+}
+#mano1{
+	right: 0px;
+	margin-left: 12px;
+}
+#chatimg{
+	margin-left: 10px;
+}
+#contenedorChat{
+	width: 350px;
+	height: 500px;
+	background-color: rgba(255, 255, 255, 0.9);
+	border-top-left-radius: 7px;
+	border-bottom-left-radius: 7px;	
+	z-index: 99;
+	position: relative;
+	right: 0px;
+	float: right;
+	margin-top: -500px;
+	display: none;
+	overflow-y: auto;
+	overflow-x: none;
+}
+#mensajes_chat{
+	border-color: #fff;
+	border-style: groove;
+	border-width: 1px;
+	width: 250px;
+	height: 400px;
+	right: 20px;
+	border-radius: 5px;
+	margin-left: 5px;
+	margin-top: 20px;
+	color: #000;
+	text-orientation: justify;
+	padding: 5px 10px;
+	overflow-y: auto;
+	overflow-x: none;
+	bottom: 0px;
+	word-wrap: break-word;
+	font-size: 12px;
+}
+#enviar_mensaje_chat{
+	margin-top: 10px;
+	margin-left: 5px;
+}
+#enviarmensajechat{
+	height: 60px;
+	width: 250px;
+	border-radius: 5px;
+	resize: none;
+}#preguntaUser{
+	height: 60px;
+	width: 250px;
+	border-radius: 5px;
+	resize: none;
+}
+#btn1{
+	height: 60px;
+	width: 70px;
+	border-radius: 5px;
+	background-color: #2A3F54;
+	color: #fff;
+}
+#mensajes_p{
+	bottom: 0px;
+	width: 320px;
+	overflow-x: hidden;
+}
+#videostreaming{
+	display: none;
+}
+#prevideo{
+	position: absolute;
+	z-index: 99;
+	right: 0px;
+	margin-right: 5px;
+	margin-top: -490px;
+}
+#play{
+	position: absolute;
+	z-index: 99;
+	right: 0px;
+	margin-right: 5px;
+	margin-top: -490px;
+	width: 100px;
+	height: 75px;
+}
