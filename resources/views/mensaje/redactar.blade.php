@@ -36,6 +36,13 @@
 						@endforeach
 					</optgroup>
 					@endif
+					@if(isset($administradores))
+					<optgroup label="Administradores">
+						@foreach ($administradores as $admin)
+						<option value="5-{{ $admin->idadministrador }}">{{ $admin->nombre }}</option>
+						@endforeach
+					</optgroup>
+					@endif
 				</select>
 			</div>
 		</div>   

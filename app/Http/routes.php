@@ -122,7 +122,10 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
  Route::get('generarHorario_seccion/{id}', 'configuracion\horarioController@generarHorario_seccion');
   Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
 
-
+//aula virtual
+Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
+Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
+Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
 
 //crud Seccion
  Route::get('config_seccion', 'configuracion\seccionController@index');
@@ -306,6 +309,11 @@ Route::group(['middleware' => ['rol:representante']], function(){
 Route::get('pagos/registrar', 'pagos\pagosController@registrar');
  Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');
  Route::post('pagos/procesar_pagos', 'pagos\pagosController@procesar_pagos');
+
+ //horario
+
+  Route::get('representante/horario', 'representante\horarioController@index');
+  Route::get('/representante/getHorario/{id}', 'representante\horarioController@getHorario');
 });
 
 

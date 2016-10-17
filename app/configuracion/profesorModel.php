@@ -22,8 +22,5 @@ class profesorModel extends model
 
     //
 //
-public function materias()
-{
-  return $this->belongsTo('App\datos\representanteModel');
-}
+
 }

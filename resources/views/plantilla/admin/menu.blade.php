@@ -81,10 +81,19 @@
     <li><a href="{{ asset('/reportes/historico/tipo-pago') }}">Tipo de Pago</a></li>
     <h3>Planillas</h3>
     <li><a href="{{ asset('reportes/planillas/certificado-de-estudios') }}">Certificado de Estudios</a></li>
-    <li><a href="{{ asset('/pagos/pendientes') }}">Boleta de Retiro</a></li>
+    {{-- <li><a href="{{ asset('/pagos/pendientes') }}">Boleta de Retiro</a></li>
     <li><a href="{{ asset('/pagos/pendientes') }}">Paz y Salvo</a></li>
     <li><a href="{{ asset('/pagos/pendientes') }}">Certificado de Buena Conducta</a></li>
-    <li><a href="{{ asset('/pagos/pendientes') }}">Planilla de Inscripción</a></li>
+    <li><a href="{{ asset('/pagos/pendientes') }}">Planilla de Inscripción</a></li> --}}
   </ul>
 
 </li> 
+<li>
+            <a href="#"><i class="fa fa-file"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
+                <ul class="nav nav-second-level">
+                <li>
+                  <a href="{{ asset('crear_aula') }}">Crear</a>
+                </li>
+              </ul> 
+              <!-- menu aula virtual -->
+            </li>
