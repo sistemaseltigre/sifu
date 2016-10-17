@@ -319,7 +319,10 @@ public function pendientes()
 }
 public function historico()
 {
+   if (Auth::user()->rolid==1) {
  $pagos=pagos::where('estatus','=','procesado')->groupBy('alumno_id')->get();
+}
+
  return view('pagos.historico.index',compact('pagos'));
 }
 public function buscar_historico($id)
