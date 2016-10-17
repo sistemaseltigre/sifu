@@ -3,104 +3,104 @@
    // buscar mensualidad
    $('#cmbAlumno').on('change', function(){
     $('#registrar_pagos').html("<img alt='cargando' src='"+app_url+"/img/ajax-loader.gif' style='left: 50%;top: 50%;position: absolute;'/>");
-     $.ajax({
-        url:app_url+'/pagos/buscar/'+this.value,
-        type:'GET', 
-        success:function(data)
-        {
-          setTimeout(function(){
+    $.ajax({
+      url:app_url+'/pagos/buscar/'+this.value,
+      type:'GET', 
+      success:function(data)
+      {
+        setTimeout(function(){
           $('#registrar_pagos').html(data);
-         }, 2000);        
-         
-        }
-      });
-   });
-   //fin de buscar mensualidad  
-    console.log("on");
-    $("#frmMetodo").validate({
-      errorElement: "em",
-      errorPlacement: function(error, element) {
-        $(element.parent("div").addClass("form-animate-error"));
-        error.appendTo(element.parent("div"));
-      },
-      success: function(label) {
-        $(label.parent("div").removeClass("form-animate-error"));
-      },
-      rules: {
-        txtMonto: {
-          required: true
-        },
-        txtReferencia: {
-          required: true
-        },
-        cmbTipo: {
-          valueNotEquals: "default" 
-        },       
-        cmbBanco: {
-          valueNotEquals: "default" 
-        }        
-      },
-      messages: {
-        txtReferencia: "El campo referencia es requerido",
-        txtMonto: "El campo monto es requerido"
-      }
-
-    });
-    $.validator.addMethod("valueNotEquals", function(value, element, arg){
-      return arg != value;
-    }, "Seleccione una Opcion de la lista");
-
-    $("#cmbMetodo").change(event => {
-      var idCuota=$('#cmbMetodo').val();      
-      if(idCuota=="default")
-      {
-        $("#contenido-metodo").empty();  
-        $("#txtMontoCancelar").val('');
-        return;
-      }
-      $.getJSON(app_url+"/getInscripcion/"+idCuota, function(res, sta){
-        $("#contenido-metodo").empty();   
-        if(res)
-        {
-          $("#contenido-metodo").append(`<tr>
-            <th>Inscripcion</th>
-            <th>${res.inscripcion}</th>
-            <th><input type='checkbox' name='chkInscripcion' checked disabled value='${res.inscripcion}'></th>
-            </tr>
-            <tr>
-            <th>Seguro</th>
-            <th>${res.seguro}</th>
-            <th><input type='checkbox' name="chkSeguro" id='chkSeguro' value="${res.seguro}" onclick="montoCancelar(${res.inscripcion})"></th>
-            </tr>
-            <tr>
-            <th>Otro</th>
-            <th>${res.otro}</th>
-            <th><input type='checkbox' name='chkOtro' id='chkOtro' value="${res.otro}" onclick="montoCancelar(${res.inscripcion})"></th>
-            </tr>`);
-
-          $("#txtMontoCancelar").val(res.inscripcion);
-        }
-      });
-    });
-    $('#cmbTipo').change( function(){
-      var tipo=$('#cmbTipo').val();
-      if(tipo=="Efectivo")
-      {
-        $("#txtReferencia").prop( "disabled",true);
-        $("#cmbBanco").prop( "disabled",true);
-      }
-      else
-      {
-        $("#txtReferencia").prop( "disabled",false);
-        $("#cmbBanco").prop( "disabled",false);
+        }, 2000);        
+        
       }
     });
   });
+   //fin de buscar mensualidad  
+   console.log("on");
+   $("#frmMetodo").validate({
+    errorElement: "em",
+    errorPlacement: function(error, element) {
+      $(element.parent("div").addClass("form-animate-error"));
+      error.appendTo(element.parent("div"));
+    },
+    success: function(label) {
+      $(label.parent("div").removeClass("form-animate-error"));
+    },
+    rules: {
+      txtMonto: {
+        required: true
+      },
+      txtReferencia: {
+        required: true
+      },
+      cmbTipo: {
+        valueNotEquals: "default" 
+      },       
+      cmbBanco: {
+        valueNotEquals: "default" 
+      }        
+    },
+    messages: {
+      txtReferencia: "El campo referencia es requerido",
+      txtMonto: "El campo monto es requerido"
+    }
 
-      var save_method; 
-      function agregar()
+  });
+   $.validator.addMethod("valueNotEquals", function(value, element, arg){
+    return arg != value;
+  }, "Seleccione una Opcion de la lista");
+
+   $("#cmbMetodo").change(event => {
+    var idCuota=$('#cmbMetodo').val();      
+    if(idCuota=="default")
+    {
+      $("#contenido-metodo").empty();  
+      $("#txtMontoCancelar").val('');
+      return;
+    }
+    $.getJSON(app_url+"/getInscripcion/"+idCuota, function(res, sta){
+      $("#contenido-metodo").empty();   
+      if(res)
       {
-        save_method = 'add';
+        $("#contenido-metodo").append(`<tr>
+          <th>Inscripcion</th>
+          <th>${res.inscripcion}</th>
+          <th><input type='checkbox' name='chkInscripcion' checked disabled value='${res.inscripcion}'></th>
+          </tr>
+          <tr>
+          <th>Seguro</th>
+          <th>${res.seguro}</th>
+          <th><input type='checkbox' name="chkSeguro" id='chkSeguro' value="${res.seguro}" onclick="montoCancelar(${res.inscripcion})"></th>
+          </tr>
+          <tr>
+          <th>Otro</th>
+          <th>${res.otro}</th>
+          <th><input type='checkbox' name='chkOtro' id='chkOtro' value="${res.otro}" onclick="montoCancelar(${res.inscripcion})"></th>
+          </tr>`);
+
+        $("#txtMontoCancelar").val(res.inscripcion);
+      }
+    });
+  });
+   $('#cmbTipo').change( function(){
+    var tipo=$('#cmbTipo').val();
+    if(tipo=="Efectivo")
+    {
+      $("#txtReferencia").prop( "disabled",true);
+      $("#cmbBanco").prop( "disabled",true);
+    }
+    else
+    {
+      $("#txtReferencia").prop( "disabled",false);
+      $("#cmbBanco").prop( "disabled",false);
+    }
+  });
+ });
+
+   var save_method; 
+   function agregar()
+   {
+    save_method = 'add';
         //$('#frmMetodo').validate().resetForm();
       $('#frmMetodo')[0].reset(); // reset form on modals
       if($('#cmbMetodo').val()!="default")
@@ -118,12 +118,24 @@
       event.preventDefault();
        if (!$("#frmMetodo").valid()) { // Not Valid
          return false;
-       } else {        
+       } else {   
+
         var tipo=$('#cmbTipo').val();
-        var banco=$('#cmbBanco').val();
         var monto=$('#txtMonto').val();
-        var referencia=$('#txtReferencia').val();
-        var bancoSelected = $("#cmbBanco option:selected").html();
+        if(tipo=="Efectivo")
+        {
+          var banco='N/A';
+          var referencia='N/A';
+          bancoSelected='N/A';
+        }    
+        else
+        {        
+          var banco=$('#cmbBanco').val();
+          var referencia=$('#txtReferencia').val();
+          var bancoSelected = $("#cmbBanco option:selected").html();
+        }
+
+        
         if(banco=='default')
         {
           bancoSelected='';
@@ -153,7 +165,7 @@
           });
 
 
-});
+  });
 //fin de seleccionar metodo de pago
 
 
@@ -271,17 +283,17 @@ $(function () {
     var formulario=$('#formulario').serializeArray();
     $('#registrar_pagos').html("<img alt='cargando' src='"+app_url+"/img/ajax-loader.gif' style='left: 50%;top: 50%;position: absolute;'/>");
     
-$.ajax({
-        url:app_url+'/pagos/procesar_pagos',
-        type:'POST', 
-        data:formulario,
-        success:function(data)
-        {          
-          
+    $.ajax({
+      url:app_url+'/pagos/procesar_pagos',
+      type:'POST', 
+      data:formulario,
+      success:function(data)
+      {          
+        
         setTimeout(function(){
           $('#registrar_pagos').html(data);
-         }, 2000);
-        }
-      });
+        }, 2000);
+      }
+    });
   });
-  });
+});

@@ -17,4 +17,14 @@ class pagosModel extends Model
 	protected $primaryKey='id';
 	public $timestamps = false; 
 	protected $fillable = array('fecha','alumno_id','monto','estatus');
+
+	public function alumno()
+	{
+		return $this->belongsTo('App\datos\alumnoModel');
+	}
+
+	public function detalles()
+	{
+		return $this->hasMany('App\pagos\detalles_pagosModel','pagos_id','id');
+	}
 }

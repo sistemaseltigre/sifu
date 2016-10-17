@@ -10,8 +10,8 @@ var express = require('express')
   , bcrypt = require('bcryptjs')
   ;
 var options = {
-  key: fs.readFileSync('C:/xampp/apache/conf/server.key'),
-  cert: fs.readFileSync('C:/xampp/apache/conf/server.crt')
+ // key: fs.readFileSync('C:/xampp/apache/conf/server.key'),
+  cert: fs.readFileSync('C:/xampp/apache/conf/63fb03b3f660e55f.crt')
 };
 //toca instalar phyton 2.7 y otras cosas para que funcione bycrip https://www.npmjs.com/package/bcrypt
 var app = express();

@@ -27,4 +27,8 @@ public function alumno()
 {
   return $this->belongsTo('App\datos\alumnoModel');
 }
+public function pagos()
+{
+  return $this->hasMany('App\pagos\pagosModel','alumno_id','alumno_id');
+}
 }

@@ -1,5 +1,9 @@
+
 <li><a><i class="fa fa-cog"></i> Personaliza tu Colegio <span class="fa fa-chevron-down"></span></a>
   <ul class="nav child_menu">
+    <li>
+      <a href="{{ asset('/config_colegio') }}">Mi Colegio</a>
+    </li> 
     <li>
       <a href="{{ asset('/config_administrador') }}">Administradores</a>
     </li> 
@@ -37,15 +41,15 @@
 </li>
 
 <li>
-  <a href="#"><i class="fa fa-credit-card-alt"></i> Pagos <span class="fa fa-chevron-down"></a>
-<<<<<<< HEAD
+
+  <a href="#"><i class="fa fa-credit-card-alt"></i> Pagos <span class="fa fa-chevron-down"></span></a>
+
   <ul class="nav child_menu">
-  <li><a href="{{ asset('/pagos/registrar') }}">Registrar Pagos</a></li>
-    <li><a href="{{ asset('/config_cuotas') }}">Verificar Pagos</a></li>
-    <li><a href="{{ asset('/config_cuotas') }}">Pagos Procesados</a></li>
-    <li><a href="{{ asset('/config_cuotas') }}">Pagos Pendientes</a></li>
-    <li><a href="{{ asset('/config_cuotas') }}">Pagos de Inscripcion</a></li>
-     <li><a href="{{ asset('/config_cuotas') }}">Buscar</a></li>
+    <li><a href="{{ asset('/pagos/registrar') }}">Registrar Pagos</a></li>
+    <li><a href="{{ asset('/pagos/verificar_pagos') }}">Verificar Pagos</a></li>
+    <li><a href="{{ asset('/pagos/procesados') }}">Pagos Procesados</a></li>
+    <li><a href="{{ asset('/pagos/pendientes') }}">Pagos Pendientes</a></li>
+    <li><a href="{{ asset('/pagos/historico') }}">Buscar</a></li>
   </ul>
   <!-- /.nav-second-level -->
 </li>
@@ -69,15 +73,8 @@
 <li>
   <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">           
   </span></a>
-=======
-              {{-- <ul class="nav nav-second-level">
-                <li>
-                  <a href="flot.html">Registrar Pagos</a>
-                </li>
-                <li>
-                  <a href="morris.html">Mostrar Pagos</a>
-                </li>
-              </ul> --}}
+
+              
               <!-- /.nav-second-level -->
             </li>
             <li>
@@ -89,9 +86,6 @@
                 <li>
                   <a href="{{ asset('/config_horarios/consultar') }}">Consultar Horario</a>
                 </li>
-                <li>
-                 {{--  <a href="morris.html">Mostrar Horarios</a> --}}
-               </li>
              </ul>
              <!-- /.nav-second-level -->
            </li>
@@ -101,27 +95,31 @@
           </li>
           <li>
             <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down"></span></a>
->>>>>>> pizarra
-             {{--  <ul class="nav nav-second-level">
-                <li>
-                  <a href="flot.html">Notas</a>
-                </li>
-                <li>
-                  <a href="morris.html">Profesores</a>
-                </li>
-                <li>
-                  <a href="morris.html">Alumnos</a>
-                </li>
-                <li>
-                  <a href="morris.html">pagos</a>
-                </li>
-              </ul> --}}
+
               <!-- /.nav-second-level -->
             </li>
             <!--menu aula virtual-->
               <li>
+  <ul class="nav child_menu">
+  <h3>Alumnos</h3>
+    <li><a href="{{ asset('reportes/alumnos/inscritos') }}">Inscritos</a></li>
+    <li><a href="{{ asset('reportes/alumnos/seccion') }}">Por Sección</a></li>
+    <li><a href="{{ asset('reportes/alumnos/morosos') }}">Morosos</a></li>
+    <h3>Historico</h3>
+    <li><a href="{{ asset('/reportes/historico/metodo-pago') }}">Metodo de Pago</a></li>
+    <li><a href="{{ asset('/reportes/historico/tipo-pago') }}">Tipo de Pago</a></li>
+    <h3>Planillas</h3>
+    <li><a href="{{ asset('reportes/planillas/certificado-de-estudios') }}">Certificado de Estudios</a></li>
+    {{-- <li><a href="{{ asset('/pagos/pendientes') }}">Boleta de Retiro</a></li>
+    <li><a href="{{ asset('/pagos/pendientes') }}">Paz y Salvo</a></li>
+    <li><a href="{{ asset('/pagos/pendientes') }}">Certificado de Buena Conducta</a></li>
+    <li><a href="{{ asset('/pagos/pendientes') }}">Planilla de Inscripción</a></li> --}}
+  </ul>
+
+</li> 
+<li>
             <a href="#"><i class="fa fa-file"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav nav-second-level">
+                <ul class="nav nav-child_menu">
                 <li>
                   <a href="{{ asset('crear_aula') }}">Crear</a>
                 </li>

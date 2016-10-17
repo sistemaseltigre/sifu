@@ -44,22 +44,30 @@ class rol
                 }
             }
             else
-                if($rol=='todos')
+                if($rol=='representante')
                 {
-                    if(!Auth::check())
+                    if($this->auth->user()->rolid==4)
                     {
-                        return redirect('/login');
+                        return $next($request);
                     }
-                    return $next($request);
+                }
+                else
+                    if($rol=='todos')
+                    {
+                        if(!Auth::check())
+                        {
+                            return redirect('/login');
+                        }
+                        return $next($request);
 
+                    }
+
+                    return redirect('permisos');
+                }
+                private function getRequiredRoleForRoute($route)
+                {
+                    $actions = $route->getAction();
+                    return isset($actions['roles']) ? $actions['roles'] : null;
                 }
 
-                return redirect('permisos');
             }
-            private function getRequiredRoleForRoute($route)
-            {
-                $actions = $route->getAction();
-                return isset($actions['roles']) ? $actions['roles'] : null;
-            }
-
-        }

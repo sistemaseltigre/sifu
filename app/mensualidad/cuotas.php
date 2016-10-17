@@ -21,4 +21,12 @@ class cuotas extends Model
 {
   return $this->belongsTo('App\configuracion\detalles_cuotasModel','detalles_cuotas_id','id');
 }
+public function alumno()
+{
+	return $this->belongsTo('App\datos\alumnoModel','alumno_id','idalumno');
+}
+public function detalles_morosos()
+{
+  return $this->hasMany('App\configuracion\detalles_cuotasModel','id','detalles_cuotas_id');
+}
 }

@@ -18,4 +18,12 @@ class detalles_pagosModel extends Model
 	protected $primaryKey='id';
 	public $timestamps = false; 
 	protected $fillable = array('tipo','monto','banco','referencia','pagos_id','estatus');
+	public function bancos()
+	{
+		return $this->belongsTo('App\configuracion\bancoModel','banco','idbanco');
+	}
+	public function pago()
+	{
+		return $this->belongsTo('App\pagos\pagosModel','pagos_id','id');
+	}
 }

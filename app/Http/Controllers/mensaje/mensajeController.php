@@ -15,6 +15,7 @@ use \App\mensaje\mensajeModel as mensaje;
 use \App\mensaje\detalles_mensajeModel as detalles;
 use Auth;
 use Session;
+use DB;
 use Illuminate\Support\Collection as Collection;
 class mensajeController extends Controller
 {
@@ -31,10 +32,24 @@ class mensajeController extends Controller
 	}
 	public function redactar()
 	{
-		$datos['profesores']=profesor::all();
-		$datos['alumnos']=alumno::all();
-		$datos['representantes']=representante::all();
-		$datos['delegados']=delegado::all();
+		if(Auth::user()->rolid==1)
+		{
+			$datos['profesores']=profesor::all();
+			$datos['alumnos']=alumno::all();
+			$datos['representantes']=representante::all();
+			$datos['delegados']=delegado::all();
+		}
+		else
+		{
+			$datos['profesores']=DB::connection(Session::get('dbName'))->table('profesor')
+			->join('materias_profesor', 'materias_profesor.profesor_id', '=', 'profesor.idprofesor')
+			->join('materias_alumno', 'materias_alumno.materia_id', '=', 'materias_profesor.materia_id')
+			->join('alumno', 'alumno.idalumno', '=', 'materias_alumno.alumno_id')
+			->where('alumno.representante_id','=',Auth::user()->id)
+			->groupBy('profesor.idprofesor')
+			->get();
+			$datos['administradores']=administrador::all();
+		}
 		return view('mensaje.redactar',$datos);
 	}
 	public function create(Request $request)
