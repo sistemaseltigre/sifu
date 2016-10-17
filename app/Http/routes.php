@@ -120,12 +120,12 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
 
  //consulta horario desde el administrdor
  Route::get('generarHorario_seccion/{id}', 'configuracion\horarioController@generarHorario_seccion');
-  Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
+ Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
 
 //aula virtual
-Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
-Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
-Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
+ Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
+ Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
+ Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
 
 //crud Seccion
  Route::get('config_seccion', 'configuracion\seccionController@index');
@@ -158,10 +158,10 @@ Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
  Route::get('delete_cuota/{id?}','configuracion\cuotasController@delete');
  Route::get('nueva_cuota/{id?}','configuracion\cuotasController@nueva');
  Route::post('config_cuotas/detalles/create', 'configuracion\cuotasController@create_detalles');
-Route::post('config_cuotas/detalles/update', 'configuracion\cuotasController@update_detalles');
-Route::get('config_cuotas/detalles/delete/{id}', 'configuracion\cuotasController@delete_detalles');
-Route::get('config_cuotas/detalles/edit/{id}', 'configuracion\cuotasController@edit_detalles');
-Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasController@show_detalles');
+ Route::post('config_cuotas/detalles/update', 'configuracion\cuotasController@update_detalles');
+ Route::get('config_cuotas/detalles/delete/{id}', 'configuracion\cuotasController@delete_detalles');
+ Route::get('config_cuotas/detalles/edit/{id}', 'configuracion\cuotasController@edit_detalles');
+ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasController@show_detalles');
 
 
  Route::get('getInscripcion/{id}','configuracion\cuotasController@getInscripcion');
@@ -188,10 +188,10 @@ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasControlle
  Route::post('config_periodo/update','configuracion\periodoController@update');
  Route::get('config_periodo/delete/{id?}','configuracion\periodoController@delete');
  Route::get('config_periodo/activar/{id}', 'configuracion\periodoController@activar');
-  Route::get('config_periodo/desactivar/{id}', 'configuracion\periodoController@desactivar');
+ Route::get('config_periodo/desactivar/{id}', 'configuracion\periodoController@desactivar');
 
 
-  Route::get('pagos/registrar', 'pagos\pagosController@registrar');
+ Route::get('pagos/registrar', 'pagos\pagosController@registrar');
   Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');//registrar pagos
   Route::get('pagos/buscar_pagos/{id}', 'pagos\pagosController@buscar_pagos');//verificar pagos
   Route::post('pagos/procesar_pagos', 'pagos\pagosController@procesar_pagos');
@@ -213,8 +213,8 @@ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasControlle
 
    //historico por alumno
   Route::get('pdf/pagos_general/{id}', 'pdf\historicoController@pagos_general');
-   Route::get('pdf/mensualidad/{id}', 'pdf\historicoController@mensualidad');
-   Route::get('pdf/detalles_pagos_general/{id}', 'pdf\historicoController@detalles_pagos_general');
+  Route::get('pdf/mensualidad/{id}', 'pdf\historicoController@mensualidad');
+  Route::get('pdf/detalles_pagos_general/{id}', 'pdf\historicoController@detalles_pagos_general');
 
    //pdf alumnos inscritos
   Route::get('pdf/alumnos/inscritos', 'pdf\alumnosController@inscritos');
@@ -229,30 +229,30 @@ Route::get('config_cuotas/detalles/mostrar/{id}', 'configuracion\cuotasControlle
   Route::get('pdf/planillas/certificado/{id}', 'pdf\planillasController@certificado');
       //reportes
    //alumnos
-    Route::get('reportes/alumnos/inscritos', 'reportes\alumnosController@inscritos');
-    Route::get('reportes/alumnos/seccion', 'reportes\alumnosController@seccion');
-    Route::get('/reportes/alumnos/buscar/seccion/{id}', 'reportes\alumnosController@buscar_seccion');
-    Route::get('reportes/alumnos/morosos', 'reportes\alumnosController@morosos');
+  Route::get('reportes/alumnos/inscritos', 'reportes\alumnosController@inscritos');
+  Route::get('reportes/alumnos/seccion', 'reportes\alumnosController@seccion');
+  Route::get('/reportes/alumnos/buscar/seccion/{id}', 'reportes\alumnosController@buscar_seccion');
+  Route::get('reportes/alumnos/morosos', 'reportes\alumnosController@morosos');
 
-    Route::get('reportes/historico/metodo-pago','reportes\historicoController@metodo_pago');
-    Route::get('reportes/historico/buscar/metodo-pago/{id}','reportes\historicoController@buscar_metodo_pago');
-    Route::get('reportes/historico/tipo-pago','reportes\historicoController@tipo_pago');
-    Route::get('reportes/historico/buscar/tipo-pago/{tipo}','reportes\historicoController@buscar_tipo_pago');
+  Route::get('reportes/historico/metodo-pago','reportes\historicoController@metodo_pago');
+  Route::get('reportes/historico/buscar/metodo-pago/{id}','reportes\historicoController@buscar_metodo_pago');
+  Route::get('reportes/historico/tipo-pago','reportes\historicoController@tipo_pago');
+  Route::get('reportes/historico/buscar/tipo-pago/{tipo}','reportes\historicoController@buscar_tipo_pago');
 
-    Route::get('reportes/planillas/certificado-de-estudios', 'reportes\planillasController@certificado');
+  Route::get('reportes/planillas/certificado-de-estudios', 'reportes\planillasController@certificado');
 
-    Route::get('reportes/planillas/buscar/certificado/{id}', 'reportes\planillasController@buscar_certificado');
+  Route::get('reportes/planillas/buscar/certificado/{id}', 'reportes\planillasController@buscar_certificado');
 
 });
 //Mensajes
- Route::get('mensajes', 'mensaje\mensajeController@index');
-  Route::get('mensajes/redactar', 'mensaje\mensajeController@redactar');
-  Route::get('mensajes/mostrar_entrantes/{id}', 'mensaje\mensajeController@mostrar_entrantes');
- Route::post('mensajes/create', 'mensaje\mensajeController@create');
- Route::get('mensajes/enviados', 'mensaje\mensajeController@enviados');
- Route::get('mensajes/ver_mensajes/{id}', 'mensaje\mensajeController@ver_mensajes');
- Route::get('mensajes/entradas', 'mensaje\mensajeController@entradas');
- Route::post('mensajes/responder', 'mensaje\mensajeController@responder');
+Route::get('mensajes', 'mensaje\mensajeController@index');
+Route::get('mensajes/redactar', 'mensaje\mensajeController@redactar');
+Route::get('mensajes/mostrar_entrantes/{id}', 'mensaje\mensajeController@mostrar_entrantes');
+Route::post('mensajes/create', 'mensaje\mensajeController@create');
+Route::get('mensajes/enviados', 'mensaje\mensajeController@enviados');
+Route::get('mensajes/ver_mensajes/{id}', 'mensaje\mensajeController@ver_mensajes');
+Route::get('mensajes/entradas', 'mensaje\mensajeController@entradas');
+Route::post('mensajes/responder', 'mensaje\mensajeController@responder');
 
 
 //Route::get('administrator', 'plantilla\adminController@index');
@@ -300,21 +300,32 @@ Route::get('lista_preinscripcion', 'configuracion\preinscripcionController@index
 
   //crud inscripcion
 Route::group(['middleware' => ['rol:todos']], function(){
-Route::get('inscripcion/{codigo}/{id}', 'configuracion\inscripcionController@index');
+  Route::get('inscripcion/{codigo}/{id}', 'configuracion\inscripcionController@index');
 });
 
 // menu representante 
 Route::group(['middleware' => ['rol:representante']], function(){
   //pagos
-Route::get('pagos/registrar', 'pagos\pagosController@registrar');
- Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');
- Route::post('pagos/procesar_pagos', 'pagos\pagosController@procesar_pagos');
- Route::get('pagos/historico', 'pagos\pagosController@historico');
+  Route::get('pagos/registrar', 'pagos\pagosController@registrar');
+  Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');
+  Route::post('pagos/procesar_pagos', 'pagos\pagosController@procesar_pagos');
+  Route::get('pagos/historico', 'pagos\pagosController@historico');
+  Route::get('pagos/buscar_historico/{id}', 'pagos\pagosController@buscar_historico');
+  Route::get('pagos/detalles_historico/{id}', 'pagos\pagosController@detalles_historico');
+
+  //reportes pdf
+  Route::get('pdf/pagos_general/{id}', 'pdf\historicoController@pagos_general');
+  Route::get('pdf/mensualidad/{id}', 'pdf\historicoController@mensualidad');
+  Route::get('pdf/detalles_pagos_general/{id}', 'pdf\historicoController@detalles_pagos_general');
 
  //horario
 
   Route::get('representante/horario', 'representante\horarioController@index');
   Route::get('/representante/getHorario/{id}', 'representante\horarioController@getHorario');
+
+   //notas
+
+  Route::get('/notas/getNotas', 'notas\notasController@index');
 });
 
 

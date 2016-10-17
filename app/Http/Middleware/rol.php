@@ -50,24 +50,29 @@ class rol
                     {
                         return $next($request);
                     }
-                }
-                else
-                    if($rol=='todos')
-                    {
-                        if(!Auth::check())
+                    else
+                        if($this->auth->user()->rolid==1)
                         {
-                            return redirect('/login');
+                            return $next($request);
                         }
-                        return $next($request);
+                    }
+                    else
+                        if($rol=='todos')
+                        {
+                            if(!Auth::check())
+                            {
+                                return redirect('/login');
+                            }
+                            return $next($request);
 
+                        }
+
+                        return redirect('permisos');
+                    }
+                    private function getRequiredRoleForRoute($route)
+                    {
+                        $actions = $route->getAction();
+                        return isset($actions['roles']) ? $actions['roles'] : null;
                     }
 
-                    return redirect('permisos');
                 }
-                private function getRequiredRoleForRoute($route)
-                {
-                    $actions = $route->getAction();
-                    return isset($actions['roles']) ? $actions['roles'] : null;
-                }
-
-            }

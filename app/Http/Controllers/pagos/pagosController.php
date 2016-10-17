@@ -322,6 +322,15 @@ public function historico()
    if (Auth::user()->rolid==1) {
  $pagos=pagos::where('estatus','=','procesado')->groupBy('alumno_id')->get();
 }
+else
+{
+  $pagos=pagos::whereHas('alumno', function($q)
+  {
+    $q->where('representante_id', '=', Auth::user()->id);
+
+  })->where('estatus','=','procesado')->groupBy('alumno_id')->get();
+
+}
 
  return view('pagos.historico.index',compact('pagos'));
 }

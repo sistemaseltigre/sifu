@@ -90,7 +90,7 @@
 </li> 
 <li>
             <a href="#"><i class="fa fa-file"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav nav-second-level">
+                <ul class="nav child_menu">
                 <li>
                   <a href="{{ asset('crear_aula') }}">Crear</a>
                 </li>

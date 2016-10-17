@@ -21,10 +21,9 @@
   <ul class="nav child_menu">
   <h3>Alumnos</h3>
     <li><a href="{{ asset('representante/horario') }}">Horario</a></li>
+    <li><a href="{{ asset('notas/getNotas') }}">Notas</a></li>
     <h3>Pagos</h3>
     <li><a href="{{ asset('/pagos/historico') }}">Historico</a></li>
-    <h3>Planillas</h3>
-    <li><a href="{{ asset('reportes/planillas/certificado-de-estudios') }}">Certificado de Estudios</a></li>
     {{-- <li><a href="{{ asset('/pagos/pendientes') }}">Boleta de Retiro</a></li>
     <li><a href="{{ asset('/pagos/pendientes') }}">Paz y Salvo</a></li>
     <li><a href="{{ asset('/pagos/pendientes') }}">Certificado de Buena Conducta</a></li>
