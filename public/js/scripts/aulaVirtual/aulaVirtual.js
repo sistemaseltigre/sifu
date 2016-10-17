@@ -28,7 +28,7 @@ function crearAulaVirtual(id,iduser,dbname){
 	$.post("aula", {id:id,iduser:iduser,dbname:dbname,_token:_token}, function(result){   
     })
     .done(function(result) {
-     url =	window.location.origin+':8080/'+dbname+'_'+iduser+id;
+     url =	window.location.origin+':8080/'+dbname+'_'+iduser+'_'+id;
      window.open(url, '_blank');
   	 console.log(result);
   	});

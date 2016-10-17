@@ -6,14 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
-  <title>S.I.F.U</title>
+  <title>SIFU</title>
+
+  <link rel="stylesheet" type="text/css" href="/views/css/aula.css"> 
   <link rel="stylesheet" type="text/css" href="/views/css/all.css"> 
-  <link rel="stylesheet" type="text/css" href="/views/css/pizarra.css"> 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <script src="/views/js/all.js"></script>
-  <script src="/views/js/socket.io-1.4.5.js"></script> 
+  <!--<script src="/views/js/socket.io-1.4.5.js"></script> -->
+  <script src="/socket.io/socket.io.js"></script>
   <script src="/views/js/modernizr.js"></script> 
   <script src="/views/js/pizarra.js"></script> 
+  <script src="/views/js/streaming.js"></script> 
   <script src="/views/js/aula.js"></script>
 </head>
 <body onload="initCanvas();">
@@ -24,20 +27,32 @@
       <a class="navbar-brand" href="#">Aula virtual</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="#"><font color="#fff">Preguntar al profesor</font></a></li>      
+      <li><a href="#"><font color="#fff">Bienvenido <b><span id="nombre_usuario"></span></b></font></a></li>
+      <li><a href="#"><span onclick="salir();"><font color="#fff">Salir</font></span></a></li>      
     </ul>
   </div>
 </nav>
 
-<div class="container">
-	<div class="rows">
-		<div id="canvasDiv" style="width: 100%;background-color: green;height: 500px;"></div>
-		<div id="contenedorChat">
-			<div id="mensajes_chat"></div>
-			<div id="enviar_mensaje"></div>
-		</div>
-	</div>
+<div id="canvasDiv" style="width: 100%;background-color: green;height: 500px;"></div>
 	
+<div id="menuaula">
+  <img id="pantalla" width="100px" height="100px" src="/views/img/pantalla.png" />        
+  <img id="chatimg" onclick="toggleChat();" width="50px" height="50px" src="/views/img/chat.png" />        
+  <img id="mano1" onclick="preguntar();" width="45px" height="45px" src="/views/img/mano.png" />     
 </div>
+
+<div id="contenedorChat">
+  <div id="mensajes_chat"><div id="mensajes_p"></div></div>
+  <div id="enviar_mensaje_chat">    
+    <textarea name="enviarmensajechat" id="enviarmensajechat" maxlength="200"></textarea>
+    <button id="btn1" type="button" onclick="enviarmensajechat();">Enviar</button>
+  </div>
+</div>
+
+<!--Esta seccion es para los datos del STREAMING video/audio-->
+<video src="" autoplay="true" id="videostreaming"></video>
+<canvas id="prevideo"></canvas>
+<img id="play">
+
 </body>
 </html>
