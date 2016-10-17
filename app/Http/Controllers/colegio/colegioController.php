@@ -15,6 +15,7 @@ use Session;
 use \App\colegio\registroModel as registro;
 use \App\usuario\usuarioModel;
 use \App\configuracion\administradorModel as administrador;
+use \App\configuracion\colegioModel as colegio;
 use Mail;
 use Validator;
 class colegioController extends Controller
@@ -111,6 +112,14 @@ class colegioController extends Controller
 			$admin->tipo='superAdmin';
 			$admin->save();
 
+			$colegio= new colegio;
+			$colegio->colegio=$request['txtColegio'];
+			$colegio->nombre_contacto=$request['txtNombre'];
+			$colegio->telefono=$request['txtTelefono'];
+			$colegio->email=$request['txtEmail'];
+			$colegio->codigo=$request['txtCodigo'];
+			$colegio->save();
+
 			Mail::send('colegio.correo.index', array('enlace'=>$dbName), function ($m)  use ($registro){
 				$m->from('donotreply@sifusp.com', 'SIFU');
 
@@ -153,5 +162,15 @@ class colegioController extends Controller
         	});
 			$send_res = 1;
         	return redirect('/')->with('send_res');
+		}
+
+
+
+		public function validar_licencia()
+		{
+			$colegio=colegio::where('dbName','=',Session::get('dbName'))->first();
+			$fecha_actual=date('Y-m-d');
+			$interval = date_diff($fecha_actual, $colegio->fecha);
+			Session::put('dias',$interval);
 		}
 	}

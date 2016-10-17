@@ -19,6 +19,7 @@ use \App\datos\representanteModel as representante;
 use App;
 use \App\dbManager;
 use Session;
+use DateTime;
 class sesionController extends Controller
 {
 
@@ -46,8 +47,10 @@ class sesionController extends Controller
 
     if(Auth::attempt(['usuario'=>$request['txtUsuario'],'password'=>$request['txtPassword']]))
     {
-
+      //validar licencia
+      $this->validar_licencia();
      // echo dd(Auth::user());
+
       $rol=Auth::user()->rolid;        
       $id=Auth::user()->id;
 
@@ -64,12 +67,19 @@ class sesionController extends Controller
           session(['name' => $profesor->nombre_profesor]);
           session(['id' => $profesor->idprofesor]);
         }
+        else
+        if($rol==4)
+        {
+          $representante=representante::find($id);
+          session(['name' => $representante->nombre]);
+          session(['id' => $representante->idrepresentante]);
+        }
         return redirect('/app/');
       }
       else
       {
         Session::flash('error', 'Usuario Y/O Contraseña Invalida, por favor verifique la informacion e intentelo de nuevo!');
-      return redirect($url);
+        return redirect($url);
       }
     }
     public function logout()
@@ -92,4 +102,21 @@ class sesionController extends Controller
 
     }
 
-}
+    public function validar_licencia()
+    {
+      $colegio=\App\colegio\registroModel::where('dbName','=',Session::get('dbName'))->where('licencia','=','false')->first();
+           
+        $fecha_actual=new DateTime(date('Y-m-d'));
+        $fecha_registro=new DateTime($colegio->fecha);
+        $interval = date_diff(new $fecha_actual, $fecha_registro);
+        $dias=30-$interval->days;
+        Session::put('dias_restantes',$dias);
+
+        if($dias<=0)
+        {
+          
+        }
+     
+    }
+
+  }

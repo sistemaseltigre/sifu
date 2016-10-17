@@ -7,26 +7,35 @@
 			<div class="col-lg-9">
 				<select name="cmbDestino[]" id="cmbDestino" style="width:100%;" data-placeholder="Seleccione Destinatarios de Mensaje"  multiple class="chosen-select" tabindex="5">
 					<option value=""></option>
+
+					@if(isset($profesores))
 					<optgroup label="Profesor">
 						@foreach ($profesores as $profesor)
 						<option value="2-{{ $profesor->idprofesor }}">{{ $profesor->nombre_profesor }}</option>
 						@endforeach
 					</optgroup>
+					@endif
+					@if(isset($representantes))
 					<optgroup label="Representante">
 						@foreach ($representantes as $representante)
 						<option value="3-{{ $representante->idrepresentante }}">{{ $representante->nombre }}</option>
 						@endforeach
 					</optgroup>
+					@endif
+					@if(isset($delegados))
 					<optgroup label="Delegado">
 						@foreach ($delegados as $delegado)
 						<option value="4-{{ $delegado->iddelegado }}">{{ $delegado->nombre }}</option>
 						@endforeach
 					</optgroup>
+					@endif
+					@if(isset($alumnos))
 					<optgroup label="Alumno">
 						@foreach ($alumnos as $alumno)
 						<option value="5-{{ $alumno->idalumno }}">{{ $alumno->nombre }}</option>
 						@endforeach
 					</optgroup>
+					@endif
 				</select>
 			</div>
 		</div>   

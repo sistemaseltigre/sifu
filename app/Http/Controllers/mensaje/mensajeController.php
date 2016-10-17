@@ -31,10 +31,17 @@ class mensajeController extends Controller
 	}
 	public function redactar()
 	{
-		$datos['profesores']=profesor::all();
-		$datos['alumnos']=alumno::all();
-		$datos['representantes']=representante::all();
-		$datos['delegados']=delegado::all();
+		if(Auth::user()->rolid==1)
+		{
+			$datos['profesores']=profesor::all();
+			$datos['alumnos']=alumno::all();
+			$datos['representantes']=representante::all();
+			$datos['delegados']=delegado::all();
+		}
+		else
+		{
+			$datos['profesores']=profesor::all();
+		}
 		return view('mensaje.redactar',$datos);
 	}
 	public function create(Request $request)

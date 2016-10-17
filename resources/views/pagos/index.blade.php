@@ -43,6 +43,7 @@
             <div class="form-group">
               <label class="col-lg-4 control-label">Tipo</label>
               <div class="col-lg-8">
+              @if(Auth::user()->rolid==1)
                 <select class="form-control" name="cmbTipo" id="cmbTipo">
                   <option value="default">Seleccione...</option>
                   <option value="Efectivo">Efectivo</option>
@@ -51,8 +52,14 @@
                   <option value="Transferencia">Transferencia</option>
                   <option value="Tarjeta de Debito">Tarjeta de Debito</option>
                   <option value="Tarjeta de Credito">Tarjeta de Credito</option>
-
                 </select>
+                @else
+                <select class="form-control" name="cmbTipo" id="cmbTipo">
+                  <option value="default">Seleccione...</option>
+                  <option value="Deposito">Deposito</option>
+                  <option value="Transferencia">Transferencia</option>
+                </select>
+                @endif
               </div>
             </div>
             <div class="form-group">
