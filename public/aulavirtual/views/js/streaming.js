@@ -1,6 +1,10 @@
 var socket = io('/');//iniciamos el servidor
-
+var bandera;
 $(function() {
+  var videoStreaming_cliente;
+  bandera=0;
+  var audioStreaming_cliente;
+  var audioStreaming = document.getElementById("audioStreaming");
   var videoStreaming = document.getElementById("videostreaming");
   videoStreaming.width = 100;
   videoStreaming.height = 100;
@@ -20,7 +24,7 @@ $(function() {
       navigator.getUserMedia({video:true, audio:true},camaraOn,camaraOff);
     }
     setInterval(function(){
-      emitirVideo(context,videoStreaming,canvasVideo);
+      emitirVideo(context,videoStreaming,canvasVideo,audioStreaming,bandera);
     },250);  
   }else{
     //en caso de que no sea el administrador escuchamos lo que el administrador esta emitiendo
@@ -31,26 +35,41 @@ $(function() {
 
 function camaraOn(e) {
 	urlVideo = window.URL.createObjectURL(e);
-	$("#videostreaming").attr("src",urlVideo);
+  $("#videostreaming").attr("src",urlVideo);
+	$("#audioStreaming").attr("src",urlVideo);
 }
 
 function camaraOff(e) {
 	
 }
 
-function emitirVideo(context,videoStreaming,canvasVideo) {
+function emitirVideo(context,videoStreaming,canvasVideo,audioStreaming,bandera) {
   //console.log(videoStreaming);
+  //bandera=1;
+  //console.log(bandera);
   context.drawImage(videoStreaming,0,0,context.width,context.height);
-  socket.emit('streaming',canvasVideo.toDataURL('image/webp'));
+  var videoUpdateCliente = canvasVideo.toDataURL('image/webp');
+  var audioUpdateCliente = audioStreaming.src;
+  socket.emit('streaming',{videoUpdateCliente,audioUpdateCliente});
+
 }
 
-function verVideo() {
+function verVideo(e) {
+  videoStreaming_cliente = document.getElementById("play");     
+  videoStreaming_cliente.src = e.videoUpdateCliente;
+}
+
+function escuchar(e) {
+  
+  if (bandera==0) {
+    audioStreaming_cliente = document.getElementById("audioStreamingCliente");
+    audioStreaming_cliente.src = e.audioUpdateCliente;
+    bandera=1;
+  }
   
 }
 
 socket.on('streaming',function(e){
-      $("#prevideo").hide();
-      var img = document.getElementById("play");
-      img.src = e;
-      //console.log(e);
+  verVideo(e);
+  escuchar(e);
 });

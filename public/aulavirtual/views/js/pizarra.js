@@ -1,8 +1,10 @@
 var socket = io('/');//iniciamos el servidor
 var movimientos = new Array();
 var pulsado;
+var banderaLapiz;
 
 function initCanvas() {
+  banderaLapiz=0;
   var canvasDiv = document.getElementById('canvasDiv');
   canvas = document.createElement('canvas');
   canvas.setAttribute('width', 700);
@@ -44,10 +46,9 @@ function initCanvas() {
 
 function repinta(){
   canvas.width = canvas.width;
-  
-  context.strokeStyle = "#fff";
   context.lineJoin = "round";
-  context.lineWidth = 1;
+    context.lineWidth = 1;
+  
             
   for(var i=0; i < movimientos.length; i++)
   {     
@@ -59,6 +60,7 @@ function repinta(){
     }
     context.lineTo(movimientos[i][0], movimientos[i][1]);
     context.closePath();
+    estiloLapiz();
     context.stroke();
   }
 }
@@ -67,8 +69,8 @@ socket.on('mousedown',function(e){
   pulsado = e.pulsado;
   movimientos.push([e.pageX - canvas.offsetLeft,e.pageY - canvas.offsetTop,false]);
   repinta();
-  console.log('este mensaje es para todos');
-  console.log(e);        
+  //console.log('este mensaje es para todos');
+  //console.log(e);        
 });
 socket.on('mousemove',function(e){
   if(pulsado==true){
@@ -85,3 +87,18 @@ socket.on('mouseleave',function(e){
 socket.on('repinta',function(){
   repinta();
 });
+
+function toggleBorrador() {
+  banderaLapiz=1;
+
+}
+
+function estiloLapiz() {
+  console.log(banderaLapiz);
+  if (banderaLapiz==0) {
+    context.strokeStyle = "#fff";
+  }else{
+    context.strokeStyle = "green";
+  }
+
+}

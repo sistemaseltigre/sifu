@@ -37,6 +37,7 @@
 	
 <div id="menuaula">
   <img id="pantalla" width="100px" height="100px" src="/views/img/pantalla.png" />        
+  <img id="audioimg" onclick="toggleAudio();" width="30px" height="30px" src="/views/img/volume-up.png" />        
   <img id="chatimg" onclick="toggleChat();" width="50px" height="50px" src="/views/img/chat.png" />        
   <img id="mano1" onclick="preguntar();" width="45px" height="45px" src="/views/img/mano.png" />     
 </div>
@@ -50,9 +51,20 @@
 </div>
 
 <!--Esta seccion es para los datos del STREAMING video/audio-->
-<video src="" autoplay="true" id="videostreaming"></video>
+<video src="" autoplay="true" id="videostreaming" muted="yes"></video>
+<!--<audio id="audio" controls="controls">
+  <source src="" id="audioStreaming" type="audio/mp3"></source>
+</audio>-->
+
+<audio id="audioStreaming" src="" controls="true" loop="true" autoplay="true" muted="yes"></audio>
+<!--audioStreamingCliente-->
+<audio id="audioStreamingCliente" src="" controls="true" loop="true" autoplay="true"></audio>
+
 <canvas id="prevideo"></canvas>
 <img id="play">
-
+<!--tools pizarra-->
+<div id="toolsPizarra">
+  <img id="eraseimg" onclick="toggleBorrador();" width="30px" height="30px" src="/views/img/eraser.png" />  
+</div>
 </body>
 </html>
