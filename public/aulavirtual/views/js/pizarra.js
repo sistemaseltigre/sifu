@@ -89,7 +89,12 @@ socket.on('repinta',function(){
 });
 
 function toggleBorrador() {
+  if (banderaLapiz==0) {
   banderaLapiz=1;
+
+  }else{
+  banderaLapiz=0;
+  }
 
 }
 

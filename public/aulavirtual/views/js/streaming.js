@@ -1,7 +1,9 @@
 var socket = io('/');//iniciamos el servidor
 var bandera;
+var audioContext;
 $(function() {
   var videoStreaming_cliente;
+  audioContext = new AudioContext();
   bandera=0;
   var audioStreaming_cliente;
   var audioStreaming = document.getElementById("audioStreaming");
@@ -37,6 +39,13 @@ function camaraOn(e) {
 	urlVideo = window.URL.createObjectURL(e);
   $("#videostreaming").attr("src",urlVideo);
 	$("#audioStreaming").attr("src",urlVideo);
+  
+ var source = audioContext.createMediaStreamSource(e);
+ var proc = audioContext.createScriptProcessor(2048, 2, 2);
+
+  
+        
+    
 }
 
 function camaraOff(e) {
@@ -50,6 +59,11 @@ function emitirVideo(context,videoStreaming,canvasVideo,audioStreaming,bandera) 
   context.drawImage(videoStreaming,0,0,context.width,context.height);
   var videoUpdateCliente = canvasVideo.toDataURL('image/webp');
   var audioUpdateCliente = audioStreaming.src;
+  //var audioUpdateCliente = "data:audio/mp3;base64,"+btoa(audioStreaming.src);
+  
+        // define as output of microphone the default output speakers
+       // microphone_stream.connect( audioContext.destination ); 
+ // var audioUpdateCliente = new Blob(audioStreaming.chunks, { 'type' : 'audio/ogg; codecs=opus' });
   socket.emit('streaming',{videoUpdateCliente,audioUpdateCliente});
 
 }

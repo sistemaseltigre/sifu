@@ -8,6 +8,7 @@ var express = require('express')
   , passwordHash = require('password-hash')
   , bodyParser = require('body-parser')
   , bcrypt = require('bcryptjs')
+  , ms = require('mediaserver')
   ;
 var options = {
   key: fs.readFileSync('C:/xampp/sifusp.key'),
@@ -239,3 +240,8 @@ io.sockets.on('connection', function(socket) {
 });
 
 
+app.get('/audiostreaming/:blob', function (req,res) {
+  var audiostreaming = req.params.blob;
+  console.log(audiostreaming);
+  ms.pipe(req,res,audiostreaming);
+})
