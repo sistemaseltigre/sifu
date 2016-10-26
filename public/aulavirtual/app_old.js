@@ -8,11 +8,10 @@ var express = require('express')
   , passwordHash = require('password-hash')
   , bodyParser = require('body-parser')
   , bcrypt = require('bcryptjs')
-  , ms = require('mediaserver')
   ;
 var options = {
-  key: fs.readFileSync('C:/xampp/sifusp.key'),
-  cert: fs.readFileSync('C:/xampp/63fb03b3f660e55f.crt')
+  //key: fs.readFileSync('C:/xampp/apache/conf/server.key'),
+  cert: fs.readFileSync('C:/xampp/apache/conf/63fb03b3f660e55f.crt')
 };
 //toca instalar phyton 2.7 y otras cosas para que funcione bycrip https://www.npmjs.com/package/bcrypt
 var app = express();
@@ -240,8 +239,3 @@ io.sockets.on('connection', function(socket) {
 });
 
 
-app.get('/audiostreaming/:blob', function (req,res) {
-  var audiostreaming = req.params.blob;
-  console.log(audiostreaming);
-  ms.pipe(req,res,audiostreaming);
-})

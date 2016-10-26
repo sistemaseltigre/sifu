@@ -30,6 +30,17 @@ function toggleChat(){
   $( "#contenedorChat" ).toggle("fast");
   $("#menuaula").css("margin-right:","340px");
 }
+function toggleAudio() {
+	var audioimg = $("#audioimg").attr("src");
+	if (audioimg=="/views/img/volume-mute.png") {
+		$("#audioimg").attr("src","/views/img/volume-up.png");
+		$("#audioStreamingCliente").prop('muted', false);
+	}else{
+		$("#audioimg").attr("src","/views/img/volume-mute.png");
+		$("#audioStreamingCliente").prop('muted', true);
+	}
+	
+}
 function enviarmensajechat(){
 	chat_user = $('#nombre_usuario').text();
 	chat_msg  = $('#enviarmensajechat').val();
@@ -40,7 +51,7 @@ function enviarmensajechat(){
 	validarMensaje(chat_msg);
 	if (validar==0) {chat_msg=null;}
 	//emitimos el nuevo mensaje al servidor
-	if ((chat_msg!=null) || (chat_msg.length>0)) {
+	if ((chat_msg!=null) && (chat_msg.length>0)) {
 		socket.emit('mensajeChatUser', { chat_user:chat_user, chat_msg:chat_msg, chat_color:color_aleatorio, pregunta:false });
 	}
 }
@@ -87,15 +98,18 @@ function preguntar() {
 
 function hacerPregunta(e) {
 	pregunta = e;
+
 }
 
 function procesarPregunta(e) {
+	$("#preguntaUser").val('');
 	chat_user = $('#nombre_usuario').text();
 	if (e==true) {
 		validarMensaje(pregunta);
 		if (validar==0) {pregunta=null;}
-		if ((pregunta!=null) || (pregunta.length>0)) {
+		if ((pregunta!=null) && (pregunta.length>0)) {
 			socket.emit('mensajeChatUser', { chat_user:chat_user, chat_msg:pregunta, chat_color:color_aleatorio, pregunta:true });
+			pregunta='';
 		}
 	}
 }

@@ -19,6 +19,9 @@
 #chatimg{
 	margin-left: 10px;
 }
+#audioimg{
+	margin-left: 20px;
+}
 #contenedorChat{
 	width: 350px;
 	height: 500px;
@@ -89,6 +92,7 @@
 	right: 0px;
 	margin-right: 5px;
 	margin-top: -490px;
+	visibility: hidden;
 }
 #play{
 	position: absolute;
@@ -98,4 +102,10 @@
 	margin-top: -490px;
 	width: 100px;
 	height: 75px;
+}
+#audioStreaming{
+	/*display: none;*/
+}
+#audioStreamingCliente{
+	/*display: none;*/
 }
