@@ -52,16 +52,18 @@ class principalController extends Controller
 
 		$labels = array();
 		$totals = array();
+		$color = array();
 		foreach ($metodos as $metodo) {
 
 			array_push($labels, $metodo->descripcion);
 			array_push($totals, $metodo->total);
+			array_push($color, sprintf('#%06X', mt_rand(0, 0xFFFFFF)));
 		}
 
 		$viewData = array('labels'=>$labels, 
 			'datasets'=> array (array(
 			'data'=>$totals,
-			'backgroundColor'=>array("#F7464A","#46BFBD"))
+			'backgroundColor'=>$color)
 			));
 		return json_encode($viewData);
 

@@ -45,30 +45,30 @@
 			</div>
 			<div class="x_content">
 
-				<table class="" style="width:100%">
+				<table class="table">
 					<tr>
 						<th style="width:37%;">
-							<p>Top 5</p>
+							<p>Grafica</p>
 						</th>
 						<th>
 							<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
-								<p class="">Device</p>
+								<p class="">Metodo</p>
 							</div>
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
-								<p class="">Progress</p>
+								<p class="">Cantidad</p>
 							</div>
 						</th>
 					</tr>
 					<tr>
 						<td>
-							<canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
+							<canvas id="canvas1" height="120" width="140" style="margin: 15px 10px 10px 0"></canvas>
 						</td>
 						<td>
 							<table class="tile_info">
 							@foreach ($metodos as $metodo)
 								<tr>
 									<td>
-										<p><i class="fa fa-square blue"></i> {{ $metodo->descripcion }} </p>
+										<p><i class="fa fa-square"></i> {{ $metodo->descripcion }} </p>
 									</td>
 									<td> {{ $metodo->total }}</td>
 								</tr>			
@@ -78,14 +78,13 @@
 						</td>
 					</tr>
 				</table>
-			</div>
+			</div> 
+			<div class="clearfix"></div>
 		</div>
 	</div>
 </div>
 <script>
-	Chart.defaults.global.legend = {
-		enabled: false
-	};
+
 	var data='';
 	$(document).on('ready', function() {
 
@@ -95,6 +94,7 @@
 			dataType: 'json',
 			method: "GET"
 		}).done(function (data) {
+			console.log(data.datasets);
 			var canvasDoughnut = new Chart(document.getElementById("canvas1"), {
 				type: 'doughnut',
 				tooltipFillColor: "rgba(51, 51, 51, 0.55)",
