@@ -23,6 +23,8 @@ use \App\mensualidad\cuotas as mensualidad;
 use \App\mensualidad\pagos;
 use \App\mensualidad\detalles_pagos;
 use \App\mensualidad\saldo;
+use App\configuracion\documentosModel as documentos;
+use App\configuracion\documento_alumnoModel as documento_alumno;
 
 class inscripcionController extends Controller
 {
@@ -51,6 +53,7 @@ class inscripcionController extends Controller
     $datos['periodo']=periodoModel::where('estatus','activo')->first();
     $datos['gradoCursar']=gradoModel::where('idgrado',$alumno->grado_id)->first();
     $datos['materias']=materiaModel::where('grado_id',$alumno->grado_id)->get();
+    $datos['documentos']=documentos::all();
     $requerido=gradoModel::where('idgrado',$alumno->grado_id)->first();
     if($requerido->grado_id==0)
     {
@@ -82,6 +85,7 @@ class inscripcionController extends Controller
 
   public function create(Request $request)
   {
+
     $seguro='';
     $inscripcion='Inscripcion';
     $otro='';
@@ -220,19 +224,19 @@ class inscripcionController extends Controller
       }
       else
       {
-      foreach ($secciones->get() as $seccion) {
-        $num=seccion_alumno::where('seccion_id',$seccion->idseccion)->count();
-        if($num<=$seccion->capacidad)
-        {
-          $seccion_id=$seccion->idseccion;
-          break;
+        foreach ($secciones->get() as $seccion) {
+          $num=seccion_alumno::where('seccion_id',$seccion->idseccion)->count();
+          if($num<=$seccion->capacidad)
+          {
+            $seccion_id=$seccion->idseccion;
+            break;
+          }
         }
+        $seccion_alumno= new seccion_alumno;
+        $seccion_alumno->alumno_id=$alumno_id;
+        $seccion_alumno->seccion_id=$seccion_id;
+        $seccion_alumno->save();
       }
-      $seccion_alumno= new seccion_alumno;
-      $seccion_alumno->alumno_id=$alumno_id;
-      $seccion_alumno->seccion_id=$seccion_id;
-      $seccion_alumno->save();
-    }
 
        //Fin registro de seccion grado actual
 
@@ -240,7 +244,7 @@ class inscripcionController extends Controller
       $secciones=seccionModel::where('grado_id','=',$request['requerido_grado_id']);
       if($secciones->count()==0)
       {        
-        
+
       }
       else
       {
@@ -284,14 +288,28 @@ class inscripcionController extends Controller
 
        //fin registro de materias del grado pendiente
 
+ //registro de materias del grado pendiente
+    $documento =$request->input();
+    if (isset($documento['chkDocumentos'])) {
+     for($i = 0; $i < count($documento['chkDocumentos']); $i++) {
+      $documento_alumno=new documento_alumno;
+      $documento_alumno->alumno_id=$alumno_id;
+      $documento_alumno->documento_id=$documento['chkDocumentos'][$i];
+      $documento_alumno->save();
+    }
+  }
+
+       //fin registro de materias del grado pendiente
+
+
       //actualizar estudiante inscrito
     //echo dd($alumno_id);
-    $datos=alumnoModel::find($alumno_id);
-    $datos->estatus="inscrito";
-    $datos->save();
+  $datos=alumnoModel::find($alumno_id);
+  $datos->estatus="inscrito";
+  $datos->save();
 
-    echo "1";
-  }
+  echo "1";
+}
 }
 
 }

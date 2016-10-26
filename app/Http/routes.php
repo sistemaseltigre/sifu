@@ -37,12 +37,8 @@ Route::get('/', function () {
 
 });
 Route::group(['middleware' => ['auth']], function(){
-  Route::get('/app/', function () {
-    $user=Auth::user()->rolid;
-    
-    return view('plantilla.index');
-
-  });
+  Route::get('/app/','principal\principalController@index');
+  Route::get('/administrador/getMetodosPagos','principal\principalController@getMetodosPagos');
 });
 Route::get('/login/{dbName?}', function ($dbName=null) {
 
@@ -87,12 +83,24 @@ Route::post('colegio/registro/send_contact', 'colegio\colegioController@send_con
 //fin Rutas para nuevos colegios
 
 
-
 Route::group(['middleware' => ['auth','rol:admin']], function(){
 
-   //crud profesor
+   //configurar colegio
  Route::get('config_colegio', 'configuracion\colegioController@index');
 
+
+   //documentos a consignar
+ Route::get('documentos-consignar', 'configuracion\documentosController@index');
+  Route::post('documentos/create', 'configuracion\documentosController@create');
+ Route::get('documentos/edit/{id?}','configuracion\documentosController@edit');
+ Route::post('documentos/update','configuracion\documentosController@update');
+ Route::get('documentos/delete/{id?}','configuracion\documentosController@delete');
+
+   //configurar planillas
+ Route::get('/configurar/planilla', 'configuracion\planillasController@index');
+ Route::get('/configurar/planilla/nuevo-formato', 'configuracion\planillasController@nuevo');
+ Route::get('/configurar/planilla/editar-formato/{planilla_id}', 'configuracion\planillasController@editar');
+ Route::post('/configurar/planilla/create', 'configuracion\planillasController@create');
 
   //crud profesor
  Route::get('config_profesor', 'configuracion\profesorController@index');
@@ -226,7 +234,7 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
   Route::get('pdf/historico/tipo_pago/{tipo}', 'pdf\historicoController@tipo_pago');
 
    //pdf planillas
-  Route::get('pdf/planillas/certificado/{id}', 'pdf\planillasController@certificado');
+  Route::get('pdf/planillas/buscar/{planilla_id}/{alumno_id}', 'pdf\planillasController@cargar_planilla');
       //reportes
    //alumnos
   Route::get('reportes/alumnos/inscritos', 'reportes\alumnosController@inscritos');
@@ -239,11 +247,32 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
   Route::get('reportes/historico/tipo-pago','reportes\historicoController@tipo_pago');
   Route::get('reportes/historico/buscar/tipo-pago/{tipo}','reportes\historicoController@buscar_tipo_pago');
 
-  Route::get('reportes/planillas/certificado-de-estudios', 'reportes\planillasController@certificado');
+  Route::get('reportes/planillas', 'reportes\planillasController@index');
 
-  Route::get('reportes/planillas/buscar/certificado/{id}', 'reportes\planillasController@buscar_certificado');
+  Route::get('reportes/planillas/buscar/{planilla_id}/{alumno_id}', 'reportes\planillasController@cargar_planilla');
+
+
+
+
+
+
+
+  //eventos administrador
+  
 
 });
+Route::group(['middleware' => ['auth','rol:admin_profesor']], function(){
+  Route::get('eventos/mis-eventos', 'eventos\eventosController@index');
+  Route::get('eventos/todos-los-eventos', 'eventos\eventosController@todos_los_eventos');
+  Route::get('eventos/getEventos', 'eventos\eventosController@getEventos');
+  Route::get('eventos/getAll', 'eventos\eventosController@getAll');
+  Route::post('eventos/create', 'eventos\eventosController@create');
+  Route::post('eventos/update', 'eventos\eventosController@update');
+  Route::get('eventos/delete/{id}', 'eventos\eventosController@delete');
+});
+
+
+
 //Mensajes
 Route::get('mensajes', 'mensaje\mensajeController@index');
 Route::get('mensajes/redactar', 'mensaje\mensajeController@redactar');
@@ -301,6 +330,21 @@ Route::get('lista_preinscripcion', 'configuracion\preinscripcionController@index
   //crud inscripcion
 Route::group(['middleware' => ['rol:todos']], function(){
   Route::get('inscripcion/{codigo}/{id}', 'configuracion\inscripcionController@index');
+
+//consultar eventos
+  Route::get('eventos/mostrar-eventos', 'eventos\eventosController@mostrar');
+   Route::get('eventos/mostrar_eventos', 'eventos\eventosController@mostrar_eventos');
+
+   //horario
+
+  Route::get('alumno/horario', 'alumno\horarioController@index');
+  Route::get('/alumno/getHorario/{id}', 'alumno\horarioController@getHorario');
+
+   //notas
+
+  Route::get('/alumno/getNotas', 'alumno\notasController@index');
+  Route::get('/alumno/notas/materia/{materia_id}/', 'alumno\notasController@getNotas');
+
 });
 
 // menu representante 
@@ -326,7 +370,10 @@ Route::group(['middleware' => ['rol:representante']], function(){
    //notas
 
   Route::get('/notas/getNotas', 'notas\notasController@index');
+  Route::get('representante/getMaterias/{id}', 'notas\notasController@getMaterias');
+  Route::get('/representante/notas/materia/{materia_id}/alumno/{alumno_id}', 'notas\notasController@getNotas');
 });
+
 
 
 Route::post('inscripcion/create', 'configuracion\inscripcionController@create');

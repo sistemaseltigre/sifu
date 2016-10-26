@@ -115,6 +115,8 @@
  function agregar()
  {
   save_method = 'add';
+  $("#frmDetallesCuotas")[0].reset();
+  $('#cuota_id').val($('#id').val());
   $('#modal-detalles-cuotas').modal('show');
 }
 
@@ -181,7 +183,7 @@ function grabar()
         {      
           var fecha=data.fecha.split('-');
           fecha=fecha[2]+'/'+fecha[1]+'/'+fecha[0];   
-          $('[name="id"]').val(data.id);
+          $('[name="iddetalles"]').val(data.id);
           $('[name="cuota_id"]').val(data.cuota_id);
           $('[name="txtFecha"]').val(fecha);
           $('[name="txtMonto"]').val(data.monto);

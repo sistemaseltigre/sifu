@@ -96,7 +96,7 @@ public function update_detalles(Request $request)
 {
   $fecha_pago=explode("/", $request['txtFecha']);
   $fecha_pago=$fecha_pago[2].'-'.$fecha_pago[1].'-'.$fecha_pago[0];
-  $detalles = detalles::where('cuota_id','=',$request['cuota_id'])->first();
+  $detalles = detalles::find($request['iddetalles']);
   $detalles->fecha=$fecha_pago;
   $detalles->monto=$request['txtMonto'];
   $detalles->cuota_id=$request['cuota_id'];

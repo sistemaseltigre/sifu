@@ -40,7 +40,7 @@
     </div>
 
   </div>
-  <div class="row" id="contenido-lista">
+  <div class="row" id="contenido-notas">
   
   </div>
 </div>

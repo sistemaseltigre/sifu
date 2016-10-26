@@ -1,9 +1,9 @@
    <li>
-              <a href="#"><i class="fa fa-cog"></i> Configuración<span class="fa arrow"></span></a>
-              <ul class="nav child_menu">
-              <li>
-                  <a href="{{ asset('/profesor/materias') }}">Materias</a>
-                </li>  
+    <a href="#"><i class="fa fa-cog"></i> Configuración<span class="fa arrow"></span></a>
+    <ul class="nav child_menu">
+      <li>
+        <a href="{{ asset('/profesor/materias') }}">Materias</a>
+      </li>  
             {{--     <li>
                   <a href="{{ asset('/config_profesor') }}">Actualizar Datos</a>
                 </li>                
@@ -20,7 +20,7 @@
               <a href="{{ asset('/profesor/horario') }}"><i class="fa fa-calendar"></i> Mi Horario</a>
             </li>
             <li>
-            <a href="{{ asset('mensajes') }}"><i class="fa fa-envelope"></i> Mensajes <span class="fa fa-chevron-down"></span></a>     
+              <a href="{{ asset('mensajes') }}"><i class="fa fa-envelope"></i> Mensajes <span class="fa fa-chevron-down"></span></a>     
              {{--  <ul class="nav nav-second-level">
                 <li>
                   <a href="flot.html">Entrada</a>
@@ -32,7 +32,18 @@
               <!-- /.nav-second-level -->
             </li>
             <li>
-            <a href="#"><i class="fa fa-file"></i> Reportes<span class="fa arrow"></span></a>
+              <a href="#"><i class="fa fa-calendar-o"></i> Eventos <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu">
+                <li>
+                  <a href="{{ asset('/eventos/mis-eventos') }}">Mis Eventos</a>
+                </li>
+                <li>
+                  <a href="{{ asset('/eventos/todos-los-eventos') }}">Todos los Eventos</a>
+                </li>
+              </ul> 
+            </li>
+            <li>
+              <a href="#"><i class="fa fa-file"></i> Reportes<span class="fa arrow"></span></a>
               {{-- <ul class="nav nav-second-level">
                 <li>
                   <a href="flot.html">Notas</a>

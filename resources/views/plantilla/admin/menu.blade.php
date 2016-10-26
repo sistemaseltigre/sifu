@@ -30,13 +30,20 @@
         <li><a href="{{ asset('/config_monto_inscripcion') }}">Inscripción</a></li>
         <li><a href="{{ asset('/config_cuotas') }}">Cuotas</a></li>
       </ul>
-    </li>   
+    </li>  
+     <li>
+      <a href="{{ asset('/documentos-consignar') }}">Documentos a consignar</a>
+    </li>      
     <li>
       <a href="{{ asset('/preinscripcion') }}">Registrar Alumnos</a>
     </li>         
     <li>
       <a href="{{ asset('/lista_preinscripcion') }}">Formalizar Inscripcion</a>
-    </li>   
+    </li>  
+    <h3>Configurar Planillas</h3>
+    <li>
+      <a href="{{ asset('/configurar/planilla/') }}">Empezar</a>
+    </li>    
   </ul>
 </li>
 
@@ -72,7 +79,7 @@
   <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">           
   </span></a>
   <ul class="nav child_menu">
-  <h3>Alumnos</h3>
+    <h3>Alumnos</h3>
     <li><a href="{{ asset('reportes/alumnos/inscritos') }}">Inscritos</a></li>
     <li><a href="{{ asset('reportes/alumnos/seccion') }}">Por Sección</a></li>
     <li><a href="{{ asset('reportes/alumnos/morosos') }}">Morosos</a></li>
@@ -80,20 +87,27 @@
     <li><a href="{{ asset('/reportes/historico/metodo-pago') }}">Metodo de Pago</a></li>
     <li><a href="{{ asset('/reportes/historico/tipo-pago') }}">Tipo de Pago</a></li>
     <h3>Planillas</h3>
-    <li><a href="{{ asset('reportes/planillas/certificado-de-estudios') }}">Certificado de Estudios</a></li>
-    {{-- <li><a href="{{ asset('/pagos/pendientes') }}">Boleta de Retiro</a></li>
-    <li><a href="{{ asset('/pagos/pendientes') }}">Paz y Salvo</a></li>
-    <li><a href="{{ asset('/pagos/pendientes') }}">Certificado de Buena Conducta</a></li>
-    <li><a href="{{ asset('/pagos/pendientes') }}">Planilla de Inscripción</a></li> --}}
+    <li><a href="{{ asset('reportes/planillas') }}">Generar</a></li>
   </ul>
 
 </li> 
 <li>
-            <a href="#"><i class="fa fa-file"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
-                <ul class="nav child_menu">
-                <li>
-                  <a href="{{ asset('crear_aula') }}">Crear</a>
-                </li>
-              </ul> 
-              <!-- menu aula virtual -->
-            </li>
+  <a href="#"><i class="fa fa-calendar-o"></i> Eventos <span class="fa fa-chevron-down"></span></a>
+  <ul class="nav child_menu">
+    <li>
+      <a href="{{ asset('/eventos/mis-eventos') }}">Mis Eventos</a>
+    </li>
+    <li>
+      <a href="{{ asset('/eventos/todos-los-eventos') }}">Todos los Eventos</a>
+    </li>
+  </ul> 
+</li> 
+<li>
+  <a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
+  <ul class="nav child_menu">
+    <li>
+      <a href="{{ asset('crear_aula') }}">Crear</a>
+    </li>
+  </ul> 
+  <!-- menu aula virtual -->
+</li>

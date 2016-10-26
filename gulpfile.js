@@ -36,14 +36,15 @@ elixir(function(mix) {
       'jquery.smartWizard.js',
       'icheck.min.js',
       'custom.min.js',
-      'jquery.validate.min.js',
-      'moment.min.js',
+      'jquery.validate.min.js',       
+      'moment.min.js',        
       'jquery.datatables.min.js',
-      'datatables.bootstrap.min.js',
+      'datatables.bootstrap.min.js',   
       'fullcalendar.min.js',
       'bootstrap-datetimepicker.min.js',
       'jAlert-v3.js',
       'jAlert-functions.js',
+      'chart.min.js',
       'chosen.jquery.js',
     ],'public/js/all.js');
 

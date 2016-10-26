@@ -189,7 +189,7 @@ function leaveAStepCallback(obj, context){
        $.ajax({
         url:app_url+'/inscripcion/create',
         type:'POST',
-        data:$('#frmCondicion, #frmCuotas, #frmPago, #frmMaterias, #frmMateriasPendientes').serializeArray(),
+        data:$('#frmCondicion, #frmCuotas, #frmPago, #frmMaterias, #frmMateriasPendientes, #frmDocumentos').serializeArray(),
         success:function(data)
         {
           if(data==='1')

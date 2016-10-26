@@ -36,6 +36,14 @@ class rol
             }
         }
         else
+            if($rol=='admin_profesor')
+        {
+            if($this->auth->user()->rolid==1 || $this->auth->user()->rolid==2)
+            {
+                return $next($request);
+            }
+        }
+        else
             if($rol=='profesor')
             {
                 if($this->auth->user()->rolid==2)

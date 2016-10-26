@@ -34,7 +34,7 @@
         </li>  
         <li>
           <a href="#step-3">
-            <span class="step_no">2</span>
+            <span class="step_no">3</span>
             <span class="step_descr">
               Paso 3<br />
               <small>Registrar Pagos</small>
@@ -43,13 +43,22 @@
         </li>  
         <li>
           <a href="#step-4">
-            <span class="step_no">2</span>
+            <span class="step_no">4</span>
             <span class="step_descr">
               Paso 4<br />
               <small>Verificar Materias</small>
             </span>
           </a>
-        </li>         
+        </li>      
+        <li>
+          <a href="#step-5">
+            <span class="step_no">5</span>
+            <span class="step_descr">
+              Paso 5<br />
+              <small>Verificar Documentos</small>
+            </span>
+          </a>
+        </li>          
       </ul>
       <div id="step-1" style="min-height: 270px;">        
        <form class="form-horizontal form-label-left" id="frmCuota"> 
@@ -221,18 +230,18 @@
       <legend>Verifique las materias</legend> 
     </div>
     <div class="col-sm-6">
-    <form id="frmCondicion">
-      <label class="pull-right">
-      <label class="control-label col-sm-4">Condicion: </label>
-       <div class="col-sm-8">
-         <select class="form-control" name="cmbCondicion" id="cmbCondicion">
-           <option value="default">Seleccione</option>
-           <option value="regular">Regular</option>
-           <option value="repitiente">Repitiente</option>
-           <option value="Materia Pendiente">Materia Pendiente</option>
-         </select>
-       </div>
-     </label> 
+      <form id="frmCondicion">
+        <label class="pull-right">
+          <label class="control-label col-sm-4">Condicion: </label>
+          <div class="col-sm-8">
+           <select class="form-control" name="cmbCondicion" id="cmbCondicion">
+             <option value="default">Seleccione</option>
+             <option value="regular">Regular</option>
+             <option value="repitiente">Repitiente</option>
+             <option value="Materia Pendiente">Materia Pendiente</option>
+           </select>
+         </div>
+       </label> 
      </form>
    </div>
    <div class="clearfix"></div>
@@ -281,7 +290,35 @@
       </form>
     </div>
   </div>
-</div>      
+</div>  
+<div id="step-5" style="min-height: 370px;">
+  <legend>Marque los Documentos Consignados</legend>   
+    <div class="panel panel-default">
+      <div class="panel-heading">
+      </div>
+      <div class="panel-body">   
+      <form class="form-horizontal form-label-left" id="frmDocumentos">        
+        <fieldset>
+         <table class="table table-condesed">
+         <tr>
+           <th>Documentos</th>
+           <th>Opcion</th>
+         </tr>
+         @if(isset($documentos))
+         @foreach ($documentos as $documento)
+           <tr>
+           <td>{{ $documento->nombre }}</td>
+           <td><input type="checkbox" name="chkDocumentos[]" value="{{ $documento->id }}"></td>
+           </tr>
+         @endforeach
+         @endif
+         </table> 
+        </fieldset>
+        </form>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+</div>    
 </div>
 </div>
 </div>

@@ -11,6 +11,7 @@ use \App\datos\alumnoModel;
 use \App\datos\delegadoModel;
 use \App\datos\representanteModel;
 use DB;
+use \App\configuracion\documentosModel as documentos;
 
 class preinscripcionController extends Controller
 {
@@ -24,6 +25,7 @@ class preinscripcionController extends Controller
    $data['grados']=gradoModel::allGrados();
 
    $data['pendientes']=representanteModel::where('estatus','=','pendiente')->get();
+   $data['documentos']=documentos::all();
    return view('preinscripcion.index',$data);
  }
 

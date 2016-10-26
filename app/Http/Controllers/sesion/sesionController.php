@@ -68,6 +68,13 @@ class sesionController extends Controller
           session(['id' => $profesor->idprofesor]);
         }
         else
+        if($rol==3)
+        {
+          $alumno=alumno::find($id);
+          session(['name' => $alumno->nombre]);
+          session(['id' => $alumno->idalumno]);
+        }
+        else
         if($rol==4)
         {
           $representante=representante::find($id);

@@ -127,14 +127,10 @@
           La presente es para notificarle los documentos que deben consignar ante los directivos para formalizar la inscripción.
         </p>
         <p>
-          <ul>
-            <li>Fotocopia de la cédula de identidad</li>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-            <li>...</li>
-
+          <ul>            
+            @foreach ($documentos as $documento)
+              <li>{{ $documento->nombre }}</li>
+            @endforeach
           </ul>
         </p>
       </div>

@@ -81,7 +81,7 @@
           <legend>Ingrese información para las cuotas</legend>
           {{ csrf_field() }}
           <input type="hidden" name="cuota_id" id="cuota_id">
-          <input type="hidden" name="id">
+          <input type="hidden" name="iddetalles">
           <fieldset>          
             <div class="form-group">
               <label class="col-lg-3 control-label">Fécha</label>

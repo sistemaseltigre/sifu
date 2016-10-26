@@ -16,10 +16,13 @@
     <a href="{{ asset('mensajes') }}"><i class="fa fa-envelope"></i> Mensajes</a>  
   </li>
   <li>
+  <a href="{{ asset('eventos/mostrar-eventos') }}"><i class="fa fa-calendar-o"></i> Eventos</a>
+  </li>
+  <li>
    <a href="#"><i class="fa fa-file"></i> Reportes <span class="fa fa-chevron-down">           
-  </span></a>
-  <ul class="nav child_menu">
-  <h3>Alumnos</h3>
+   </span></a>
+   <ul class="nav child_menu">
+    <h3>Alumnos</h3>
     <li><a href="{{ asset('representante/horario') }}">Horario</a></li>
     <li><a href="{{ asset('notas/getNotas') }}">Notas</a></li>
     <h3>Pagos</h3>
@@ -30,5 +33,5 @@
     <li><a href="{{ asset('/pagos/pendientes') }}">Planilla de Inscripción</a></li> --}}
   </ul>
 
-  </li>
+</li>
 

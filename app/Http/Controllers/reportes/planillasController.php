@@ -10,19 +10,23 @@ use App\inscripcion\alumnos_inscritos as alumnos;
 use App\inscripcion\seccion_alumno as seccion;
 use App\datos\alumnoModel as alumno;
 use \App\configuracion\periodoModel;
+use \App\configuracion\planillasModel as planillas;
 class planillasController extends Controller
 {
-	public function certificado()
+	public function index()
 	{		
 		$data['alumnos']=alumnos::all();
-		return view('reportes.planillas.certificado.index',$data);
+		$data['planillas']=planillas::all();
+		return view('reportes.planillas.index',$data);
 	}
-	public function buscar_certificado($id)
+	public function cargar_planilla($planilla_id, $alumno_id)
 	{
 
 		$data['periodo']=periodoModel::where('estatus','activo')->first();
-		$data['alumno']=alumno::find($id);
-		$data['seccion']=seccion::where('seccion_id','=',$id)->first();
-		echo view('reportes.planillas.certificado.contenido',$data);
+		$data['alumno']=alumno::find($alumno_id);
+		$data['seccion']=seccion::where('alumno_id','=',$alumno_id)->first();
+		$data['planillas']=planillas::find($planilla_id);
+		echo view('reportes.planillas.contenido',$data);
 	}
+	
 }
