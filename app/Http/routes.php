@@ -39,6 +39,9 @@ Route::get('/', function () {
 Route::group(['middleware' => ['auth']], function(){
   Route::get('/app/','principal\principalController@index');
   Route::get('/administrador/getMetodosPagos','principal\principalController@getMetodosPagos');
+    Route::get('/administrador/getFormasPagos','principal\principalController@getFormasPagos');
+    Route::get('/cambiar-clave','principal\principalController@cambiar_clave');
+    Route::post('/cambiar-clave/update','principal\principalController@update');
 });
 Route::get('/login/{dbName?}', function ($dbName=null) {
 
@@ -50,7 +53,7 @@ Route::get('/login/{dbName?}', function ($dbName=null) {
     $colegio=$colegio->first();
     if($colegio->imagen!='')
     {
-      $data['imagen']=asset('logos/'.$colegio->imagen);;
+      $data['imagen']=asset('logos/'.$colegio->imagen);
     }
     else
     {
@@ -87,6 +90,7 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
 
    //configurar colegio
  Route::get('config_colegio', 'configuracion\colegioController@index');
+ Route::post('config_colegio/update', 'configuracion\colegioController@update');
 
 
    //documentos a consignar

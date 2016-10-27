@@ -78,6 +78,7 @@
         @if (Session::has('error'))
         <div class="alert alert-danger">{{ Session::get('error') }}</div>
         @endif
+         
         <div class="form-group">
           <button class="btn btn-primary btn-lg btn-block">Iniciar Sesion</button>
         </div>

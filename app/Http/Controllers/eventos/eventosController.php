@@ -105,31 +105,64 @@ class eventosController extends Controller
 				$eventos=evento::all();
 				$event_array = array();
 				
-						$datos =DB::connection(Session::get('dbName'))->table('eventos')
-						->join('administrador', 'administrador.idadministrador', '=', 'eventos.create_id')			
-						->groupBy('eventos.id')->get();
-						foreach ($datos as $row) {
-							$allday = ($row->allDay == "true") ? true : false;
-							$event_array[] = array(
-								'id' => $row->id,
-								'title' => $row->titulo,
-								'start' =>$row->inicio,
-								'end' =>$row->fin,
-								'allDay'=>$allday,
-								'creado'=>$row->nombre,
-								'color'=>'red'
+				$datos =DB::connection(Session::get('dbName'))->table('eventos')
+				->join('administrador', 'administrador.idadministrador', '=', 'eventos.create_id')			
+				->groupBy('eventos.id')->get();
+				foreach ($datos as $row) {
+					$allday = ($row->allDay == "true") ? true : false;
+					$event_array[] = array(
+						'id' => $row->id,
+						'title' => $row->titulo,
+						'start' =>$row->inicio,
+						'end' =>$row->fin,
+						'allDay'=>$allday,
+						'creado'=>$row->nombre,
+						'color'=>'red'
 
-								);
-						}
-					
+						);
+				}
+				if(Auth::user()->rolid==1 || Auth::user()->rolid==2)
+				{
+					$datos =DB::connection(Session::get('dbName'))->table('eventos')
+					->join('profesor', 'profesor.idprofesor', '=', 'eventos.create_id')	
+					->groupBy('eventos.id')->get();
+					foreach ($datos as $row) {
+						$allday = ($row->allDay == "true") ? true : false;
+						$event_array[] = array(
+							'id' => $row->id,
+							'title' => $row->titulo,
+							'start' =>$row->inicio,
+							'end' =>$row->fin,
+							'allDay'=>$allday,
+							'creado'=>$row->nombre_profesor
+
+							);
+					}
+				}
+				else
+					if(Auth::user()->rolid==4)
+					{
+						$datos =DB::connection(Session::get('dbName'))->table('eventos')
+						->leftjoin('profesor', 'profesor.idprofesor', '=', 'eventos.create_id')
+						->leftjoin('materias_profesor', 'materias_profesor.profesor_id', '=', 'profesor.idprofesor')
+						->leftjoin('materias_alumno', 'materias_alumno.materia_id', '=', 'materias_profesor.materia_id')
+						->leftjoin('alumno', 'alumno.idalumno', '=', 'materias_alumno.alumno_id')
+						->leftjoin('representante', 'representante.idrepresentante', '=', 'alumno.representante_id')
+						->where('representante.idrepresentante', '=',Auth::user()->id)
+						->groupBy('eventos.id')->get();
+					}
+					else
+						if(Auth::user()->rolid==3)
+						{
 							$datos =DB::connection(Session::get('dbName'))->table('eventos')
 							->leftjoin('profesor', 'profesor.idprofesor', '=', 'eventos.create_id')
 							->leftjoin('materias_profesor', 'materias_profesor.profesor_id', '=', 'profesor.idprofesor')
 							->leftjoin('materias_alumno', 'materias_alumno.materia_id', '=', 'materias_profesor.materia_id')
 							->leftjoin('alumno', 'alumno.idalumno', '=', 'materias_alumno.alumno_id')
-							->leftjoin('representante', 'representante.idrepresentante', '=', 'alumno.representante_id')
-							->where('representante.idrepresentante', '=',Auth::user()->id)
+							->where('alumno.idalumno', '=',Auth::user()->id)
 							->groupBy('eventos.id')->get();
+
+
 							foreach ($datos as $row) {
 								$allday = ($row->allDay == "true") ? true : false;
 								$event_array[] = array(
@@ -142,38 +175,38 @@ class eventosController extends Controller
 
 									);
 							}
-							
-					
-					echo json_encode($event_array);
-				}
+						}
 
-				public function update(Request $request)
-				{
-					$calendario=evento::find($request['eventid']);
-					if($calendario->rol_id==Auth::user()->rolid && $calendario->create_id==Auth::user()->id)
+						echo json_encode($event_array);
+					}
+
+					public function update(Request $request)
+					{
+						$calendario=evento::find($request['eventid']);
+						if($calendario->rol_id==Auth::user()->rolid && $calendario->create_id==Auth::user()->id)
+						{
+
+							$calendario->inicio=$request['inicio'];
+							$calendario->fin=$request['fin'];
+							$calendario->allDay=$request['allday'];
+							$calendario->save();
+							echo json_encode(array('status'=>'success'));
+						}
+						else
+							echo json_encode(array('status'=>'error'));
+					}
+					public function delete($id)
 					{
 
-						$calendario->inicio=$request['inicio'];
-						$calendario->fin=$request['fin'];
-						$calendario->allDay=$request['allday'];
-						$calendario->save();
-						echo json_encode(array('status'=>'success'));
-					}
-					else
-						echo json_encode(array('status'=>'error'));
-				}
-				public function delete($id)
-				{
-
-					$calendario=evento::find($id);
-					if($calendario->rol_id==Auth::user()->rolid && $calendario->create_id==Auth::user()->id)
-					{
-						$calendario->delete();
-						echo json_encode(array('status'=>'success'));
-					}
-					else
-					{
-						echo json_encode(array('status'=>'error'));	
+						$calendario=evento::find($id);
+						if($calendario->rol_id==Auth::user()->rolid && $calendario->create_id==Auth::user()->id)
+						{
+							$calendario->delete();
+							echo json_encode(array('status'=>'success'));
+						}
+						else
+						{
+							echo json_encode(array('status'=>'error'));	
+						}
 					}
 				}
-			}

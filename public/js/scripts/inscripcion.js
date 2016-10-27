@@ -180,12 +180,18 @@ $('#wizard').smartWizard({
  onLeaveStep:leaveAStepCallback,
  onFinish:finallyStep,
 });
+var bandera=false;
 function leaveAStepCallback(obj, context){
         return validateSteps(context.fromStep, context.toStep); // return false to stay on step and true to continue navigation 
       }
 
       function finallyStep(){
-
+        if(bandera==true)
+        {
+          errorAlert('Error', 'Espere un momento, se esta enviando los datos');
+          return;
+        }
+        bandera=true;
        $.ajax({
         url:app_url+'/inscripcion/create',
         type:'POST',

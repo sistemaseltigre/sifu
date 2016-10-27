@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use \App\datos\alumnoModel;
 use \App\configuracion\cuotasModel;
 use \App\configuracion\bancoModel;
 use \App\configuracion\seccionModel;
@@ -25,14 +24,20 @@ use \App\mensualidad\detalles_pagos;
 use \App\mensualidad\saldo;
 use App\configuracion\documentosModel as documentos;
 use App\configuracion\documento_alumnoModel as documento_alumno;
-
+use App\datos\alumnoModel as alumno;
+use App\datos\representanteModel as representante;
+use Hash;
+use Mail;
+use Session;
+use Auth;
+use \App\usuario\usuarioModel;
 class inscripcionController extends Controller
 {
 
   public function index($codigo,$id)
   {
 
-    $alumno=alumnoModel::find($id);
+    $alumno=alumno::find($id);
 
     $numPeriodo=periodoModel::where('estatus','activo')->count();
     $numBancos=bancoModel::all()->count();
@@ -49,7 +54,7 @@ class inscripcionController extends Controller
     }
 
     $datos['bancos']=bancoModel::all();
-    $datos['alumno']=alumnoModel::find($id);
+    $datos['alumno']=alumno::find($id);
     $datos['periodo']=periodoModel::where('estatus','activo')->first();
     $datos['gradoCursar']=gradoModel::where('idgrado',$alumno->grado_id)->first();
     $datos['materias']=materiaModel::where('grado_id',$alumno->grado_id)->get();
@@ -93,6 +98,7 @@ class inscripcionController extends Controller
     if($request->ajax())
     {
       //inscripcion
+
       $alumno_id=$request['alumno_id'];
       $inscripcion= new inscripcion;
       $inscripcion->alumno_id=$request['alumno_id'];
@@ -102,6 +108,9 @@ class inscripcionController extends Controller
       $inscripcion->condicion=$request['cmbCondicion'];
       $inscripcion->seguro=$request['txtSeguro'];
       $inscripcion->save();
+
+
+
 
       $inscripcion_id=$inscripcion->id;
       //FIN INSCRIPCION     
@@ -304,11 +313,54 @@ class inscripcionController extends Controller
 
       //actualizar estudiante inscrito
     //echo dd($alumno_id);
-  $datos=alumnoModel::find($alumno_id);
-  $datos->estatus="inscrito";
-  $datos->save();
+  $alumno=alumno::find($alumno_id);
+  $alumno->estatus="inscrito";
+  $alumno->save();
 
-  echo "1";
+  $num_row= usuarioModel::where('id','=',$alumno_id)->count();
+  if($num_row==0)
+  {
+   $logitud = 8;
+   $psswd = substr( md5(microtime()), 1, $logitud);
+
+   $usuario=new usuarioModel;
+   $usuario->usuario=$alumno->cedula;
+   $usuario->password=Hash::make($psswd);
+   $usuario->rolid=3;
+   $usuario->id=$alumno_id;
+   $usuario->save();   
+      //correo al alumno
+   Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$alumno->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Alumno(a)','nombre'=>$alumno->nombre), function ($m)  use ($alumno){
+    $m->from('donotreply@sifusp.com', 'SIFU');
+
+    $m->to($alumno->email, $alumno->nombre)->subject('Bienvenido a SIFU');
+  });
+ }
+
+ $representante_id=$alumno->representante_id;
+  //correo representante
+$representante=representante::find($representante_id);
+
+  $num_row= usuarioModel::where('id','=',$representante_id)->count();
+  if($num_row==0)
+  {
+   $logitud = 8;
+   $psswd = substr( md5(microtime()), 1, $logitud);
+
+   $usuario=new usuarioModel;
+   $usuario->usuario=$representante->cedula;
+   $usuario->password=Hash::make($psswd);
+   $usuario->rolid=4;
+   $usuario->id=$representante_id;
+   $usuario->save();   
+      //correo al alumno
+   Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$representante->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Representante','nombre'=>$representante->nombre), function ($m)  use ($representante){
+    $m->from('donotreply@sifusp.com', 'SIFU');
+
+    $m->to($representante->email, $representante->nombre)->subject('Bienvenido a SIFU');
+  });
+ }
+ echo "1";
 }
 }
 
