@@ -2,6 +2,7 @@
     <html lang="en">
     <head>
         <meta charset="utf-8">
+        <meta name="google-site-verification" content="4mid-7uthfI_VKMzW2hawSsxN3umZwnLKvnB8kNzFio" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>SIFU</title>
 
