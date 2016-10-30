@@ -82,7 +82,7 @@
                       <tr>
                         <th>Descrición</th>
                         <th>Monto a Pagar</th>
-                        <th>Opción</th>
+                        <th>Marque la Casilla</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -117,7 +117,7 @@
                   <tr>
                     <th>Descripcion</th>
                     <th>Seleccionar</th>
-                    <th>Opciones</th>
+                    <th>Marque la casilla</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -253,7 +253,7 @@
         <table class="table table-hover">
           <tr>
             <th>Materia</th>
-            <th>Opcion</th>
+            <th>Marque la opcion</th>
           </tr>
           @foreach($materias as $materia)
           <tr>

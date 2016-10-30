@@ -2,6 +2,7 @@
   <table id="datatables" class="table table-striped jambo_table table-condensed">
    <thead>
     <tr>
+     <th class="col-sm-1">ID Grado</th>
      <th class="col-sm-4">Grado Escolar</th>
      <th class="col-sm-4">Grado Requerido</th>
      <th class="col-sm-1">Editar</th>
@@ -11,6 +12,7 @@
  <tbody id="contenido">  
    @foreach ($grados as $grado)
    <tr>
+     <td>{{ $grado['idgrado'] }}</td>
      <td>{{ $grado['grado'] }}</td>
      <td>{{ $grado['requerido'] }}</td>
      <td><button class="btn btn-success btn-sm" onclick="modificar('{{ $grado['idgrado']}}')"> <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Editar</button></td> 
@@ -20,7 +22,7 @@
  </tbody>
 </table>
 </div>
-   <script type="text/javascript">
+<script type="text/javascript">
  $(document).ready(function(){
   $('#datatables').DataTable();
 });

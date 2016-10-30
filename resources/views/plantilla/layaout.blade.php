@@ -76,7 +76,7 @@
       </div>
       
       <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-          <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png" onClick="this.form.urlOrigen.value = window.location.href;" class="img-circle" />
+          <input type="image" border="0" alt="" src="{{ asset('img/payu.png') }}" onClick="this.form.urlOrigen.value = window.location.href;" class="img-circle" />
           <input name="buttonId" type="hidden" value="9T4Z25JjWD99rmJWciiFyZazpTqVDe122Gh2WDms0kIusZRxsMPqlA=="/>
           <input name="merchantId" type="hidden" value="585471"/>
           <input name="accountId" type="hidden" value="588457"/>

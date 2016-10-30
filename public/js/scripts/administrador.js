@@ -161,6 +161,14 @@ $('#txtCedula').mask('00000000');*/
               errorAlert('Super Admin',"El administrador no puede ser eliminado ya que tiene la condicion de super admin del sistema.");
            return;
             }
+            else
+            {
+              if(data==2)
+            {
+              errorAlert('Privilegios',"usted no tiene privilegios para eliminar un administrador.");
+           return;
+            }
+            }
            $.jAlert({
             'title': 'Informacion',
             'content': msj,

@@ -34,6 +34,10 @@ class colegioController extends Controller
 			Session::forget('imagen');
 			Session::put('imagen',$nombre_archivo);
 		}
+		else
+		{
+			$nombre_archivo='';
+		}
 
 		$colegio=colegio::find($request['id']);
 		$colegio->colegio=$request['txtColegio'];

@@ -249,27 +249,7 @@ class inscripcionController extends Controller
 
        //Fin registro de seccion grado actual
 
-      //registro de seccion grado pendiente
-      $secciones=seccionModel::where('grado_id','=',$request['requerido_grado_id']);
-      if($secciones->count()==0)
-      {        
-
-      }
-      else
-      {
-        foreach ($secciones->get() as $seccion) {
-          $num=seccion_alumno::where('seccion_id',$seccion->idseccion)->count();
-          if($num<=$seccion->capacidad)
-          {
-            $seccion_id=$seccion->idseccion;
-            break;
-          }
-        }
-        $seccion_alumno= new seccion_alumno;
-        $seccion_alumno->alumno_id=$alumno_id;
-        $seccion_alumno->seccion_id=$seccion_id;
-        $seccion_alumno->save();
-      }
+      
 
        //Fin registro de seccion grado pendiente
 
@@ -287,81 +267,106 @@ class inscripcionController extends Controller
        //registro de materias del grado pendiente
       $materia =$request->input();
       if (isset($materia['materiasRequeridas'])) {
-       for($i = 0; $i < count($materia['materiasRequeridas']); $i++) {
-        $materia_alumno=new materia_alumno;
-        $materia_alumno->alumno_id=$alumno_id;
-        $materia_alumno->materia_id=$materia['materiasActivas'][$i];
-        $materia_alumno->save();
+//registro de seccion grado pendiente
+        $secciones=seccionModel::where('grado_id','=',$request['requerido_grado_id']);
+        if($secciones->count()==0)
+        {        
+
+        }
+        else
+        {
+          foreach ($secciones->get() as $seccion) {
+            $num=seccion_alumno::where('seccion_id',$seccion->idseccion)->count();
+            if($num<=$seccion->capacidad)
+            {
+              $seccion_id=$seccion->idseccion;
+              break;
+            }
+          }
+          $seccion_alumno= new seccion_alumno;
+          $seccion_alumno->alumno_id=$alumno_id;
+          $seccion_alumno->seccion_id=$seccion_id;
+          $seccion_alumno->save();
+        }
+
+        
+        for($i = 0; $i < count($materia['materiasRequeridas']); $i++) {
+          $materia_alumno=new materia_alumno;
+          $materia_alumno->alumno_id=$alumno_id;
+          $materia_alumno->materia_id=$materia['materiasActivas'][$i];
+          $materia_alumno->save();
+        }
       }
-    }
 
        //fin registro de materias del grado pendiente
 
  //registro de materias del grado pendiente
-    $documento =$request->input();
-    if (isset($documento['chkDocumentos'])) {
-     for($i = 0; $i < count($documento['chkDocumentos']); $i++) {
-      $documento_alumno=new documento_alumno;
-      $documento_alumno->alumno_id=$alumno_id;
-      $documento_alumno->documento_id=$documento['chkDocumentos'][$i];
-      $documento_alumno->save();
+      $documento =$request->input();
+      if (isset($documento['chkDocumentos'])) {
+       for($i = 0; $i < count($documento['chkDocumentos']); $i++) {
+        $documento_alumno=new documento_alumno;
+        $documento_alumno->alumno_id=$alumno_id;
+        $documento_alumno->documento_id=$documento['chkDocumentos'][$i];
+        $documento_alumno->save();
+      }
     }
-  }
 
        //fin registro de materias del grado pendiente
 
 
       //actualizar estudiante inscrito
     //echo dd($alumno_id);
-  $alumno=alumno::find($alumno_id);
-  $alumno->estatus="inscrito";
-  $alumno->save();
+    $alumno=alumno::find($alumno_id);
+    $alumno->estatus="inscrito";
+    $alumno->save();
 
-  $num_row= usuarioModel::where('id','=',$alumno_id)->count();
-  if($num_row==0)
-  {
-   $logitud = 8;
-   $psswd = substr( md5(microtime()), 1, $logitud);
+    $num_row= usuarioModel::where('id','=',$alumno_id)->where('rolid','=',3)->count();
+    if($num_row==0)
+    {
+     $logitud = 8;
+     $psswd = substr( md5(microtime()), 1, $logitud);
 
-   $usuario=new usuarioModel;
-   $usuario->usuario=$alumno->cedula;
-   $usuario->password=Hash::make($psswd);
-   $usuario->rolid=3;
-   $usuario->id=$alumno_id;
-   $usuario->save();   
+     $usuario=new usuarioModel;
+     $usuario->usuario=$alumno->cedula;
+     $usuario->password=Hash::make($psswd);
+     $usuario->rolid=3;
+     $usuario->id=$alumno_id;
+     $usuario->save();   
       //correo al alumno
-   Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$alumno->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Alumno(a)','nombre'=>$alumno->nombre), function ($m)  use ($alumno){
-    $m->from('donotreply@sifusp.com', 'SIFU');
+     Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$alumno->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Alumno(a)','nombre'=>$alumno->nombre), function ($m)  use ($alumno){
+      $m->from('donotreply@sifusp.com', 'SIFU');
 
-    $m->to($alumno->email, $alumno->nombre)->subject('Bienvenido a SIFU');
-  });
- }
+      $m->to($alumno->email, $alumno->nombre)->subject('Bienvenido a SIFU');
+    });
+   }
 
- $representante_id=$alumno->representante_id;
+   $representante_id=$alumno->representante_id;
   //correo representante
-$representante=representante::find($representante_id);
+   $representante=representante::find($representante_id);
 
-  $num_row= usuarioModel::where('id','=',$representante_id)->count();
-  if($num_row==0)
-  {
-   $logitud = 8;
-   $psswd = substr( md5(microtime()), 1, $logitud);
+   $num_row= usuarioModel::where('id','=',$representante_id)->where('rolid','=',4)->count();
+   if($num_row==0)
+   {
+     $logitud = 8;
+     $psswd = substr( md5(microtime()), 1, $logitud);
 
-   $usuario=new usuarioModel;
-   $usuario->usuario=$representante->cedula;
-   $usuario->password=Hash::make($psswd);
-   $usuario->rolid=4;
-   $usuario->id=$representante_id;
-   $usuario->save();   
+     $usuario=new usuarioModel;
+     $usuario->usuario=$representante->cedula;
+     $usuario->password=Hash::make($psswd);
+     $usuario->rolid=4;
+     $usuario->id=$representante_id;
+     $usuario->save();   
       //correo al alumno
-   Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$representante->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Representante','nombre'=>$representante->nombre), function ($m)  use ($representante){
-    $m->from('donotreply@sifusp.com', 'SIFU');
+     Mail::send('configuracion.inscripcion.correo.clave', array('enlace'=>Session::get('dbName'),'usuario'=>$representante->cedula,'clave'=>$psswd,'colegio'=>Session::get('colegio'),'rol'=>'Representante','nombre'=>$representante->nombre), function ($m)  use ($representante){
+      $m->from('donotreply@sifusp.com', 'SIFU');
 
-    $m->to($representante->email, $representante->nombre)->subject('Bienvenido a SIFU');
-  });
+      $m->to($representante->email, $representante->nombre)->subject('Bienvenido a SIFU');
+    });
+   }
+
+
+   echo "1";
  }
- echo "1";
-}
 }
 
 }

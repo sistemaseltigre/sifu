@@ -21,14 +21,7 @@
 						<option value="3-{{ $representante->idrepresentante }}">{{ $representante->nombre }}</option>
 						@endforeach
 					</optgroup>
-					@endif
-					@if(isset($delegados))
-					<optgroup label="Delegado">
-						@foreach ($delegados as $delegado)
-						<option value="4-{{ $delegado->iddelegado }}">{{ $delegado->nombre }}</option>
-						@endforeach
-					</optgroup>
-					@endif
+					@endif					
 					@if(isset($alumnos))
 					<optgroup label="Alumno">
 						@foreach ($alumnos as $alumno)

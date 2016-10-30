@@ -33,6 +33,31 @@
       return arg != value;
     }, "Seleccione una Opcion de la lista");
 
+    $("#frmCondicion").validate({
+      errorElement: "em",
+      errorPlacement: function(error, element) {
+        $(element.parent("div").addClass("form-animate-error"));
+        error.appendTo(element.parent("div"));
+      },
+      success: function(label) {
+        $(label.parent("div").removeClass("form-animate-error"));
+      },
+      rules: {
+        cmbCondicion: {
+          valueNotEquals: "default" 
+        } 
+      },
+      messages: {
+        txtReferencia: "El campo referencia es requerido",
+        txtMonto: "El campo monto es requerido"
+      }
+
+    });
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+      return arg != value;
+    }, "Seleccione una Opcion de la lista");
+
+
     $("#cmbMetodo").change(event => {
       var idCuota=$('#cmbMetodo').val();      
       if(idCuota=="default")
@@ -186,12 +211,8 @@ function leaveAStepCallback(obj, context){
       }
 
       function finallyStep(){
-        if(bandera==true)
-        {
-          errorAlert('Error', 'Espere un momento, se esta enviando los datos');
-          return;
-        }
-        bandera=true;
+       $('.buttonFinish ').attr('disabled', true);       
+       bandera=true;
        $.ajax({
         url:app_url+'/inscripcion/create',
         type:'POST',
@@ -209,7 +230,8 @@ function leaveAStepCallback(obj, context){
               {             
                location.href = app_url+"/lista_preinscripcion"; 
              }
-           });           
+           });  
+            $('.buttonFinish ').attr('disabled', false);          
           }
         }
       });
@@ -261,8 +283,15 @@ function leaveAStepCallback(obj, context){
               return false;
               isStepValid=false;
             }
-          }
-          return isStepValid;
+          } 
+          else
+            if(fromStep == 4){
+            if (!$("#frmCondicion").valid()) { // Not Valid
+            return false;
+            isStepValid=false;
+           } 
+        }
+        return isStepValid;
         // ...      
       }
 
@@ -280,14 +309,14 @@ $('#txtMontoCancelar').val($('#monto_inscripcion').val());//valor de la inscripc
 $('#seguro').on('ifChecked', function(event){
  var total= eval($('#txtMontoCancelar').val())+ eval($('#monto_seguro').val());
  $('#txtMontoCancelar').val(total);
-  $('#txtSeguro').val('si');
+ $('#txtSeguro').val('si');
 
 });
 
 $('#seguro').on('ifUnchecked', function(event){
   var total= eval($('#txtMontoCancelar').val())- eval($('#monto_seguro').val());
   $('#txtMontoCancelar').val(total);
-   $('#txtSeguro').val('no');
+  $('#txtSeguro').val('no');
 });
 
 //fin total a cancelar

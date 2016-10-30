@@ -7,7 +7,17 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body">
+
 		<?php $resultado = $planillas->contenido;
+		if(Session::get('imagen'))
+		{
+		$logo=asset('/logos/'.Session::get('imagen'));
+		}
+		else
+		{
+			$logo=asset('/img/logo.png');
+		}
+		$resultado = str_replace("var_logo", "<img src=\"$logo\" style=\"width:100px; height:100px\"> ", $resultado);
 		$resultado = str_replace("var_cedula", $alumno->cedula, $resultado);
 		$resultado = str_replace("var_nombres", $alumno->nombre, $resultado);
 		$resultado = str_replace("var_apellidos", $alumno->apellido, $resultado);

@@ -92,8 +92,17 @@ class administradorController extends Controller
 		}
 		else
 		{
-			$datos->delete();
+			$validar=administrador::where('tipo','=','superAdmin')->where('idadministrador','=',Auth::user()->id)->count();
+			if($validar>0)
+			{
+				$datos->delete();
 			$this->show();
+			}
+			else
+			{
+				echo "2";
+			}
+			
 		}
 	}
 }

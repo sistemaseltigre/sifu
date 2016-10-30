@@ -53,15 +53,21 @@ return view('pagos.index',$data);
 
 public function buscar($id)
 {
-  $data['cuotas']=cuotas::whereHas('detalles', function($q)
+  $cuotas=cuotas::whereHas('detalles', function($q)
   {
     $q->where('fecha','<=',date('Y-m-31'));
 
-  })->where('alumno_id','=',$id)->where('estatus','=','pendiente')->get();
+  })->where('alumno_id','=',$id)->where('estatus','=','pendiente');
 
+  if($cuotas->count()>0)
+  {
+    $data['cuotas']=$cuotas->get();
+  }
   $data['alumno_id']=$id;
   $alumnos=alumno::find($id);
+
   $data['saldo']=saldo::where('representante_id','=',$alumnos->representante_id)->first();
+  //echo dd($data);
   echo view('pagos.detalles_pagos',$data);
 }
 
@@ -319,11 +325,11 @@ public function pendientes()
 }
 public function historico()
 {
-   if (Auth::user()->rolid==1) {
- $pagos=pagos::where('estatus','=','procesado')->groupBy('alumno_id')->get();
-}
-else
-{
+ if (Auth::user()->rolid==1) {
+   $pagos=pagos::where('estatus','=','procesado')->groupBy('alumno_id')->get();
+ }
+ else
+ {
   $pagos=pagos::whereHas('alumno', function($q)
   {
     $q->where('representante_id', '=', Auth::user()->id);
@@ -332,7 +338,7 @@ else
 
 }
 
- return view('pagos.historico.index',compact('pagos'));
+return view('pagos.historico.index',compact('pagos'));
 }
 public function buscar_historico($id)
 {

@@ -90,7 +90,8 @@
 						<li><a href="#" onclick="agregar('var_apellidos');">Apellidos</a></li>
 						<li><a href="#" onclick="agregar('var_grado');">Grado</a></li>
 						<li><a href="#" onclick="agregar('var_seccion');">Sección</a></li>		
-						<li><a href="#" onclick="agregar('var_periodo');">Periodo Acádemico</a></li>					
+						<li><a href="#" onclick="agregar('var_periodo');">Periodo Acádemico</a></li>	
+						<li><a href="#" onclick="agregar('var_logo');">Logo del Colegio</a></li>					
 					</ul>
 				</div>  
 				<div class="col-sm-9 col-xs-12">	

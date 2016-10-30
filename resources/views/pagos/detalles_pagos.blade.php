@@ -1,8 +1,8 @@
 <!--carga las cuotas que debe el alumno -->
 
 <form class="form-horizontal" id="formulario"> 
-{{ csrf_field() }}
-<input type="hidden" name="alumno_id" id="alumno_id" value="{{ $alumno_id }}">
+  {{ csrf_field() }}
+  <input type="hidden" name="alumno_id" id="alumno_id" value="{{ $alumno_id }}">
   <div class="col-sm-8 col-xs-12">
     <h3>Mensualidad Pendientes</h3>
   </div>
@@ -16,7 +16,9 @@
             <th>Seleccione</th>
           </tr>
           <tbody>
+
            <?php $total=0; ?>
+           @if(isset($cuotas))
            @foreach ($cuotas as $cuota)
            <?php $total+=$cuota->detalles->monto; ?>
            <tr>
@@ -29,6 +31,7 @@
             </td>              
           </tr>
           @endforeach
+          @endif
         </tbody>
       </table>
     </div>
@@ -43,7 +46,7 @@
         <div class="form-group">
           <label class="col-lg-5 control-label ">Saldo</label>
           <div class="col-lg-7">
-            <input type="text" class="form-control" id="txtSaldo" name="txtSaldo" readonly value="{{ $saldo->saldo }}">
+            <input type="text" class="form-control" id="txtSaldo" name="txtSaldo" readonly value="@if(isset($saldo->saldo)){{ $saldo->saldo }}@endif">
           </div>
         </div> 
       </fieldset>
@@ -54,9 +57,9 @@
 <div class="col-sm-8 col-xs-12">
  <div class="panel panel-default">
    <div class="panel-heading">
-   <h3 class="panel-title"><button class="btn btn-danger" onclick="agregar();" type="button"><i class="fa fa-credit-card" aria-hidden="true"></i> Agregar</button></h3>
-  </div> 
-  <div class="panel-body">
+     <h3 class="panel-title"><button class="btn btn-danger" onclick="agregar();" type="button"><i class="fa fa-credit-card" aria-hidden="true"></i> Agregar</button></h3>
+   </div> 
+   <div class="panel-body">
 
     <table class="table table-condesed" id="contenido-pago">
       <tr>
@@ -92,7 +95,7 @@
         <div class="form-group">
           <label class="col-lg-5 control-label">Monto Registrado</label>
           <div class="col-lg-7">
-            <input type="number" class="form-control" name="txtMontoAbonado" id="txtMontoAbonado" readonly="" value="{{ $saldo->saldo }}">
+            <input type="number" class="form-control" name="txtMontoAbonado" id="txtMontoAbonado" readonly="" value="@if(isset($saldo->saldo)){{ $saldo->saldo }}@endif">
           </div>
         </div>  
       </fieldset>
@@ -115,7 +118,11 @@
         </div> 
         <div class="form-group">
           <div class="col-lg-7">
+            @if(isset($cuotas))
             <button class="btn btn-success btn-block" type="button" id="btnPagar">Pagar</button>
+            @else
+            <button class="btn btn-success btn-block disabled " type="button">Pagar</button>
+            @endif
           </div>
         </div> 
       </fieldset>

@@ -32,7 +32,7 @@
         <h3>Registrese en SIFU</h3>
       </div>
       
-      <form enctype="multipart/form-data" class="form-horizontal col-md-12" method="post" action="{{ asset('/colegio/registro/create') }}" name="frmRegistro" id="frmRegistro">
+      <form enctype="multipart/form-data" class="form-horizontal col-md-12" method="post" action="{{ asset('/colegio/registro/create') }}" name="frmRegistro" id="frmRegistro" >
        {{ csrf_field() }}
        <br>
        <div class="form-group">
@@ -106,28 +106,89 @@
     </div>
     <div class="form-group">
       <div class="col-lg-4">
-      <span class="pull-right" id="captcha_img">{!! Captcha::img(); !!}</span>
+        <span class="pull-right" id="captcha_img">{!! Captcha::img(); !!}</span>
       </div>
       <div class="col-lg-8">
         <input type="text" class="form-control input-md" placeholder="Ingrese Captcha" name="txtCaptcha" id="txtCaptcha">
       </div>
     </div>
     <div class="form-group">
-      <button class="btn btn-primary btn-lg btn-block" id="btnRegistrar">Registrarse</button>
-      <a class="btn btn-success btn-lg btn-block" href="{{ asset('/login/') }}" >Iniciar Sesion</a>
-    </div>
-  </form> 
+     <div class="col-lg-6 col-lg-offset-4">
+     <input type="checkbox" name="politicas" id="politicas" onclick="marcar();"> Aceptar Politicas de SIFU <a href="#" onclick="politicas()">Ver Politicas </a>
+      <div class="col-lg-12"><small>Marque en la casilla para aceptar las politicas y habilitar el registro.</small></div>
+     </div>
+   </div>
+   <div class="form-group">
+    <button class="btn btn-primary btn-lg btn-block" id="btnRegistrar" disabled="">Registrarse</button>
+    <a class="btn btn-success btn-lg btn-block" href="{{ asset('/login/') }}" >Iniciar Sesion</a>
+  </div>
+</form> 
 
 </div>
-  <div class="row" style="background:#ffffff">
+<div class="row" style="background:#ffffff">
  <blockquote>
-<div class="container">
+  <div class="container">
 
-  <small>Ingresar usuario y clave valido para ingresar al sistema.</small>
-  <small>Una vez Registrado, recibira un correo electronico para poder acceder al sistema.</small>
+    <small>Ingresar usuario y clave valido para ingresar al sistema.</small>
+    <small>Una vez Registrado, recibira un correo electronico para poder acceder al sistema.</small>
 
-</div>
+  </div>
 </blockquote>
 </div>
+</div>
+
+<div class="modal fade" id="modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
+      </div>
+      <div class="modal-body form"> 
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Politicas SIFU</h3>
+          </div>
+          <div class="panel-body">
+           <p>
+           Al acceder a este sitio el usuario acepta las siguientes condiciones y políticas de uso.
+           </p>
+<p>SIMPLEPANAS SAS, no se responsabiliza del entendimiento, interpretación y/o uso por parte de los
+usuario del contenido presentado en SIFU. El contenido es desarrollado por SIMPLEPANAS SAS, sin
+comprometer el pensamiento o la opinión de sus anunciantes o sitios vinculados. SIMPLEPANAS SAS se
+reserva la facultad de modificar el contenido, presentación, configuración y/o los servicios ofrecidos -por si mismo notificando previamente al cliente.</p>
+
+<p>El cliente admite que ningún tercero es responsable por perjuicios que se deriven directa o
+indirectamente de la existencia, uso, acceso, imposibilidad de uso o imposibilidad de acceso a la
+presente página o a cualquiera de sus vínculos o enlaces.</p>
+
+<p>SIMPLEPANAS SAS no ofrecen garantía sobre la exactitud e integridad de la información,
+consecuentemente el cliente acepta que él es el único responsable por las decisiones que adopte con
+base en la información o en los materiales de esta página o de sus vínculos o enlaces.</p>
+
+<p>El cliente responderá por los daños y perjuicios de toda naturaleza que SIFU pueda sufrir, directa o
+indirectamente, como consecuencia del incumplimiento de cualquiera de las obligaciones derivadas de
+las Condiciones de Uso o de la ley en relación con la utilización de este sitio web.</p>
+
+<p>SIMPLEPANAS SAS, no asume responsabilidad alguna por los daños y perjuicios de toda naturaleza que
+pudieran derivarse de la utilización de los servicios y de los contenidos por parte del cliente que puedan derivarse de la falta de veracidad, vigencia, exhaustividad y/o autenticidad de la información que el cliente proporciona a otros usuarios acerca de sí mismos y, en particular, aunque no de forma exclusiva, por los daños y perjuicios de toda naturaleza que puedan derivarse de la suplantación de la personalidad de un tercero efectuada por un usuario en cualquier clase de comunicación realizada a través de éste sitio web.</p>
+
+<p>La inclusión de vínculos a otros sitios a través de SIFU no implica ninguna relación diferente al “vínculo" mismo. Todas las transacciones realizadas en dichos vínculos son responsabilidad exclusiva del cliente y de la entidad relacionada.</p>
+
+<p>El cliente reconoce que el contenido (incluidos entre otros: texto, software, música, sonido, fotografías, vídeo, gráficos u otro material) producida comercialmente y distribuida de forma electrónica y presentada a los usuarios de SIFU, está protegido por derechos de autor, marcas, patentes u otros bienes mercantiles o formas diferentes del derecho de propiedad y toda la responsabilidad recae sobre el cliente.</p>
+
+<p>El origen de la información cargada en SIFU es responsabilidad del cliente, su manejo, actualización,
+distribución, confidencialidad, integridad y asegurar la disponibilidad de la información.</p>
+
+<p>SIMPLEPANAS SAS es responsable de monitorear cada una de las razones sociales registradas durante el
+DEMO de 30, días con el fin de garantizar la veracidad de las mismas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary btn-3d" data-dismiss="modal"> Aceptar</button>
+      </div>
+    </div>
+  </div>
 </div>
 </body>

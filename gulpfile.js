@@ -25,6 +25,7 @@ elixir(function(mix) {
       'jAlert-v3.css',
       'datatables.bootstrap.min.css',
       'chosen.css',
+      'pace.css'
     ],'public/css');
 
   mix.scripts([
@@ -46,6 +47,7 @@ elixir(function(mix) {
       'jAlert-functions.js',
       'chart.min.js',
       'chosen.jquery.js',
+      'pace.min.js'
     ],'public/js/all.js');
 
    mix.version(["public/css/all.css", "public/js/all.js"]);

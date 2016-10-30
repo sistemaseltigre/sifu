@@ -33,14 +33,23 @@
 </head>
 <body>
  <?php $resultado = $planillas->contenido;
-    $resultado = str_replace("var_cedula", $alumno->cedula, $resultado);
-    $resultado = str_replace("var_nombres", $alumno->nombre, $resultado);
-    $resultado = str_replace("var_apellidos", $alumno->apellido, $resultado);
-    $resultado = str_replace("var_grado", $alumno->grado->grado, $resultado);
-    $resultado = str_replace("var_seccion", $seccion->seccion->seccion, $resultado);
-    $resultado = str_replace("var_periodo", $periodo->periodo, $resultado);
+ if(Session::get('imagen'))
+ {
+  $logo=asset('/logos/'.Session::get('imagen'));
+}
+else
+{
+  $logo=asset('/img/logo.png');
+}
+$resultado = str_replace("var_logo", "<img src=\"$logo\" style=\"width:100px; height:100px\"> ", $resultado);
+$resultado = str_replace("var_cedula", $alumno->cedula, $resultado);
+$resultado = str_replace("var_nombres", $alumno->nombre, $resultado);
+$resultado = str_replace("var_apellidos", $alumno->apellido, $resultado);
+$resultado = str_replace("var_grado", $alumno->grado->grado, $resultado);
+$resultado = str_replace("var_seccion", $seccion->seccion->seccion, $resultado);
+$resultado = str_replace("var_periodo", $periodo->periodo, $resultado);
 
-    ?>
-      {!! $resultado !!}
+?>
+{!! $resultado !!}
 </body>
 </html>
