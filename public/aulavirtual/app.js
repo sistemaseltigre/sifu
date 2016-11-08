@@ -19,6 +19,15 @@ var app = express();
 //var server = http.createServer(app);
 //https.createServer(options, app).listen(443);
 //var server = https.createServer(app);
+
+
+//variables por kellerman
+var calls = {};
+var rooms = {};
+var teachers = {};
+
+
+//rs.pipe(response)
 var server = https.createServer(options, app).listen(8080);
 var io = require('socket.io').listen(server);
 var urlinicio = '';
@@ -116,8 +125,8 @@ app.post('/aula', function(req, res) {
           // * Buscamos el nombre de este usuario
 
           //*debo colocar grado y seccion para saber que alumnos pueden ingresar a esta aula virtual.
-          console.log(rows[0].id);
-          console.log(spamdin);
+          //console.log(rows[0].id);
+          //console.log(spamdin);
           	if (spamdin==(rows[0].id)) {
           		admin = true;
           	}else{
@@ -126,7 +135,7 @@ app.post('/aula', function(req, res) {
 
           	if ((rows[0].rolid)==1) {
           		var username = usuario;
-          		console.log(username);
+          		//console.log(username);
           	}
           	if ((rows[0].rolid)==2) {
           		var datosprofesor = connection.query("SELECT * FROM profesor WHERE id ='"+rows[0].id+"'", function(err, dprofesor) {
@@ -134,7 +143,7 @@ app.post('/aula', function(req, res) {
             			return done(err);
         			}
         		var username = dprofesor[0].nombre_profesor;
-        		console.log(username);
+        		//console.log(username);
         		});
           	}
           	if ((rows[0].rolid)==3) {
@@ -143,7 +152,7 @@ app.post('/aula', function(req, res) {
             			return done(err);
         			}
         		var username = dalumno[0].nombre;
-        		console.log(username);
+        		//console.log(username);
         		});
           	}
 
@@ -156,6 +165,7 @@ app.post('/aula', function(req, res) {
 
         	io.on('connection', function (socket) {
         		socket.emit('datosUsuario', { username:username, id:rows[0].id, admin:admin, urlinicio:urlinicio});
+            //console.log('video');
         	});
         }else{
         	io.on('connection', function (socket) {
@@ -168,7 +178,7 @@ app.post('/aula', function(req, res) {
 });
 
 
-io.sockets.on('connection', function(socket) {
+io.on('connection', function(socket) {
 
 	/* 
 		Cuando un usuario realiza una acción en el cliente,
@@ -182,23 +192,23 @@ io.sockets.on('connection', function(socket) {
 	*/
 
 	socket.on('mousedown',function(e){
-		console.log(e);
+		//console.log(e);
 		io.sockets.emit('mousedown',e);
 	});
 	socket.on('mousemove',function(e){
-		console.log(e);
+		//console.log(e);
 		io.sockets.emit('mousemove',e);
 	});
 	socket.on('mouseup',function(e){
-		console.log(e);
+		//console.log(e);
 		io.sockets.emit('mouseup',e);
 	});
 	socket.on('mouseleave',function(e){
-		console.log(e);
+		//console.log(e);
 		io.sockets.emit('mouseleave',e);
 	});
 	socket.on('repinta',function(){
-		console.log();
+		//console.log();
 		io.sockets.emit('repinta');
 	});
 
@@ -213,7 +223,18 @@ io.sockets.on('connection', function(socket) {
 	//////////envio y recepcion de eventos para el streaming/////
 
 	socket.on('streaming',function(e){
+   // console.log(e.recorder);
 		io.sockets.emit('streaming',e);
+    //var audioStreaming = document.getElementById("audioStreaming");
+    //console.log(audioStreaming);
+    //console.log(e);
+    //var urlAudio = e.audioUpdateCliente;
+    //7var audiostreamingTest = e.pipe(fs.createWriteStream(urlAudio));
+   // console.log(audiostreamingTest);
+    /*.pipe(
+   fs.createWriteStream('file.xlsx')
+);*/
+
 	});
 
 	////////////////////////SALIR /////////////////////////
@@ -240,8 +261,100 @@ io.sockets.on('connection', function(socket) {
 });
 
 
-app.get('/audiostreaming/:blob', function (req,res) {
-  var audiostreaming = req.params.blob;
-  console.log(audiostreaming);
-  ms.pipe(req,res,audiostreaming);
-})
+
+
+//el codigo de kellerman
+
+io.on('connection', function (socket) {
+    console.log('a user connected');
+
+    //Called when an student get connected.
+    socket.on('join', function (roomId) {
+
+        if (rooms && rooms[roomId]) 
+        {
+            console.log('Joining user: ' + socket.id + " to teacher room #" + roomId);
+        }
+
+        var room = rooms[roomId];
+
+        socket.join(roomId);
+        socket.emit("joined", socket.id, room);
+        io.to(room.socketId).emit("studentJoined", socket.id);
+    });
+
+    //Called when a teacher get connected.
+    socket.on('createRoom', function (roomId) {
+        console.log('Joining teacher: ' + socket.id + " to room " + roomId);
+
+        teachers[socket.id] = roomId;
+
+        rooms[roomId] = {
+            id: roomId,
+            teacherId: roomId,
+            socketId: socket.id,
+            offer: {},
+            host_candidates: [],
+            guest_candidates: []
+        };
+    });
+    
+    //Called when a caller send the RCP offer
+    socket.on('offer', function (roomId, connectionId, offer) {
+
+        if(!rooms[roomId])
+        {
+            console.warn(error);
+            socket.emit("offerError", "Cannot send the offer.");
+        }
+
+        rooms[roomId].offer = offer;
+        io.to(roomId).emit('offer', connectionId, offer);
+    });
+
+    //Called when a student answer the call
+    socket.on('answer', function (roomId, connectionId, answer) {
+        
+        if(!rooms[roomId])
+        {
+            console.warn(error);
+            socket.emit("answerError", "Cannot send the answer.");
+        }
+
+        io.to(rooms[roomId].socketId).emit("answer", connectionId, answer);
+    });
+
+    //Called when participants send their candidates
+    socket.on('sendCandidate', function (roomId, connectionId, type, candidate) {
+        
+        if(!rooms[roomId])
+        {
+            console.warn(error);
+            socket.emit("sendCandidateError", "Cannot send the candidate.");
+        }
+
+        var room = rooms[roomId];
+        room[type + "_candidates"].push(candidate);
+
+        if(type == "guest")
+        {
+            console.log("Forwarding guest candidates to host: " + connectionId);
+            io.to(room.socketId).emit("candidateReceived", connectionId, candidate);
+        }
+        else 
+        {
+            console.log("Forwarding host candidates to guest: " + connectionId);
+            io.to(connectionId).emit("candidateReceived", connectionId, candidate);
+        }
+    });
+    
+    //Called when one of participants disconnects
+   /* socket.on('disconnect', function() { 
+        var roomId = teachers[socket.id];
+        if(roomId && rooms[roomId]) 
+        {
+            io.to(roomId).emit("ended");
+            rooms.splice(rooms.indexOf(roomId), 1);
+        }
+    });*/
+});

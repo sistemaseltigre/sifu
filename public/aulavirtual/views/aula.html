@@ -15,9 +15,10 @@
   <!--<script src="/views/js/socket.io-1.4.5.js"></script> -->
   <script src="/socket.io/socket.io.js"></script>
   <script src="/views/js/modernizr.js"></script> 
-  <script src="/views/js/pizarra.js"></script> 
-  <script src="/views/js/streaming.js"></script> 
+  <script src="/views/js/pizarra.js"></script>   
   <script src="/views/js/aula.js"></script>
+  <script src="/views/js/webrtc.adapter.js"></script>
+    <script src="/views/js/conference.js"></script>
 </head>
 <body onload="initCanvas();">
 
@@ -51,20 +52,12 @@
 </div>
 
 <!--Esta seccion es para los datos del STREAMING video/audio-->
-<video src="" autoplay="true" id="videostreaming" muted="yes"></video>
-<!--<audio id="audio" controls="controls">
-  <source src="" id="audioStreaming" type="audio/mp3"></source>
-</audio>-->
+<video autoplay="true" id="play" muted="yes"></video>
 
-<audio id="audioStreaming" src="" controls="true" loop="true" autoplay="true" muted="yes"></audio>
-<!--audioStreamingCliente-->
-<audio id="audioStreamingCliente" src="" controls="true" loop="true" autoplay="true"></audio>
-
-<canvas id="prevideo"></canvas>
-<img id="play">
 <!--tools pizarra-->
 <div id="toolsPizarra">
   <img id="eraseimg" onclick="toggleBorrador();" width="30px" height="30px" src="/views/img/eraser.png" />  
 </div>
+<script src="/views/js/streaming.js"></script> 
 </body>
 </html>

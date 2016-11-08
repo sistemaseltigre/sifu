@@ -1,10 +1,11 @@
-var socket = io('/');//iniciamos el servidor
+//var socket = io('/');//iniciamos el servidor
 dame_color_aleatorio();
 var urlinicio;
 
 socket.on('datosUsuario',function(e){
   $('#nombre_usuario').html(e.username);
   urlinicio = e.urlinicio;
+  admin = e.admin;
 });
 
 socket.on('mensajesChat',function(e){

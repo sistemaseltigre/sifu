@@ -1,7 +1,9 @@
 var socket = io('/');//iniciamos el servidor
+//var admin=false;
 var movimientos = new Array();
 var pulsado;
 var banderaLapiz;
+
 
 function initCanvas() {
   banderaLapiz=0;
@@ -19,6 +21,7 @@ function initCanvas() {
 
   //si es el administrador de la sala puede escribir en la pizarra
   socket.on('datosUsuario',function(e){
+    admin=e.admin;
     if ((e.admin)==true) {
       $('#canvas').mousedown(function(e){
         //emitimos cuando se presiona el boton del mouse
@@ -99,7 +102,7 @@ function toggleBorrador() {
 }
 
 function estiloLapiz() {
-  console.log(banderaLapiz);
+  //console.log(banderaLapiz);
   if (banderaLapiz==0) {
     context.strokeStyle = "#fff";
   }else{
