@@ -35,10 +35,10 @@ function toggleAudio() {
 	var audioimg = $("#audioimg").attr("src");
 	if (audioimg=="/views/img/volume-mute.png") {
 		$("#audioimg").attr("src","/views/img/volume-up.png");
-		$("#audioStreamingCliente").prop('muted', false);
+		$("#play").prop('muted', false);
 	}else{
 		$("#audioimg").attr("src","/views/img/volume-mute.png");
-		$("#audioStreamingCliente").prop('muted', true);
+		$("#play").prop('muted', true);
 	}
 	
 }
