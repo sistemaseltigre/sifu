@@ -1,89 +1,94 @@
-var socket = io('/');//iniciamos el servidor
-var bandera;
-var audioContext;
+//var socket = io('/');//iniciamos el servidor
+var contadortest = 0;
 $(function() {
-  var videoStreaming_cliente;
-  audioContext = new AudioContext();
-  bandera=0;
-  var audioStreaming_cliente;
-  var audioStreaming = document.getElementById("audioStreaming");
-  var videoStreaming = document.getElementById("videostreaming");
-  videoStreaming.width = 100;
-  videoStreaming.height = 100;
-  var canvasVideo = document.getElementById("prevideo");
-  canvasVideo.width = 100;
-  canvasVideo.height = 75;
-  if(canvasVideo.getContext) {
-   	var context = canvasVideo.getContext("2d");
-   	context.width = canvasVideo.width;
-		context.height = canvasVideo.height;
-  }
+
   //escuchamos si se conecta el administrador para emitir video
+  //console.log(admin);
   socket.on('datosUsuario',function(e){
-  if ((e.admin)==true) {
-    navigator.getUserMedia = (navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msgGetUserMedia);
-    if (navigator.getUserMedia) {
-      navigator.getUserMedia({video:true, audio:true},camaraOn,camaraOff);
-    }
-    setInterval(function(){
-      emitirVideo(context,videoStreaming,canvasVideo,audioStreaming,bandera);
-    },250);  
-  }else{
-    //en caso de que no sea el administrador escuchamos lo que el administrador esta emitiendo
+    contadortest += 1;
     
+    console.log(contadortest);
+    if (((e.admin)==true)&&(contadortest==1)) {
+      //console.log(e);
+      //si es el profesor se crea la sala
+      var roomId =  1;
+      var conf = new conference({
+                remoteVideoElementId: null,
+                localVideoElementId: 'play',
+                sendOfferCallback: function(connectionId, offer) {
+                        console.log("Sending offer to server");
+                        socket.emit('offer', roomId, connectionId, offer);
+                },
+                sendCandidateCallback: function(connectionId, evt) {
+                    if(evt.candidate) {
+                        console.log("Sending candidate to server");
+                        socket.emit('sendCandidate', roomId, connectionId, "host", evt.candidate);
+                    }
+                }
+        });
+        
+        socket.on('connection', function() { console.log('connected to socket.io'); }); 
+        socket.on('disconnect', function() { console.log('disconnected from socket.io'); });
+
+        socket.on('answer', function(connectionId, answer) {
+            conf.receiveAnswer(connectionId, answer);
+        });
+        
+        socket.on('candidateReceived', function(connectionId, candidate) {            
+           // console.log("Ice candidate received", candidate); 
+            conf.handleIceCandidate(connectionId, candidate);
+        });
+        
+        socket.on('studentJoined', function(connectionId) {
+           // console.log("Student joined");
+            conf.createCall(connectionId);
+        });
+
+       conf.initialize();
+        
+     socket.emit("createRoom", roomId);
+  }else if (((e.admin)==false)&&(contadortest==1)){
+    //en caso de que no sea el administrador escuchamos lo que el administrador esta emitiendo
+    /*esto es en caso de que el socket sea estudiante*/
+        var roomId =  1;
+        var cId;
+        var conf = new conference({
+                localVideoElementId: null,
+                remoteVideoElementId: 'play',
+                sendAnswerCallback: function(connectionId, offer, answer) {
+                    console.log("Sending answer to server");
+                    socket.emit('answer', roomId, connectionId, answer);
+                },
+                sendCandidateCallback: function(connectionId, evt) {
+                    if(evt.candidate) {
+                        console.log("Sending candidate to server");
+                        socket.emit('sendCandidate', roomId, connectionId, "guest", evt.candidate);
+                    }
+                }
+        });
+          
+        socket.on('connection', function() { console.log('connected to socket.io'); }); 
+        socket.on('disconnect', function() { console.log('disconnected from socket.io'); });
+        
+        socket.emit('join', roomId);
+        socket.on('joined', function(connectionId, roomInfo) {
+            cId = connectionId;
+            console.log("Joined to room: " + roomInfo.id);
+        });
+        socket.on('offer', function(connectionId, offer) {
+            if(connectionId == cId) {
+                conf.initialize(function() {
+                    conf.acceptCall(cId, offer, []);
+                });
+            }
+        }); 
+        socket.on('candidateReceived', function(connectionId, candidate) {
+            if(connectionId == cId) 
+            {
+                console.log("Ice candidate received", candidate); 
+                conf.handleIceCandidate(cId, candidate);
+            }
+        });
   }
   });
-});
-
-function camaraOn(e) {
-	urlVideo = window.URL.createObjectURL(e);
-  $("#videostreaming").attr("src",urlVideo);
-	$("#audioStreaming").attr("src",urlVideo);
-  
- var source = audioContext.createMediaStreamSource(e);
- var proc = audioContext.createScriptProcessor(2048, 2, 2);
-
-  
-        
-    
-}
-
-function camaraOff(e) {
-	
-}
-
-function emitirVideo(context,videoStreaming,canvasVideo,audioStreaming,bandera) {
-  //console.log(videoStreaming);
-  //bandera=1;
-  //console.log(bandera);
-  context.drawImage(videoStreaming,0,0,context.width,context.height);
-  var videoUpdateCliente = canvasVideo.toDataURL('image/webp');
-  var audioUpdateCliente = audioStreaming.src;
-  //var audioUpdateCliente = "data:audio/mp3;base64,"+btoa(audioStreaming.src);
-  
-        // define as output of microphone the default output speakers
-       // microphone_stream.connect( audioContext.destination ); 
- // var audioUpdateCliente = new Blob(audioStreaming.chunks, { 'type' : 'audio/ogg; codecs=opus' });
-  socket.emit('streaming',{videoUpdateCliente,audioUpdateCliente});
-
-}
-
-function verVideo(e) {
-  videoStreaming_cliente = document.getElementById("play");     
-  videoStreaming_cliente.src = e.videoUpdateCliente;
-}
-
-function escuchar(e) {
-  
-  if (bandera==0) {
-    audioStreaming_cliente = document.getElementById("audioStreamingCliente");
-    audioStreaming_cliente.src = e.audioUpdateCliente;
-    bandera=1;
-  }
-  
-}
-
-socket.on('streaming',function(e){
-  verVideo(e);
-  escuchar(e);
 });

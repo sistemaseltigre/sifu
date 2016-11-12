@@ -1,10 +1,11 @@
-var socket = io('/');//iniciamos el servidor
+//var socket = io('/');//iniciamos el servidor
 dame_color_aleatorio();
 var urlinicio;
 
 socket.on('datosUsuario',function(e){
   $('#nombre_usuario').html(e.username);
   urlinicio = e.urlinicio;
+  admin = e.admin;
 });
 
 socket.on('mensajesChat',function(e){
@@ -34,10 +35,10 @@ function toggleAudio() {
 	var audioimg = $("#audioimg").attr("src");
 	if (audioimg=="/views/img/volume-mute.png") {
 		$("#audioimg").attr("src","/views/img/volume-up.png");
-		$("#audioStreamingCliente").prop('muted', false);
+		$("#play").prop('muted', false);
 	}else{
 		$("#audioimg").attr("src","/views/img/volume-mute.png");
-		$("#audioStreamingCliente").prop('muted', true);
+		$("#play").prop('muted', true);
 	}
 	
 }
