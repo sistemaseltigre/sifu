@@ -41,6 +41,22 @@ a:hover {
   background: #e74c3c;
   color: #fff;
 }
+.logo{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+  transition: 2.5s ease;
+  -moz-transition: 2.5s ease; /* Firefox */
+  -webkit-transition: 2.5s ease; /* Chrome - Safari */
+  -o-transition: 2.5s ease; /* Opera */
+}
+.logo:hover{
+  
+  transform : rotate(360deg);
+  -moz-transform : rotate(360deg); /* Firefox */
+  -webkit-transform : rotate(360deg); /* Chrome - Safari */
+  -o-transform : rotate(360deg); /* Opera */
+}
 
 .title {
   text-align: center;

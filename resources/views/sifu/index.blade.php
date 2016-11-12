@@ -8,11 +8,14 @@
 <meta name="author" content="www.simplepanas.com">
         <title>SIFU</title>
 
-        <!-- Bootstrap -->
+        <!--bootstrap -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }} ">
+       
+        <!-- letras -->
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
         
         <!-- Main Style -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }} " >
 
         <!-- Responsive Style -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }} ">
@@ -46,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home"><i><img src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
+                <a class="navbar-brand" href="#home"><i><img class="logo" src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
                  SIFU</a>
              </div>
 
