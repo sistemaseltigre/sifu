@@ -1,6 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+@font-face {
+    font-family: "Montsrrat-Bold";
+    font-family: "Montsrrat-Regular";
+
+    src: url(../assets/fonts/Montsrrat-Bold.ttf) format("truetype");
+    src: url(../assets/fonts/Montsrrat-Regular.ttf) format("truetype");
+}
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Montsrrat-Regular', sans-serif;
+  font-family: 'Montsrrat', sans-serif;
   font-size: 14px;
   font-weight: 400;
   -webkit-box-sizing: border-box;
@@ -40,6 +49,22 @@ a:hover {
 .btn-common:hover {
   background: #e74c3c;
   color: #fff;
+}
+.logo{
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+  transition: 2.5s ease;
+  -moz-transition: 2.5s ease; /* Firefox */
+  -webkit-transition: 2.5s ease; /* Chrome - Safari */
+  -o-transition: 2.5s ease; /* Opera */
+}
+.logo:hover{
+  
+  transform : rotate(360deg);
+  -moz-transform : rotate(360deg); /* Firefox */
+  -webkit-transform : rotate(360deg); /* Chrome - Safari */
+  -o-transform : rotate(360deg); /* Opera */
 }
 
 .title {
