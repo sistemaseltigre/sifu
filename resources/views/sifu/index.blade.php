@@ -3,16 +3,22 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="SIFU es la plataforma virtual que ofrece todas las posibilidades que la red ofrece para la administración y gestión de tu institución educativa">
+        <meta name="description" content="Sistema para la gestion y administracion de colegios, escuelas, liceos, guarderia, centro de estimulacion infantil, SIFU es la nueva plataforma para la gestion de la Educacion, ">
 <meta name="keywords" content="colegios oficiales, colegios particulares, administracion de escuela, cursos para el profesorado, de escuelas, todos los colegios, el profesorado, profesores de universidad, escuelas en, profesores de español, colegios españoles, recursos para profesores, formación de profesores, recursos para profesores, colegio online, de escuelas, gestion colegios, colegios particulares, ele profesor español, escuela infantiles, educacion escuela, recursos educativos para profesores, colegios ingles, material para el profesor, profesor docente, escuelas religiosas, colegios en con con, para profesores tu sitio, escuelas infantil, programa colegios, profesores universidad, profesor para universidad, escuelas s, creacion de horarios, trabajo para profesores, educacion en linea, profesores universitarios, formación profesores, correo escuelas, colegio online, software gestion colegios, colegios internacionales, escuelas pias telefono, correo escuelas, material para profesores, escuelas de deporte, recursos profesores, profesor es, ele profesor español, profesor o docente, recursos profesores, colegios españoles en europa, pagina del profesor, colegios mayores, busca colegios, pagina para profesores, profesor es, escuelas catolicas cursos formacion, software colegios, logotipos colegios, para profesores, universidad para profesores, colegios e, colegios e,  educacion escuelas,  profesor docente,  colegio en linea, escuelas religiosas, escuelas de deporte,  administracion de escuela,  profesores,  escuela infantil municipal,  para profesores tu sitio,  formacion para el profesorado,  pagina para profesores,  escuela s,  para el profesor,  formación profesores,  profesores de español,  escuelas online,  cursos para el profesorado,  profesores ele,  pagina de los profesores,  colegios internacionales,  para el profesor,  software colegios,  escuelas d,  pagina de colegios,  logotipos colegios,  colegio en linea,  el profesorado,  curso profesores,  informacion colegios,  deporte en las escuelas,  escuelas,  colegios oficiales,  web para profesores,  escuela de s,  colegios españoles,  colegios d,  curso de profesor,  escuelas del deporte,  profesores universitarios,  escuela catolicas,  web de profesores,  pagina de profesores,  pagina de profesores,  escuela infantiles,  formacion para el profesorado,  para de profesores,  educacion en las escuelas,  registro educativo,  escuelas catolicas cursos formacion,  colegios españoles en europa,  educacion en las escuelas,  cursos escuelas catolicas,  curso de profesor,  cursos escuelas catolicas,  informacion sobre colegios,  formacion para profesores,  gestion colegios,  colegios em,  web de profesores,  software colegios gratis,  informacion colegios,  colegios,  colegios mayores,  recursos educativos para profesores,  escuela y educacion,  pagina del profesor,  curso profesores,  software de colegios,  sistema para colegios,  plataforma educativa,  trabajo para profesores,  curso para profesores,  educacion escuelas,  informacion sobre colegios,  administracion de colegios,  colegio mayores,  como saber las notas del colegio por internet,  escuelas online, colegios en con con,  profesores ele,  profesores,  profesores de universidad,  recursos del profesor,  sitios para profesores,  software para administrar escuelas,  educacion escuela,  web profesores,  escuelas del deporte,  sistema para escuelas,  escuelas s,  recursos para el profesorado,  aula virtual,  software para administrar escuelas,  escuela de s,  administracion de colegios,  pagina de colegios,  escuelas infantil,  escuelas en,  colegio mayores,  escuela s,  software de colegios,  educacion profesores,  tareas online,  material para el profesor,  escuelas pias telefono,  material para profesores,  colegios d,  sitios para profesores,  escuela y educacion,  formacion para profesores,  colegios,  sistema para colegios,  profesores universidad,  profesor español,  software colegios gratis,  pagina de los profesores,  alumnos,  formación profesorado,  sistema para escuelas,  escuelas d,  como saber las notas del colegio por internet,  formación profesorado,  profesor para universidad,  escuelas e,  escuela infantil municipal,  profesora profesor,  profesor o docente,  escuela catolicas,  para profesores,  educacion profesores,  colegios ingles,  web para profesores,  profesora profesor,  software gestion colegios,  curso para profesores,  recursos para el profesorado,  para de profesores,  escuelas,  deporte en las escuelas,  recursos del profesor,  profesor español,  universidad para profesores,  busca colegios, programa colegios,  formación de profesores, web profesores, escuelas e, todos los colegios, colegios em">
+<meta name="robots" content="all">
 <meta name="author" content="www.simplepanas.com">
-        <title>SIFU</title>
+        <title>Sistema para colegio - SIFU</title>
 
-        <!-- Bootstrap -->
+        <!--bootstrap -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }} ">
+       
+        <!-- letras -->
+        <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/Montsrrat-Regular.ttf') }} "> -->
+
         
         <!-- Main Style -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }} ">
+        <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }} " >
 
         <!-- Responsive Style -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/responsive.css') }} ">
@@ -46,7 +52,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home"><i><img src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
+                <a class="navbar-brand" href="#home"><i><img class="logo" src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
                  SIFU</a>
              </div>
 
@@ -293,12 +299,18 @@
     </div>
     <div class="contact-info">
         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
-        <p><i class="fa fa-envelope"></i> info@simplepanas.com</p>
+        <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
+        <div class="h-divider"></div><br>
+        <p><i class="fa fa-map-marker"></i> Venezuela, El Tigre</p>
+        <p><i class="fa fa-envelope"></i> ventasve@sifusp.com</p>
+        <div class="h-divider"></div><br>
+        <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p>
+        <div class="h-divider"></div><br>
     </div>
 
-    <p>
+ <!--    <p>
        <a href="http://www.simplepanas.com">-SimplePanas-</a><br>
-   </p>
+   </p> -->
    
 </div>
 

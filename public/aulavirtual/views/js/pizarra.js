@@ -6,6 +6,10 @@ var banderaLapiz;
 
 
 function initCanvas() {
+
+
+socket.emit('getDatosUsuario',{});
+
   banderaLapiz=0;
   var canvasDiv = document.getElementById('canvasDiv');
   canvas = document.createElement('canvas');
@@ -92,13 +96,14 @@ socket.on('repinta',function(){
 });
 
 function toggleBorrador() {
-  if (banderaLapiz==0) {
-  banderaLapiz=1;
-
-  }else{
-  banderaLapiz=0;
-  }
-
+//debemos emitir a todos lo que queremos borrar
+  socket.emit('solBorrar',{});
+  socket.on('borrar',function(){
+    movimientos = new Array();
+    context.clearRect(0, 0, 700, 500);
+    context.beginPath();
+    repinta();
+  });
 }
 
 function estiloLapiz() {
@@ -106,7 +111,6 @@ function estiloLapiz() {
   if (banderaLapiz==0) {
     context.strokeStyle = "#fff";
   }else{
-    context.strokeStyle = "green";
+    context.strokeStyle = "blue";
   }
-
 }

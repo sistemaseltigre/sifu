@@ -210,7 +210,7 @@ class inscripcionController extends Controller
       //finaliza el registro de pagos general
 
         for($i = 0; $i < count($mensualidad['cuotas']); $i++) {
-          $mensualidad_alumno= mensualidad::find($mensualidad['cuotas'][$i]);
+          $mensualidad_alumno= mensualidad::where('detalles_cuotas_id',$mensualidad['cuotas'][$i])->where('alumno_id',$alumno_id)->first();
           $mensualidad_alumno->estatus='pagado';
           $mensualidad_alumno->pagos_id=$pagos_id;
           $mensualidad_alumno->save();

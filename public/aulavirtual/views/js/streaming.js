@@ -1,17 +1,22 @@
 //var socket = io('/');//iniciamos el servidor
 var contadortest = 0;
 $(function() {
-
+    $('#textochat').keypress(function(event){
+  var keynum= event.keyCode; 
+  if (keynum == 13) {
+    enviarmensajechat(); 
+  }
+});
   //escuchamos si se conecta el administrador para emitir video
   //console.log(admin);
   socket.on('datosUsuario',function(e){
     contadortest += 1;
     
     console.log(contadortest);
-    if (((e.admin)==true)&&(contadortest==1)) {
+    if ((e.admin)==true) {
       //console.log(e);
       //si es el profesor se crea la sala
-      var roomId =  1;
+      var roomId =  e.id_sala;
       var conf = new conference({
                 remoteVideoElementId: null,
                 localVideoElementId: 'play',
@@ -47,10 +52,10 @@ $(function() {
        conf.initialize();
         
      socket.emit("createRoom", roomId);
-  }else if (((e.admin)==false)&&(contadortest==1)){
+  }else if ((e.admin)==false){
     //en caso de que no sea el administrador escuchamos lo que el administrador esta emitiendo
     /*esto es en caso de que el socket sea estudiante*/
-        var roomId =  1;
+        var roomId =  e.id_sala;
         var cId;
         var conf = new conference({
                 localVideoElementId: null,

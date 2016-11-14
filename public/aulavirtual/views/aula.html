@@ -20,19 +20,28 @@
   <script src="/views/js/webrtc.adapter.js"></script>
     <script src="/views/js/conference.js"></script>
 </head>
-<body onload="initCanvas();">
-
-<nav class="navbar navbar-top">
+<body onload="initCanvas();" data-spy="scroll" data-offset="20" data-target="#navbar">
+<nav class="navbar navbar-top" role="navigation" data-spy="affix" data-offset-top="50">
   <div class="container-fluid">
     <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
       <a class="navbar-brand" href="#">Aula virtual</a>
     </div>
+    <div class="collapse navbar-collapse" id="navbar">
+
     <ul class="nav navbar-nav">
       <li><a href="#"><font color="#fff">Bienvenido <b><span id="nombre_usuario"></span></b></font></a></li>
       <li><a href="#"><span onclick="salir();"><font color="#fff">Salir</font></span></a></li>      
     </ul>
+    </div>
   </div>
 </nav>
+
 
 <div id="canvasDiv" style="width: 100%;background-color: green;height: 500px;"></div>
 	
@@ -46,7 +55,7 @@
 <div id="contenedorChat">
   <div id="mensajes_chat"><div id="mensajes_p"></div></div>
   <div id="enviar_mensaje_chat">    
-    <textarea name="enviarmensajechat" id="enviarmensajechat" maxlength="200"></textarea>
+    <input name="textochat" id="textochat" maxlength="200"/>
     <button id="btn1" type="button" onclick="enviarmensajechat();">Enviar</button>
   </div>
 </div>
@@ -56,8 +65,9 @@
 
 <!--tools pizarra-->
 <div id="toolsPizarra">
-  <img id="eraseimg" onclick="toggleBorrador();" width="30px" height="30px" src="/views/img/eraser.png" />  
+  <button onclick="toggleBorrador();" class="btn btn-primary">Limpiar pizarra <img id="eraseimg"  width="30px" height="30px" src="/views/img/eraser.png" /></button>  
 </div>
-<script src="/views/js/streaming.js"></script> 
+<script src="/views/js/streaming.js"></script>
+
 </body>
 </html>

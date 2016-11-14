@@ -16,45 +16,25 @@ var options = {
 };
 //toca instalar phyton 2.7 y otras cosas para que funcione bycrip https://www.npmjs.com/package/bcrypt
 var app = express();
-//var server = http.createServer(app);
-//https.createServer(options, app).listen(443);
-//var server = https.createServer(app);
 
-
-//variables por kellerman
+//variables para el webrtc
 var calls = {};
 var rooms = {};
 var teachers = {};
-
-
-//rs.pipe(response)
+//creamos el servidor y el puerto por donde se servira node
 var server = https.createServer(options, app).listen(8080);
 var io = require('socket.io').listen(server);
 var urlinicio = '';
-//server.listen(8080);
-io.set('log level',1); //Lo pongo a nivel uno para evitar demasiados logs ajenos a la aplicación.
 connection=0;
 var spamdin;
 var admin;
 var salir = false;
-/*app.configure(function(){
-
-	//No uso layout en las vistas
-	app.set('view options', {
-	  layout: false
-	});
-
-	//Indicamos el directorio de acceso publico
-    app.use(express.static('public'));
-
-});*/
-//app.use(express.static('public'));
-//Marco la ruta de acceso y la vista a mostrar
-/*app.get('/', function(req, res){
-    res.render('index.jade', { 
-    	pageTitle: 'Pizarra'
-    });
-});*/
+//variables globales usuario
+var usuario;
+var clave;
+var user_id;
+var id_sala;
+//le decimos a express cual es la raiz de nuestro directorio
 app.use(express.static(__dirname + '/')); 
 app.use(bodyParser.urlencoded({
     extended: true
@@ -74,111 +54,102 @@ app.get(/sifu/, function(req, res) {
  	var urldbname = url_parts.pathname;
  	urlinicio = urldbname;
  	var dbname=urldbname.split('_');
-        dbname='sifu_'+dbname[1];
+      dbname='sifu_'+dbname[1];
     	spamdin = urldbname.split('_');
-        spamdin = spamdin[2];
-    connection = mysql.createConnection({
-  		host     : 'localhost',
-  		user     : 'root',
-  		password : '',
-  		database : dbname
-	});
-
-	connection.connect(function(err) {
-  		
-	});
-	
+      spamdin = spamdin[2];
+  var urlidsala =  urldbname.split('_');   
+      id_sala = urlidsala[3];
+      connection = mysql.createConnection({
+  		  host     : 'localhost',
+  		  user     : 'root',
+  		  password : '',
+  		  database : dbname
+	    });
+	connection.connect(function(err) {  
+    if(err!=null){
+      console.log(err);
+    }
+	});	
 });
 
+io.on('connection', function(socket) {
 
+ app.post('/aula', function(req, res) { 
 
+   usuario = req.body.user.username;
+   clave = req.body.user.password;
 
-app.post('/aula', function(req, res) {	
-	var usuario = req.body.user.username;
-	var clave = req.body.user.password;
-	var url = req.body.user.url;
-	
-	var salt = bcrypt.genSaltSync(10);
-	var tabuser = connection.query("SELECT * FROM usuario WHERE usuario = ?",
+  var url = req.body.user.url;
+  var sid = req.body.user.sid;
+  
+  var salt = bcrypt.genSaltSync(10);
+  var tabuser = connection.query("SELECT * FROM usuario WHERE usuario = ?",
     [usuario],
     function(err, rows) {
-        if (err) {        	
-            return done(err);
+
+        if (err) {          
+            console.log(err);
         }
         
         if ((rows.length)==0) {
-        	
-        	io.on('connection', function (socket) {
-
-        		socket.emit('loginError', { msg: 'Error usuario desconocido, intenta nuevamente' });
-
-        	});
-  			
-        	return res.redirect(urlinicio);
+          //console.log('debemos emitir el mensaje de error');
+            //console.log(sid);
+            io.to(sid).emit('loginError', { msg: 'Error usuario desconocido, intenta nuevamente' });        
+            return false;
         }
+
+        user_id =  rows[0].id;;
+
         if ((bcrypt.compareSync(clave, rows[0].password))==true) {
-          res.render('aula.html');
+          res.render('aula.html',function(err, html) {
+            res.send(html);
+          });
           //una vez redireccionado emitimos dos funciones
           // * Verificamos si es o no el administrador del aula virtual
           // * Avisamos al servidor que entro un nuevo usuario
           // * Avisamos a todos los sockets que entro un nuevo usuario
           // * Buscamos el nombre de este usuario
+            if (spamdin==(rows[0].id)) {
+              admin = true;
+            }else{
+              admin = false;
+            }
+            
+            if ((rows[0].rolid)==2) {
+              var datosprofesor = connection.query("SELECT * FROM profesor WHERE id ='"+rows[0].id+"'", function(err, dprofesor) {
+              if (err) {          
+                 // return console.log(err);
+              }else{
+                 usuario = dprofesor[0].nombre_profesor;
+                 user_id = rows[0].id;
+              }
+            
+            });
+            }
+            if ((rows[0].rolid)==3) {
+              var datosalumno = connection.query("SELECT * FROM alumno WHERE id ='"+rows[0].id+"'", function(err, dalumno) {
+              if (err) {          
+                //return console.log(err);
+              }else{
+                usuario = dalumno[0].nombre;
+                user_id = rows[0].id;
+              }
+        
+            });
+            }
 
-          //*debo colocar grado y seccion para saber que alumnos pueden ingresar a esta aula virtual.
-          //console.log(rows[0].id);
-          //console.log(spamdin);
-          	if (spamdin==(rows[0].id)) {
-          		admin = true;
-          	}else{
-          		admin = false;
-          	}
-
-          	if ((rows[0].rolid)==1) {
-          		var username = usuario;
-          		//console.log(username);
-          	}
-          	if ((rows[0].rolid)==2) {
-          		var datosprofesor = connection.query("SELECT * FROM profesor WHERE id ='"+rows[0].id+"'", function(err, dprofesor) {
-        			if (err) {        	
-            			return done(err);
-        			}
-        		var username = dprofesor[0].nombre_profesor;
-        		//console.log(username);
-        		});
-          	}
-          	if ((rows[0].rolid)==3) {
-          		var datosalumno = connection.query("SELECT * FROM alumno WHERE id ='"+rows[0].id+"'", function(err, dalumno) {
-        			if (err) {        	
-            			return done(err);
-        			}
-        		var username = dalumno[0].nombre;
-        		//console.log(username);
-        		});
-          	}
-
-          	if ((rows[0].rolid)>3) {
-          		io.on('connection', function (socket) {
-        			socket.emit('loginError', { msg: 'Este usuario no tiene acceso a esta aula.' });
-        		});
-        		return res.redirect(urlinicio);
-          	}
-
-        	io.on('connection', function (socket) {
-        		socket.emit('datosUsuario', { username:username, id:rows[0].id, admin:admin, urlinicio:urlinicio});
-            //console.log('video');
-        	});
+            if ((rows[0].rolid)>3) {
+            io.to(sid).emit('loginError', { msg: 'Este usuario no tiene acceso a esta aula.' });        
+            return false;
+            }
         }else{
-        	io.on('connection', function (socket) {
-        	socket.emit('loginError', { msg: 'Error contraseña no valida, intenta nuevamente' });
-        	});
-        	return res.redirect(urlinicio);
+          io.to(sid).emit('loginError', { msg: 'Error contraseña no valida, intenta nuevamente' });        
+            return false;
         }
-	});
-	
+  });
+  
 });
 
-
-io.on('connection', function(socket) {
 
 	/* 
 		Cuando un usuario realiza una acción en el cliente,
@@ -190,6 +161,10 @@ io.on('connection', function(socket) {
 	   de esta manera hacer el chat individual, tambien enviar mensajes directos
 	   al profesor en el aula virtual.
 	*/
+  socket.on('getDatosUsuario',function(e){
+    socket.emit('datosUsuario', { id_sala:id_sala, username:usuario, admin:admin, urlinicio:urlinicio});
+    io.emit('mensajeBienvenida', {username:usuario});
+  });
 
 	socket.on('mousedown',function(e){
 		//console.log(e);
@@ -223,28 +198,21 @@ io.on('connection', function(socket) {
 	//////////envio y recepcion de eventos para el streaming/////
 
 	socket.on('streaming',function(e){
-   // console.log(e.recorder);
 		io.sockets.emit('streaming',e);
-    //var audioStreaming = document.getElementById("audioStreaming");
-    //console.log(audioStreaming);
-    //console.log(e);
-    //var urlAudio = e.audioUpdateCliente;
-    //7var audiostreamingTest = e.pipe(fs.createWriteStream(urlAudio));
-   // console.log(audiostreamingTest);
-    /*.pipe(
-   fs.createWriteStream('file.xlsx')
-);*/
-
 	});
+  ///////////////////////////////PIZARRA//////////////////////////   
+  socket.on('solBorrar',function(e){
+    io.sockets.emit('borrar',e);
+  });
+
+  ///////////////////////////////PIZARRA//////////////////////////
+
 
 	////////////////////////SALIR /////////////////////////
 	
 	socket.on('mensajeSalida',function(e){
 		io.sockets.emit('mensajeSalida',{e,urlinicio:urlinicio});
-		cerrarSesion(true);		
-		//io.socket.emit('salir',{e,urlinicio:urlinicio});		
-		//console.log(e);
-			
+		cerrarSesion(true);				
 	});
 	function cerrarSesion(bool) {
 		if (bool==true) {
@@ -253,22 +221,9 @@ io.on('connection', function(socket) {
     		});
 		}
 	}
-	/*socket.on('mensajeSalida',function(e){
-		//io.sockets.emit('mensajeSalida',{e,urlinicio:urlinicio});		
-		io.socket.emit('salir',{e,urlinicio:urlinicio});		
-		console.log(e);		
-	});*/
-});
 
 
-
-
-//el codigo de kellerman
-
-io.on('connection', function (socket) {
-    console.log('a user connected');
-
-    //Called when an student get connected.
+//Called when an student get connected.
     socket.on('join', function (roomId) {
 
         if (rooms && rooms[roomId]) 
@@ -346,15 +301,6 @@ io.on('connection', function (socket) {
             console.log("Forwarding host candidates to guest: " + connectionId);
             io.to(connectionId).emit("candidateReceived", connectionId, candidate);
         }
-    });
-    
-    //Called when one of participants disconnects
-   /* socket.on('disconnect', function() { 
-        var roomId = teachers[socket.id];
-        if(roomId && rooms[roomId]) 
-        {
-            io.to(roomId).emit("ended");
-            rooms.splice(rooms.indexOf(roomId), 1);
-        }
-    });*/
-});
+    });  
+
+});//fin del io

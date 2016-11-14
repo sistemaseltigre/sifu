@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+=======
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+>>>>>>> e6ca0ecda757c3168f024ece8d18a25e88a8eeaa
 
 @font-face {
     font-family: "Montsrrat-Bold";
@@ -9,7 +13,10 @@
 }
 body {
   font-family: 'Montsrrat-Regular', sans-serif;
+<<<<<<< HEAD
   font-family: 'Montsrrat', sans-serif;
+=======
+>>>>>>> e6ca0ecda757c3168f024ece8d18a25e88a8eeaa
   font-size: 14px;
   font-weight: 400;
   -webkit-box-sizing: border-box;
@@ -19,6 +26,18 @@ body {
   -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
 }
+.h-divider{
+ margin-top:5px;
+ margin-bottom:5px;
+ margin: 0 auto;
+ height:1px;
+ width:50%;
+ border-top:1px solid gainsboro;
+}
+span .soporte{
+  padding-right: 6px;
+}
+
 a {
   color: #e74c3c;
   -webkit-transition: all 0.2s linear;
@@ -51,8 +70,8 @@ a:hover {
   color: #fff;
 }
 .logo{
-    width: 30px;
-    height: 30px;
+    width: 50px;
+    height: 50px;
     margin-bottom: 10px;
   transition: 2.5s ease;
   -moz-transition: 2.5s ease; /* Firefox */
