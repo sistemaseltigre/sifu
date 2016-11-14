@@ -6,6 +6,10 @@ var banderaLapiz;
 
 
 function initCanvas() {
+
+
+socket.emit('getDatosUsuario',{});
+
   banderaLapiz=0;
   var canvasDiv = document.getElementById('canvasDiv');
   canvas = document.createElement('canvas');
