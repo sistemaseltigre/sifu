@@ -32,6 +32,8 @@ var salir = false;
 //variables globales usuario
 var usuario;
 var clave;
+var user_id;
+var id_sala;
 //le decimos a express cual es la raiz de nuestro directorio
 app.use(express.static(__dirname + '/')); 
 app.use(bodyParser.urlencoded({
@@ -55,6 +57,8 @@ app.get(/sifu/, function(req, res) {
       dbname='sifu_'+dbname[1];
     	spamdin = urldbname.split('_');
       spamdin = spamdin[2];
+  var urlidsala =  urldbname.split('_');   
+      id_sala = urlidsala[3];
       connection = mysql.createConnection({
   		  host     : 'localhost',
   		  user     : 'root',
@@ -74,6 +78,7 @@ io.on('connection', function(socket) {
 
    usuario = req.body.user.username;
    clave = req.body.user.password;
+
   var url = req.body.user.url;
   var sid = req.body.user.sid;
   
@@ -92,6 +97,9 @@ io.on('connection', function(socket) {
             io.to(sid).emit('loginError', { msg: 'Error usuario desconocido, intenta nuevamente' });        
             return false;
         }
+
+        user_id =  rows[0].id;;
+
         if ((bcrypt.compareSync(clave, rows[0].password))==true) {
           res.render('aula.html',function(err, html) {
             res.send(html);
@@ -113,6 +121,7 @@ io.on('connection', function(socket) {
                  // return console.log(err);
               }else{
                  usuario = dprofesor[0].nombre_profesor;
+                 user_id = rows[0].id;
               }
             
             });
@@ -123,6 +132,7 @@ io.on('connection', function(socket) {
                 //return console.log(err);
               }else{
                 usuario = dalumno[0].nombre;
+                user_id = rows[0].id;
               }
         
             });
@@ -152,7 +162,8 @@ io.on('connection', function(socket) {
 	   al profesor en el aula virtual.
 	*/
   socket.on('getDatosUsuario',function(e){
-    socket.emit('datosUsuario', { username:usuario, admin:admin, urlinicio:urlinicio});
+    socket.emit('datosUsuario', { id_sala:id_sala, username:usuario, admin:admin, urlinicio:urlinicio});
+    io.emit('mensajeBienvenida', {username:usuario});
   });
 
 	socket.on('mousedown',function(e){
@@ -189,6 +200,13 @@ io.on('connection', function(socket) {
 	socket.on('streaming',function(e){
 		io.sockets.emit('streaming',e);
 	});
+  ///////////////////////////////PIZARRA//////////////////////////   
+  socket.on('solBorrar',function(e){
+    io.sockets.emit('borrar',e);
+  });
+
+  ///////////////////////////////PIZARRA//////////////////////////
+
 
 	////////////////////////SALIR /////////////////////////
 	

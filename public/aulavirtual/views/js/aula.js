@@ -25,6 +25,11 @@ socket.on('mensajeSalida',function (e) {
 	$("#mensajes_chat").animate({ scrollTop: $('#mensajes_chat')[0].scrollHeight}, 1000);
 });
 
+socket.on('mensajeBienvenida',function (e) {
+	$( "#mensajes_chat" ).append( "<p><b><font color='#000'>"+e.username+"</font></b> <i>ingreso al aula.</i><span></span></p>" );
+	$("#mensajes_chat").animate({ scrollTop: $('#mensajes_chat')[0].scrollHeight}, 1000);
+});
+
 ////////////////////////////////////////////////////////////////
 //////////////FUNCIONES CON JQUERY PARA EL AULA ////////////////
 function toggleChat(){
@@ -42,12 +47,14 @@ function toggleAudio() {
 	}
 	
 }
+
+
 function enviarmensajechat(){
 	chat_user = $('#nombre_usuario').text();
-	chat_msg  = $('#enviarmensajechat').val();
+	chat_msg  = $('#textochat').val();
 	
 	//limpiamos la caja de texto
-	$('#enviarmensajechat').val('');
+	$('#textochat').val('');
 	//verificamos que la cadena no conenga <> para evitar inyeccion HTML ni $
 	validarMensaje(chat_msg);
 	if (validar==0) {chat_msg=null;}

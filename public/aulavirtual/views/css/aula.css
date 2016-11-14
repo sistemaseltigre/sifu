@@ -33,14 +33,13 @@
 	right: 0px;
 	float: right;
 	margin-top: -500px;
-	display: none;
 	overflow-y: auto;
 	overflow-x: none;
 }
 #mensajes_chat{
 	border-color: #fff;
 	border-style: groove;
-	border-width: 1px;
+	/*border-width: 1px;*/
 	width: 250px;
 	height: 400px;
 	right: 20px;
@@ -60,7 +59,7 @@
 	margin-top: 10px;
 	margin-left: 5px;
 }
-#enviarmensajechat{
+#textochat{
 	height: 60px;
 	width: 250px;
 	border-radius: 5px;
