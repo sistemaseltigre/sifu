@@ -12,7 +12,8 @@ var express = require('express')
   ;
 var options = {
   key: fs.readFileSync('C:/xampp/sifusp.key'),
-  cert: fs.readFileSync('C:/xampp/63fb03b3f660e55f.crt')
+  cert: fs.readFileSync('C:/xampp/63fb03b3f660e55f.crt'),
+  ca: fs.readFileSync('C:/xampp/gd_bundle-g2-g1.crt')
 };
 //toca instalar phyton 2.7 y otras cosas para que funcione bycrip https://www.npmjs.com/package/bcrypt
 var app = express();
