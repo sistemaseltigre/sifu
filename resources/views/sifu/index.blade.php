@@ -299,12 +299,18 @@
     </div>
     <div class="contact-info">
         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
-        <p><i class="fa fa-envelope"></i> info@simplepanas.com</p>
+        <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
+        <div class="h-divider"></div><br>
+        <p><i class="fa fa-map-marker"></i> Venezuela, El Tigre</p>
+        <p><i class="fa fa-envelope"></i> ventasve@sifusp.com</p>
+        <div class="h-divider"></div><br>
+        <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p>
+        <div class="h-divider"></div><br>
     </div>
 
-    <p>
+ <!--    <p>
        <a href="http://www.simplepanas.com">-SimplePanas-</a><br>
-   </p>
+   </p> -->
    
 </div>
 
