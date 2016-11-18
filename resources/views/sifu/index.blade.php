@@ -166,11 +166,66 @@
                     </div>
 
                     <div class="footer-price1">
-                        <a href="#"><strong>Comprar Plan</strong> </a><br>
+                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanColombia">
+                          Comprar Plan
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="PlanColombia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
+                              </div>                              
+                              <div class="modal-body">                                  
+                                  <h2 class="subtitle">Transferencia ò Deposito Bancario</h2>
+                                   <table class="table table-hover">
+                                        <thead>
+                                          <tr class="">
+                                            <th>NOMBRE</th>
+                                            <th>NIT</th>
+                                            <th>BANCO</th>
+                                            <th>Nº DE CUENTA</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr class="">
+                                            <td>SIMPLEPANAS SAS</td>
+                                            <td>900999440-1</td>
+                                            <td>BANCOLOMBIA</td>
+                                            <td>67366490709</td>
+                                        </tbody>
+                                      </table>
+                                  <div class="h-divider"></div>
+                                         <h2 class="subtitle">On-Line</h2>
+                                          <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
+                                              <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                             onClick="this.form.urlOrigen.value = window.location.href;"/>
+                                              <input name="buttonId" type="hidden" value="9T4Z25JjWD99rmJWciiFyZazpTqVDe122Gh2WDms0kIusZRxsMPqlA=="/>
+                                              <input name="merchantId" type="hidden" value="585471"/>
+                                              <input name="accountId" type="hidden" value="588457"/>
+                                              <input name="description" type="hidden" value="Plan mensual"/>
+                                              <input name="referenceCode" type="hidden" value="C01"/>
+                                              <input name="amount" type="hidden" value="70000"/>
+                                              <input name="tax" type="hidden" value="0"/>
+                                              <input name="taxReturnBase" type="hidden" value="0"/>
+                                              <input name="shipmentValue" value="0" type="hidden"/>
+                                              <input name="currency" type="hidden" value="COP"/>
+                                              <input name="lng" type="hidden" value="es"/>
+                                              <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
+                                              <input name="buttonType" value="SIMPLE" type="hidden"/>
+                                              <input name="signature" value="f5025ae456b29a942f9e1c857751ed7e00eb9e6bc7e58a3cedbb0ba894466bd8" type="hidden"/>
+                                        </form>                                                                                  </div>                               
+                                                                    
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
 
@@ -185,11 +240,83 @@
                     </div>
 
                     <div class="footer-price1">
-                        <a href="#"><strong>Comprar Plan</strong> </a><br>
+                                                <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanVnz">
+                          Comprar Plan
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="PlanVnz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
+                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
+                              </div>
+                              
+                              <div class="modal-body">   
+                                                             
+                                  <h2  class="subtitle">Transferencia ò Deposito Bancario</h2>
+                                   <table class="table table-hover">
+                                        <thead>
+                                          <tr class="">
+                                            <th>NOMBRE</th>
+                                            <th>RIF</th>
+                                            <th>BANCO</th>
+                                            <th>Nº DE CUENTA</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr class="">
+                                            <td>TEXOR COMPUTERS CA</td>
+                                            <td>J-29772075-8</td>
+                                            <td>BOD</td>
+                                            <td>0116-0152-96-0010357084</td>
+                                        </tbody>
+                                      </table> 
+                                      <div class="h-divider"></div><br> 
+                                        <h2 class="subtitle">Pago On-line</h2>                                                              
+                                         <div class="container text-center">
+                                           <div class="">
+                                            <div class="col-md-3">
+                                                <div>
+                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/<<M></M>LV-></MLV->479140534-sistema-administrativo-para-colegios-sifu-_JM">
+                                                      <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
+                                                     </a>                                                     
+                                                </div>                                         
+                                            </div>                                     
+                                        <div class="col-md-3">
+                                            <div>
+                                                <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
+                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;"/>
+                                                      <input name="buttonId" type="hidden" value="rgi9g9Z3oIlP623+BSk3287x7ZXwTUgrBXxFnae7e3n0m55ppw3XPg=="/>
+                                                      <input name="merchantId" type="hidden" value="585471"/>
+                                                      <input name="accountId" type="hidden" value="588457"/>
+                                                      <input name="description" type="hidden" value="Plan mensual"/>
+                                                      <input name="referenceCode" type="hidden" value="VE01"/>
+                                                      <input name="amount" type="hidden" value="15000.00"/>
+                                                      <input name="tax" type="hidden" value="0.00"/>
+                                                      <input name="taxReturnBase" type="hidden" value="0"/>
+                                                      <input name="shipmentValue" value="0.00" type="hidden"/>
+                                                      <input name="currency" type="hidden" value="VEF"/>
+                                                      <input name="lng" type="hidden" value="es"/>
+                                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
+                                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
+                                                      <input name="signature" value="d2d1fca56ab5ff82ee339b41bc70125f39ee0e9968a6b14644a63399684ae891" type="hidden"/>
+                                                </form>                                    
+                                            </div>                                     
+                                        </div>
+                                    </div>                                                                        
+                                </div>                                
+                              </div>
+                              
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
 
@@ -204,16 +331,49 @@
                     </div>
 
                     <div class="footer-price1">
-                        <a href="#"><strong>Comprar Plan</strong> </a><br>
+                                                                        <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanMundo">
+                          Comprar Plan
+                        </button>
 
+                        <!-- Modal -->
+                        <div class="modal fade" id="PlanMundo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
+                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
+                              </div>
+                              <h2 class="subtitle">On-Line</h2>
+                              
+                              <div class="modal-body">                                  
+                                  <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
+                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                     onClick="this.form.urlOrigen.value = window.location.href;"/>
+                                      <input name="buttonId" type="hidden" value="oV8dAckyd/NigAZCICtI6EaTthgzyZiRb31eN+u+Wj7w47dIxBovWw=="/>
+                                      <input name="merchantId" type="hidden" value="585471"/>
+                                      <input name="accountId" type="hidden" value="588457"/>
+                                      <input name="description" type="hidden" value="Plan mensual"/>
+                                      <input name="referenceCode" type="hidden" value="USD01"/>
+                                      <input name="amount" type="hidden" value="28.90"/>
+                                      <input name="tax" type="hidden" value="0.00"/>
+                                      <input name="taxReturnBase" type="hidden" value="0"/>
+                                      <input name="shipmentValue" value="0.00" type="hidden"/>
+                                      <input name="currency" type="hidden" value="USD"/>
+                                      <input name="lng" type="hidden" value="es"/>
+                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
+                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
+                                      <input name="signature" value="1f4fb684c59c9813a4324d934249f0a5db093201ca11c2106fd70a3f3b27405c" type="hidden"/>
+                                    </form>                                
+                              
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
-
-
-
         </div>
     </div>
 </div>
