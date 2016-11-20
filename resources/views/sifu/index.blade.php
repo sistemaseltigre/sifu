@@ -13,6 +13,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }} ">
        
         <!-- letras -->
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type='text/css'>
+
         <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/') }} ">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/Montsrrat-Regular.ttf') }} "> -->
 
@@ -82,7 +84,7 @@
 
                 <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="assets/img/hero/macbook.gif" alt="">
 
-                <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
+                <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5 font-ul">
                     
                     <ul>            
                         SIFU es una plataforma digital contenida en la nube, con una interface muy sencilla y amigable que te permite administrar tu colegio en diferentes niveles.           
@@ -201,7 +203,7 @@
                                   <div class="h-divider"></div>
                                          <h2 class="subtitle">On-Line</h2>
                                           <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                              <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                             onClick="this.form.urlOrigen.value = window.location.href;"/>
+                                              <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                             onClick="this.form.urlOrigen.value = window.location.href;" />
                                               <input name="buttonId" type="hidden" value="9T4Z25JjWD99rmJWciiFyZazpTqVDe122Gh2WDms0kIusZRxsMPqlA=="/>
                                               <input name="merchantId" type="hidden" value="585471"/>
                                               <input name="accountId" type="hidden" value="588457"/>
@@ -288,7 +290,7 @@
                                         <div class="col-md-3">
                                             <div>
                                                 <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;"/>
+                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;" />
                                                       <input name="buttonId" type="hidden" value="rgi9g9Z3oIlP623+BSk3287x7ZXwTUgrBXxFnae7e3n0m55ppw3XPg=="/>
                                                       <input name="merchantId" type="hidden" value="585471"/>
                                                       <input name="accountId" type="hidden" value="588457"/>
@@ -348,8 +350,8 @@
                               
                               <div class="modal-body">                                  
                                   <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                     onClick="this.form.urlOrigen.value = window.location.href;"/>
-                                      <input name="buttonId" type="hidden" value="oV8dAckyd/NigAZCICtI6EaTthgzyZiRb31eN+u+Wj7w47dIxBovWw=="/>
+                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                     onClick="this.form.urlOrigen.value = window.location.href;" />
+                                      <input name="buttonId" type="hidden" value="oV8dAckyd/NigAZCICtI6EaTthgzyZiRb31eN+u+Wj7w47dIxBovWw==" />
                                       <input name="merchantId" type="hidden" value="585471"/>
                                       <input name="accountId" type="hidden" value="588457"/>
                                       <input name="description" type="hidden" value="Plan mensual"/>
@@ -422,20 +424,20 @@
                         
                         
                         <label>Nombre</label>
-                        <input type="text" class="form-control name" placeholder="Nombre" name="name" id="nombre">
+                        <input type="text" class="form-control name hover" placeholder="Nombre" name="name" id="nombre" required autocomplete="off" >
                         
                         
                     </div>
                     <div class="form-group">
                         <div class="controls">
                            <label>Correo</label>
-                           <input type="email" class="form-control email" placeholder="Email" name="email">
+                           <input type="email" class="form-control email hover" placeholder="Email" name="email" required autocomplete="off" >
                        </div>
                    </div>
                    <div class="form-group">
                     <div class="controls">
                        <label>Asunto</label>
-                       <input type="text" class="form-control requiredField" placeholder="Asunto" name="subject">
+                       <input type="text" class="form-control requiredField hover" placeholder="Asunto" name="subject" required autocomplete="off" >
                    </div>
                </div>
 
@@ -443,7 +445,7 @@
 
                 <div class="controls">
                    <label>Mensaje</label>
-                   <textarea rows="7" class="form-control" placeholder="Mensaje" name="mensaje"></textarea>
+                   <textarea rows="7" class="form-control hover" placeholder="Mensaje" name="mensaje" required  autocomplete="off" a></textarea>
                </div>
            </div>
            <button type="submit" class="btn btn-lg btn-common">Enviar</button><div id="success" style="color:#34495e;"></div>
@@ -460,9 +462,11 @@
     <div class="contact-info">
         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
         <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +57-318-2852274</p>
         <div class="h-divider"></div><br>
         <p><i class="fa fa-map-marker"></i> Venezuela, El Tigre</p>
         <p><i class="fa fa-envelope"></i> ventasve@sifusp.com</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +58-416-0815904</p>
         <div class="h-divider"></div><br>
         <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p>
         <div class="h-divider"></div><br>

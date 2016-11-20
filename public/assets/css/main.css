@@ -34,8 +34,21 @@ body {
  width:50%;
  border-top:1px solid gainsboro;
 }
+.font-ul{
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+}
 span .soporte{
   padding-right: 6px;
+}
+input.hover:hover{
+    background-color: #34495e;
+    color:white;
+}
+textarea.hover:hover{
+    background-color: #34495e;
+    color:white;
+
 }
 
 a {
