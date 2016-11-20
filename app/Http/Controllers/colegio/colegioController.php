@@ -158,7 +158,7 @@ class colegioController extends Controller
 			Mail::send('colegio.correo.send_contact', ['name' => $name,'email' => $email,'mensaje' => $mensaje,'subject' => $subject], function ($m) use ($email,$name,$mensaje,$subject) {
             $m->from($email, $name);
 
-            $m->to('spsifu@gmail.com', '')->subject('Contacto web sifu');
+            $m->to('soporte@sifusp.com', '')->subject('Contacto web sifu');
         	});
 			$send_res = 1;
         	return redirect('/')->with('send_res');
