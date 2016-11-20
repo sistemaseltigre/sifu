@@ -10,10 +10,27 @@ var express = require('express')
   , bcrypt = require('bcryptjs')
   , ms = require('mediaserver')
   ;
+
+    
+/*
+read = fs.readFileSync,
+    options = {
+        key: read('C:/xampp/sifusp.key', 'utf8'),
+        cert:   read('C:/xampp/63fb03b3f660e55f.crt', 'utf8')
+        ca: [
+            read('C:/xampp/g1.crt', 'utf8'),
+            read('C:/xampp/g2.crt', 'utf8'),
+            read('C:/xampp/g3.crt', 'utf8')
+        ]
+    };
+*/
 var options = {
   key: fs.readFileSync('C:/xampp/sifusp.key'),
   cert: fs.readFileSync('C:/xampp/63fb03b3f660e55f.crt'),
-  ca: fs.readFileSync('C:/xampp/gd_bundle-g2-g1.crt')
+  ca: [
+            fs.readFileSync('C:/xampp/g1.crt'),
+            fs.readFileSync('C:/xampp/g2.crt')
+        ]
 };
 //toca instalar phyton 2.7 y otras cosas para que funcione bycrip https://www.npmjs.com/package/bcrypt
 var app = express();
