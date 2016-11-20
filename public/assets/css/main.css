@@ -26,6 +26,9 @@ body {
   -webkit-backface-visibility: hidden; 
   backface-visibility: hidden;
 }
+iframe{
+    border: none;
+}
 .h-divider{
  margin-top:5px;
  margin-bottom:5px;

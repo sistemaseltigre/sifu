@@ -54,8 +54,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home"><i><img class="logo" src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
-                 SIFU</a>
+                <a class="navbar-brand" href="#home">
+                <i>
+                <img class="logo" src="https://www.sifusp.com/img/logo.png" height="100%" width="10%">
+                </i>SIFU
+                </a>
+
              </div>
 
              <div class="collapse navbar-collapse" id="navbar">
@@ -82,7 +86,10 @@
                 <h1 class="title">SIFU</h1>
                 <h2 class="subtitle">Llevar el control de tu colegio nunca fue tan fácil.</h2>
 
-                <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="assets/img/hero/macbook.gif" alt="">
+<!--                <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="assets/img/hero/macbook.gif" alt="">-->
+                    <iframe class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" width="420" height="315"
+                        src="https://www.youtube.com/embed/xN0hECCjUW4?autoplay=1">
+                    </iframe>
 
                 <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5 font-ul">
                     
@@ -462,11 +469,11 @@
     <div class="contact-info">
         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
         <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +57-318-2852274</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +57 318 2852274</p>
         <div class="h-divider"></div><br>
         <p><i class="fa fa-map-marker"></i> Venezuela, El Tigre</p>
         <p><i class="fa fa-envelope"></i> ventasve@sifusp.com</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +58-416-0815904</p>
+        <p><span class="glyphicon glyphicon-phone"></span> +58 416 0815904</p>
         <div class="h-divider"></div><br>
         <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p>
         <div class="h-divider"></div><br>
