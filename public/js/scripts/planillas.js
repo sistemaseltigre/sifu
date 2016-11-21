@@ -1,6 +1,6 @@
    $(document).ready(function(){  
    	console.log("on");
-
+$('.chosen-select').chosen();
     $("#btnBuscarCertificado").click(function(){
        var alumno_id=$('#cmbAlumno').val();
        var planilla_id=$('#cmbPlanilla').val();

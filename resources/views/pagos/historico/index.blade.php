@@ -15,8 +15,8 @@
     <div class="x_content">
       <div class="well ">
         <div class="col-xs-12 col-sm-4  col-sm-offset-4">
-          <select class="form-control chosen-select" name="cmbAlumno" id="cmbAlumno">
-            <option>Seleccione</option>
+          <select class="form-control chosen-select" name="cmbAlumno" id="cmbAlumno" data-placeholder="Seleccione Alumno">
+            <option></option>
             @foreach ($pagos as $pago)
             <option value="{{ $pago->alumno->idalumno }}">{{ $pago->alumno->cedula }}</option>
             @endforeach

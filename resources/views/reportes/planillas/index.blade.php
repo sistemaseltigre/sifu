@@ -27,8 +27,8 @@
         <div class="form-group">
           <div class="col-lg-12">          
            <div class="input-group">             
-            <select name="cmbAlumno" id="cmbAlumno" class="form-control">
-              <option>Alumnos</option>  
+            <select name="cmbAlumno" id="cmbAlumno" class="form-control chosen-select" data-placeholder="Alumno">
+              <option></option>  
               @foreach ($alumnos as $alumno)
               <option value="{{ $alumno->alumno_id }}">{{ $alumno->alumno->cedula }}</option>  
               @endforeach                   

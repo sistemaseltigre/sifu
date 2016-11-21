@@ -10,9 +10,6 @@
                </tr>
            </thead>
            <tbody id="contenido">
-           <?php
-           $dbname = Session::get('dbName');  
-           $idusuario = Auth::user()->id;$aulas = \App\aulaVirtual\aulaVirtualModel::where('idusuario', '=', $idusuario)->paginate(5);   ?>
                @foreach ($aulas as $aula)
                <tr>
                    <td>{{ $aula->asunto }}</td>

@@ -27,6 +27,7 @@ class alumnosController extends Controller
 	{
 		$data['colegio']=colegio::all()->first();         
 		$data['alumnos']=seccion::where('seccion_id','=',$id)->get();
+		$data['seccion']=seccion::where('seccion_id','=',$id)->first();
 		 $view =  \View::make('pdf.alumnos.seccion', $data)->render();
         $pdf = \App::make('dompdf.wrapper');
         $pdf->loadHTML($view);

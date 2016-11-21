@@ -31,4 +31,8 @@ public function pagos()
 {
   return $this->hasMany('App\pagos\pagosModel','alumno_id','alumno_id');
 }
+public function cuota()
+{
+  return $this->belongsTo('App\mensualidad\cuotas');
+}
 }

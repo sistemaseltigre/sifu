@@ -25,13 +25,13 @@
     <li>
       <a href="{{ asset('/config_banco') }}">Configurar Bancos</a>
     </li>
-    <li><a><i class="fa fa-credit-card"></i> Configurar Pagos <span class="fa fa-chevron-down"></span></a>
+    <li><a>Configurar Pagos <span class="fa fa-chevron-down"></span></a>
       <ul class="nav child_menu">
         <li><a href="{{ asset('/config_monto_inscripcion') }}">Inscripción</a></li>
         <li><a href="{{ asset('/config_cuotas') }}">Cuotas</a></li>
       </ul>
     </li>  
-     <li>
+    <li>
       <a href="{{ asset('/documentos-consignar') }}">Documentos a consignar</a>
     </li>      
     <li>
@@ -40,11 +40,15 @@
     <li>
       <a href="{{ asset('/lista_preinscripcion') }}">Formalizar Inscripcion</a>
     </li>  
-    <h3>Configurar Planillas</h3>
-    <li>
-      <a href="{{ asset('/configurar/planilla/') }}">Empezar</a>
-    </li>    
-  </ul>
+    <li><a>Configurar Planillas <span class="fa fa-chevron-down"></span></a>
+      <ul class="nav child_menu">
+       <li>
+        <a href="{{ asset('/configurar/planilla/') }}">Empezar</a>
+      </li>    
+    </ul>
+  </li>  
+  
+</ul>
 </li>
 
 <li>
