@@ -35,6 +35,6 @@ public static function allSeccion()
   }
   public function gradoModel()
   {
-    return $this->belongsTo('App\configuracion\gradoModel');
+    return $this->belongsTo('App\configuracion\gradoModel','grado_id','idgrado');
   }
 }

@@ -2,7 +2,7 @@
   body {font-family: Arial, Helvetica, sans-serif;}
 
   .table {     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
-  font-size: 12px;    margin: 45px;     width:100%; text-align: left;    border-collapse: collapse; }
+  font-size: 12px;    margin: 15px;     width:100%; text-align: left;    border-collapse: collapse; }
 
   .table th {     font-size: 13px;     font-weight: normal;     padding: 8px;     background: #011246;
     border-top: 4px solid #cecece;    border-bottom: 1px solid #cecece; color: #ffffff; }
@@ -34,6 +34,7 @@
       border-top: 1px solid #cecece;    border-bottom: 1px solid #cecece; color: #000000; text-align: justify; }
     </style>
 
+
     <table id="cabecera" class="cabecera">
      <thead>
        <tr>
@@ -50,6 +51,7 @@
        </tr>
      </thead>
    </table>
+   <h4>Metodo Seleccionado >> {{ $metodo->descripcion }}</h4>
  <div class="table-responsive">
  <table id="datatables" class="table table-striped jambo_table table-condensed">
    <thead>

@@ -12,6 +12,7 @@ use \App\pagos\pagosModel as pagos;
 use \App\inscripcion\alumnos_inscritos as alumnos_inscritos;
 use \App\configuracion\colegioModel as colegio;
 use \App\pagos\detalles_pagosModel as detalles;
+use \App\configuracion\cuotasModel as  cuota;
 class historicoController extends Controller
 {
 	public function pagos_general($id)
@@ -56,7 +57,7 @@ class historicoController extends Controller
 	{
 		$data['alumnos']=alumnos_inscritos::where('cuota_id','=',$id)->get();		
 		$data['colegio']=colegio::all()->first();        
-
+		$data['metodo']=cuota::find($id);
 		$view =  \View::make('pdf.historico.metodo_pago', $data)->render();
 		$pdf = \App::make('dompdf.wrapper');
 		$pdf->loadHTML($view);
@@ -66,7 +67,8 @@ class historicoController extends Controller
 
 	public function tipo_pago($tipo)
 	{
-		$data['detalles']=detalles::where('tipo','=',$tipo)->where('estatus','=','procesado')->get();		
+		$data['detalles']=detalles::where('tipo','=',$tipo)->where('estatus','=','procesado')->get();	
+		$data['tipo']=$tipo;	
 		$data['colegio']=colegio::all()->first();        
 		$view =  \View::make('pdf.historico.tipo_pago', $data)->render();
 		$pdf = \App::make('dompdf.wrapper');

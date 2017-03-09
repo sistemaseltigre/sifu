@@ -134,10 +134,7 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
  Route::get('generarHorario_seccion/{id}', 'configuracion\horarioController@generarHorario_seccion');
  Route::get('/getHorario_seccion/{id}', 'configuracion\horarioController@getHorario_seccion');
 
-//aula virtual
- Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
- Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
- Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
+
 
 //crud Seccion
  Route::get('config_seccion', 'configuracion\seccionController@index');
@@ -201,7 +198,7 @@ Route::group(['middleware' => ['auth','rol:admin']], function(){
  Route::get('config_periodo/delete/{id?}','configuracion\periodoController@delete');
  Route::get('config_periodo/activar/{id}', 'configuracion\periodoController@activar');
  Route::get('config_periodo/desactivar/{id}', 'configuracion\periodoController@desactivar');
-
+ Route::post('config_periodo/importar', 'configuracion\periodoController@importar');
 
  Route::get('pagos/registrar', 'pagos\pagosController@registrar');
   Route::get('pagos/buscar/{id}', 'pagos\pagosController@buscar');//registrar pagos
@@ -273,6 +270,12 @@ Route::group(['middleware' => ['auth','rol:admin_profesor']], function(){
   Route::post('eventos/create', 'eventos\eventosController@create');
   Route::post('eventos/update', 'eventos\eventosController@update');
   Route::get('eventos/delete/{id}', 'eventos\eventosController@delete');
+
+  //aula virtual
+ Route::resource('/crear_aula', 'aulaVirtual\aulaVirtualController@index');
+ Route::resource('/asignar_aula', 'aulaVirtual\aulaVirtualController@crear_aula');
+
+
 });
 
 
@@ -348,6 +351,8 @@ Route::group(['middleware' => ['rol:todos']], function(){
 
   Route::get('/alumno/getNotas', 'alumno\notasController@index');
   Route::get('/alumno/notas/materia/{materia_id}/', 'alumno\notasController@getNotas');
+  Route::resource('/disponible-alumnos', 'aulaVirtual\aulaVirtualController@disponible');
+   Route::resource('/aula', 'aulaVirtual\aulaVirtualController@aula');
 
 });
 

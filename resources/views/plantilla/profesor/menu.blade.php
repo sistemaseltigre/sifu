@@ -60,4 +60,13 @@
               </ul> --}}
               <!-- /.nav-second-level -->
             </li>
+            <li>
+  <a href="#"><i class="fa fa-desktop" aria-hidden="true"></i> Aula Virtual <span class="fa fa-chevron-down"></span></a>
+  <ul class="nav child_menu">
+    <li>
+      <a href="{{ asset('crear_aula') }}">Crear</a>
+    </li>
+  </ul> 
+  <!-- menu aula virtual -->
+</li>
 
