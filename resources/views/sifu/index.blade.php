@@ -338,7 +338,7 @@
                  
                     <span class="precio-total">Anual</span>
                     <div class="contenedor-price">
-                        <p class="body-price1"><span class="precio-total"><font color="black">300.000Bs</font></span></p>
+                        <p class="body-price1"><span class="precio-total"><font color="black">300.000</font></span></p>
                         <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares Anual</p>            
                         <p class="body-price1"></p>                   
                     </div>
