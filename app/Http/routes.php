@@ -322,6 +322,8 @@ Route::get('preinscripcion/cargar_representante/{id}', 'preinscripcion\preinscri
 Route::get('preinscripcion/cargar_delegado/{id}', 'preinscripcion\preinscripcionController@cargar_delegado');
 Route::get('preinscripcion/cargar_alumno/{id}', 'preinscripcion\preinscripcionController@cargar_alumno');
 Route::post('preinscripcion/procesar', 'preinscripcion\preinscripcionController@procesar');
+
+Route::get('preinscripcion/edit/{id}', 'preinscripcion\preinscripcionController@editar_preinscripcion');
  // crud datos alumnos
 Route::post('alumno/create', 'preinscripcion\preinscripcionController@create_alumno');
 Route::get('alumno/edit/{id}', 'preinscripcion\preinscripcionController@edit_alumno');

@@ -45,9 +45,11 @@
                   <div class="col-lg-8">
                     <select name="cmbGrado" id="cmbGrado" class="form-control">
                       <option value="default">Seleccione</option>
+                      @if(isset($grados))                      
                       @foreach ($grados as $grado)
                       <option value="{{ $grado->idgrado }}">{{ $grado->grado }}</option>
                       @endforeach
+                      @endif
                     </select>
                   </div>
                 </div>

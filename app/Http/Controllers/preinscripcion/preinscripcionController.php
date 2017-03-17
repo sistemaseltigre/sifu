@@ -136,4 +136,15 @@ public function delete_alumno(Request $request, $id)
    $datos = alumnoModel::deleteAlumno($id);
     $this->show_alumno($request);
 }
+
+public function editar_preinscripcion($id)
+{
+$data['representante']=representanteModel::findOrFail($id);
+$data['datos']=alumnoModel::join('grado','grado.idgrado','=','alumno.grado_id')
+                      ->where('representante_id','=',$id)->get();
+$data['delegado']=delegadoModel::where('representante_id', $id)->first();
+$data['grados']=gradoModel::allGrados();
+   $data['documentos']=documentos::all();
+return view('preinscripcion.edit', $data);
+}
 }

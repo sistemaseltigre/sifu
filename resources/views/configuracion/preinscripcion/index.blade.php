@@ -1,6 +1,6 @@
 @extends('plantilla.layaout')
 @section('content')
-<script src="js/scripts/grado.js"> </script>
+<script src="js/scripts/grado.js?v=2"> </script>
 
 <ul class="nav nav-tabs">
   <li class="active"><a href="#pendientes" data-toggle="tab">Alumnos Pendientes</a></li>

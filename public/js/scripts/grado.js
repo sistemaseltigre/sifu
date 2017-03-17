@@ -170,3 +170,9 @@ $('#txtCedula').mask('00000000');*/
         } });
 
     }
+
+
+   function edit(id)
+   {
+$('#modal-edit').modal('show');
+   }

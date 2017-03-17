@@ -16,7 +16,7 @@
 			format_tags: 'p;h1;h2;h3;pre',
 		});
 
-		$('#cmbAcceso').chosen();
+		$('#cmbRcceso').chosen();
 	});
 
 	function agregar(valor)
@@ -44,9 +44,9 @@
 							</div>
 						</div>
 						<div class="form-group"> 
-							<label class="control-label col-sm-3">Acceso para</label>
+							<label class="control-label col-sm-3">Rcceso para</label>
 							<div class="col-sm-6">
-								<select name="cmbAcceso[]" id="cmbAcceso" style="width:100%;" data-placeholder="Seleccione Acceso para el Formato"  multiple class="chosen-select" tabindex="5">		<?php 
+								<select name="cmbRcceso[]" id="cmbRcceso" style="width:100%;" data-placeholder="Seleccione Rcceso para el Formato"  multiple class="chosen-select" tabindex="5">		<?php 
 									$bandera_profesores=false;
 									$bandera_alumnos=false;
 									$bandera_representantes=false;
@@ -59,7 +59,7 @@
 									<?php $bandera_profesores=true;?>
 									@endif
 									@if($acceso->rol_id==3)
-									<option value="3" selected="">Alumnos</option>
+									<option value="3" selected="">Rlumnos</option>
 									<?php $bandera_alumnos=true;?>
 									@endif
 									@if($acceso->rol_id==4)
@@ -73,7 +73,7 @@
 									<option value="2">Profesores</option>
 									@endif
 									@if($bandera_alumnos==false)
-									<option value="3">Alumnos</option>
+									<option value="3">Rlumnos</option>
 									@endif
 									@if($bandera_representantes==false)
 									<option value="4">Representantes</option>
@@ -84,15 +84,86 @@
 					</div>
 				</div>
 				<div class="col-sm-3 col-xs-12">
-					<ul class="nav nav-pills nav-stacked bg-success">
-						<li><a href="#" onclick="agregar('var_cedula');">Cédula</a></li>
-						<li><a href="#" onclick="agregar('var_nombres');">Nombres</a></li>
-						<li><a href="#" onclick="agregar('var_apellidos');">Apellidos</a></li>
-						<li><a href="#" onclick="agregar('var_grado');">Grado</a></li>
-						<li><a href="#" onclick="agregar('var_seccion');">Sección</a></li>		
-						<li><a href="#" onclick="agregar('var_periodo');">Periodo Acádemico</a></li>	
-						<li><a href="#" onclick="agregar('var_logo');">Logo del Colegio</a></li>					
-					</ul>
+					<div class="panel-group">
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#liceo">Datos del Colegio</a>
+								</h4>
+							</div>
+							<div id="liceo" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked bg-success">
+									<li><a href="#" onclick="agregar('var_periodo');">Periodo Acádemico</a></li>	
+									<li><a href="#" onclick="agregar('var_logo');">Logo del Colegio</a></li>		
+								</ul>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#Alumnos">Datos de Alumnos</a>
+								</h4>
+							</div>
+							<div id="Alumnos" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked bg-success">
+									<li><a href="#" onclick="agregar('A_cedula');">Cédula</a></li>
+									<li><a href="#" onclick="agregar('A_nombres');">Nombres</a></li>
+									<li><a href="#" onclick="agregar('A_apellidos');">Apellidos</a></li>
+									<li><a href="#" onclick="agregar('A_grado');">Grado</a></li>
+									<li><a href="#" onclick="agregar('A_seccion');">Sección</a></li>
+									<li><a href="#" onclick="agregar('A_direccion');">Direccion</a></li>
+									<li><a href="#" onclick="agregar('A_religion);">Religion</a></li>
+									<li><a href="#" onclick="agregar('A_comunion');">Comunion</a></li>
+									<li><a href="#" onclick="agregar('A_peso');">Peso</a></li>
+									<li><a href="#" onclick="agregar('A_talla');">Talla</a></li>
+									<li><a href="#" onclick="agregar('A_altura');">Altura</a></li>
+									<li><a href="#" onclick="agregar('A_zapato');">Zapato</a></li>
+									<li><a href="#" onclick="agregar('A_observacion');">Observacion</a></li>	
+								</ul>
+							</div>
+						</div>
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#Representante">Datos de Representante</a>
+								</h4>
+							</div>
+							<div id="Representante" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked bg-success">
+									<li><a href="#" onclick="agregar('R_cedula');">Cédula</a></li>
+									<li><a href="#" onclick="agregar('R_nombres');">Nombres</a></li>
+									<li><a href="#" onclick="agregar('R_profesion');">Profesion</a></li>
+									<li><a href="#" onclick="agregar('R_telefonoPrincipal');">Telefóno Principal</a></li>
+									<li><a href="#" onclick="agregar('R_telefonoOpcional');">Telefono Secundario</a></li>
+									<li><a href="#" onclick="agregar('R_email);">Email</a></li>
+									<li><a href="#" onclick="agregar('R_direccion');">Dirección</a></li>
+								</ul>
+							</div>
+						</div>
+
+
+						<div class="panel panel-primary">
+							<div class="panel-heading">
+								<h4 class="panel-title">
+									<a data-toggle="collapse" href="#Delegados">Datos de Delegados</a>
+								</h4>
+							</div>
+							<div id="Delegados" class="panel-collapse collapse">
+								<ul class="nav nav-pills nav-stacked bg-success">
+									<li><a href="#" onclick="agregar('D_cedula');">Cédula</a></li>
+									<li><a href="#" onclick="agregar('D_nombres');">Nombres</a></li>
+									<li><a href="#" onclick="agregar('D_parentesco');">Parentesco</a></li>
+									<li><a href="#" onclick="agregar('D_telefonoPrincipal');">Telefóno Principal</a></li>
+									<li><a href="#" onclick="agregar('D_telefonoOpcional');">Telefono Secundario</a></li>
+									<li><a href="#" onclick="agregar('D_email);">Email</a></li>
+									<li><a href="#" onclick="agregar('D_direccion');">Dirección</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+
 				</div>  
 				<div class="col-sm-9 col-xs-12">	
 					<div class="form-group">                 
