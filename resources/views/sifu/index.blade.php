@@ -384,7 +384,7 @@
                                            <div class="">
                                             <div class="col-md-6">
                                                 <div>
-                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/<<M></M>LV-></MLV->479140534-sistema-administrativo-para-colegios-sifu-_JM">
+                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/MLV-488047358-sistema-de-gestion-para-escuelas-liceos-otros-plan-anual-_JM">
                                                       <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
                                                      </a>                                                     
                                                 </div>                                         
