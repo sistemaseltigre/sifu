@@ -164,7 +164,7 @@
             <h2 class="subtitle">Disfruta de una excelente plataforma</h2>
 
             <div class="wow fadeInDown ">
-               <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
+<!--                <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
                 <div class="precio1-des">
                  
                     <span class="precio-total">Mensual</span>
@@ -174,14 +174,16 @@
                         <p class="body-price1"></p>                   
                     </div>
 
-                    <div class="footer-price1">
+                    <div class="footer-price1"> -->
+
+
                         <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanColombia">
+<!--                         <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanColombia">
                           Comprar Plan
-                        </button>
+                        </button> -->
 
                         <!-- Modal -->
-                        <div class="modal fade" id="PlanColombia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <!-- <div class="modal fade" id="PlanColombia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -236,15 +238,108 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
+            </div> -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6  col-sm-6 col-xs-12 col-md-offset-2 precio1 ">
                 <div class="precio1-des">
                  
                     <span class="precio-total">Mensual</span>
                     <div class="contenedor-price">
-                        <p class="body-price1"><span class="precio-total"><font color="black">15.000Bs</font></span></p>
+                        <p class="body-price1"><span class="precio-total"><font color="black">30.000</font></span></p>
                         <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares al mes</p>            
+                        <p class="body-price1"></p>                   
+                    </div>
+
+                    <div class="footer-price1">
+                                                <!-- Button trigger modal -->
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanVnzMensual">
+                          Comprar Plan
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="PlanVnzMensual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
+                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
+                              </div>
+                              
+                              <div class="modal-body">   
+                                                             
+                                  <h2  class="subtitle">Transferencia ò Deposito Bancario</h2>
+                                   <table class="table table-hover">
+                                        <thead>
+                                          <tr class="">
+                                            <th>NOMBRE</th>
+                                            <th>RIF</th>
+                                            <th>BANCO</th>
+                                            <th>Nº DE CUENTA</th>
+                                          </tr>
+                                        </thead>
+                                        <tbody>
+                                          <tr class="">
+                                            <td>TEXOR COMPUTERS CA</td>
+                                            <td>J-29772075-8</td>
+                                            <td>BOD</td>
+                                            <td>0116-0152-96-0010357084</td>
+                                        </tbody>
+                                      </table> 
+                                      <div class="h-divider"></div><br> 
+                                        <h2 class="subtitle">Pago On-line</h2>                                                              
+                                         <div class="container text-center">
+                                           <div class="">
+                                            <div class="col-md-6">
+                                                <div>
+                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/<<M></M>LV-></MLV->479140534-sistema-administrativo-para-colegios-sifu-_JM">
+                                                      <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
+                                                     </a>                                                     
+                                                </div>                                         
+                                            </div>                                     
+<!--                                         <div class="col-md-3">
+                                            <div>
+                                                <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
+                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;" />
+                                                      <input name="buttonId" type="hidden" value="rgi9g9Z3oIlP623+BSk3287x7ZXwTUgrBXxFnae7e3n0m55ppw3XPg=="/>
+                                                      <input name="merchantId" type="hidden" value="585471"/>
+                                                      <input name="accountId" type="hidden" value="588457"/>
+                                                      <input name="description" type="hidden" value="Plan mensual"/>
+                                                      <input name="referenceCode" type="hidden" value="VE01"/>
+                                                      <input name="amount" type="hidden" value="15000.00"/>
+                                                      <input name="tax" type="hidden" value="0.00"/>
+                                                      <input name="taxReturnBase" type="hidden" value="0"/>
+                                                      <input name="shipmentValue" value="0.00" type="hidden"/>
+                                                      <input name="currency" type="hidden" value="VEF"/>
+                                                      <input name="lng" type="hidden" value="es"/>
+                                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
+                                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
+                                                      <input name="signature" value="d2d1fca56ab5ff82ee339b41bc70125f39ee0e9968a6b14644a63399684ae891" type="hidden"/>
+                                                </form>                                    
+                                            </div>                                     
+                                        </div> -->
+                                    </div>                                                                        
+                                </div>                                
+                              </div>
+                              
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+                        <div class="col-md-6  col-sm-6 col-xs-12 col-md-offset-3  precio1 ">
+                <div class="precio1-des">
+                 
+                    <span class="precio-total">Anual</span>
+                    <div class="contenedor-price">
+                        <p class="body-price1"><span class="precio-total"><font color="black">300.000</font></span></p>
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares Anual</p>            
                         <p class="body-price1"></p>                   
                     </div>
 
@@ -287,14 +382,14 @@
                                         <h2 class="subtitle">Pago On-line</h2>                                                              
                                          <div class="container text-center">
                                            <div class="">
-                                            <div class="col-md-3">
+                                            <div class="col-md-6">
                                                 <div>
-                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/<<M></M>LV-></MLV->479140534-sistema-administrativo-para-colegios-sifu-_JM">
+                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/MLV-488047358-sistema-de-gestion-para-escuelas-liceos-otros-plan-anual-_JM">
                                                       <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
                                                      </a>                                                     
                                                 </div>                                         
                                             </div>                                     
-                                        <div class="col-md-3">
+<!--                                         <div class="col-md-3">
                                             <div>
                                                 <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
                                                       <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;" />
@@ -315,7 +410,7 @@
                                                 </form>                                    
                                             </div>                                     
                                         </div>
-                                    </div>                                                                        
+                                    </div> -->                                                                        
                                 </div>                                
                               </div>
                               
@@ -327,9 +422,14 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
 
-            <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
+            
+            </div>
+            </div>
+
+<!--             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
                 <div class="precio1-des">
                  
                     <span class="precio-total">Mensual</span>
@@ -340,13 +440,13 @@
                     </div>
 
                     <div class="footer-price1">
-                                                                        <!-- Button trigger modal -->
-                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanMundo">
+                                                                        <! Button trigger modal -->
+ <!--                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanMundo">
                           Comprar Plan
                         </button>
-
+ -->
                         <!-- Modal -->
-                        <div class="modal fade" id="PlanMundo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                       <!--  <div class="modal fade" id="PlanMundo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                           <div class="modal-dialog" role="document">
                             <div class="modal-content">
                               <div class="modal-header">
@@ -383,9 +483,11 @@
                     </div>
                 </div>
             </div>
+        </div> -->
         </div>
     </div>
 </div>
+
 </section>
 
 <!-- Sale Section End-->
@@ -441,6 +543,7 @@
                            <input type="email" class="form-control email hover" placeholder="Email" name="email" required autocomplete="off" >
                        </div>
                    </div>
+
                    <div class="form-group">
                     <div class="controls">
                        <label>Asunto</label>
@@ -467,15 +570,15 @@
         <a class="social" href="https://plus.google.com/105979885244281543631" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
     </div>
     <div class="contact-info">
-        <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
+<!--         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
         <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
         <p><span class="glyphicon glyphicon-phone"></span> +57 318 2852274</p>
-        <div class="h-divider"></div><br>
-        <p><i class="fa fa-map-marker"></i> Venezuela, El Tigre</p>
-        <p><i class="fa fa-envelope"></i> ventasve@sifusp.com</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +58 416 0815904</p>
-        <div class="h-divider"></div><br>
-        <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p>
+        <div class="h-divider"></div><br> -->
+        <p><i class="fa fa-map-marker"></i> Venezuela</p>
+        <p><i class="fa fa-envelope"></i> soporte@sifusp.com</p>
+        <!-- <p><span class="glyphicon glyphicon-phone"></span> +58 416 0815904</p> -->
+<!--         <div class="h-divider"></div><br>
+        <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p> -->
         <div class="h-divider"></div><br>
     </div>
 
