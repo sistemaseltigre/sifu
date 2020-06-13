@@ -64,4 +64,8 @@ class materiaModel extends Model
   {
     return materiaModel::where('idmateria', $id)->first();
   }
+    public function gradoModel()
+  {
+    return $this->belongsTo('App\configuracion\gradoModel','grado_id','idgrado');
+  }
 }

@@ -80,11 +80,11 @@ public static function updateAlumno($request)
   $datos->email=$request['txtEmail'];
   $datos->grado_id=$request['cmbGrado'];
   $datos->direccion=$request['txtDireccion'];
-  $alumno->peso=$request['txtPeso'];
-  $alumno->talla=$request['txtTalla'];
-  $alumno->altura=$request['txtAltura'];
-  $alumno->zapato=$request['txtZapato'];
-  $alumno->observacion=$request['txtObservacion'];
+  $datos->peso=$request['txtPeso'];
+  $datos->talla=$request['txtTalla'];
+  $datos->altura=$request['txtAltura'];
+  $datos->zapato=$request['txtZapato'];
+  $datos->observacion=$request['txtObservacion'];
   $datos->save();
 }
 

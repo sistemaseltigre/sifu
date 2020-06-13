@@ -13,7 +13,13 @@ function crear_aula(){
             'title': 'Informacion',
             'content': 'Aula virtual creada con exito.',
             'theme': 'blue',
-            'btns': { 'text': 'Aceptar' }});
+            'btns': { 'text': 'Aceptar' },
+             onClose:function()
+              {             
+               location.href = app_url+"/crear_aula"; 
+             }
+          });
+
   	})
   	.error( function(jqXHR,textStatus,errorThrown){
   		var responseText = jQuery.parseJSON(jqXHR.responseText);

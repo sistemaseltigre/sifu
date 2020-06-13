@@ -9,6 +9,8 @@ use App\Http\Controllers\Controller;
 use App\inscripcion\alumnos_inscritos as alumnos;
 use App\inscripcion\seccion_alumno as seccion;
 use App\datos\alumnoModel as alumno;
+use App\datos\representanteModel as representante;
+use App\datos\delegadoModel as delegado;
 use \App\configuracion\periodoModel;
 use \App\configuracion\planillasModel as planillas;
 class planillasController extends Controller
@@ -24,6 +26,8 @@ class planillasController extends Controller
 
 		$data['periodo']=periodoModel::where('estatus','activo')->first();
 		$data['alumno']=alumno::find($alumno_id);
+		$data['r']=representante::find($data['alumno']->representante_id);
+		$data['d']=delegado::find($data['alumno']->delegado_id);
 		$data['seccion']=seccion::where('alumno_id','=',$alumno_id)->first();
 		$data['planillas']=planillas::find($planilla_id);
 		echo view('reportes.planillas.contenido',$data);

@@ -172,7 +172,7 @@ function leaveAStepCallback(obj, context){
 
         $.ajax({
 
-                url: 'preinscripcion/procesar',
+                url: app_url+'/preinscripcion/procesar',
                 type: "POST",
                 data:$('#frmRepresentante, #frmID').serializeArray(),
                 /*beforeSend: function() 
@@ -201,7 +201,7 @@ function leaveAStepCallback(obj, context){
             {
               $.ajax({
 
-                url: 'preinscripcion/create/representante',
+                url: app_url+'/preinscripcion/create/representante',
                 type: "POST",
                 dataType:"JSON",
                 data:$('#frmRepresentante, #frmID').serializeArray(),
@@ -226,7 +226,7 @@ function leaveAStepCallback(obj, context){
             {
               $.ajax({
 
-                url: 'preinscripcion/create/delegado',
+                url: app_url+'/preinscripcion/create/delegado',
                 type: "POST",
                 dataType:"JSON",
                 data:$('#frmDelegado, #frmID').serializeArray(),
@@ -357,12 +357,12 @@ $('#btnBuscar').on('click', function(){
      } else {
       if(save_method == 'add')
       {
-        url = "alumno/create";
+        url = app_url+"/alumno/create";
         msj="Alumno registrado con exito.";
       }
       else
       {
-        url = "alumno/update";
+        url = app_url+"/alumno/update";
         msj="Alumno Actualizado con exito.";
       }
 
@@ -408,7 +408,7 @@ $('#btnBuscar').on('click', function(){
 
       //Ajax Load data from ajax
       $.ajax({
-        url : "alumno/edit/" + id,
+        url : app_url+"/alumno/edit/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
@@ -454,7 +454,7 @@ $('#btnBuscar').on('click', function(){
         var url;
         var msj;
 
-        url = "alumno/delete/"+id;
+        url = app_url+"/alumno/delete/"+id;
         msj="Registro eliminado con exito.";
         $.ajax({
           url : url,

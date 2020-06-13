@@ -1,5 +1,5 @@
    $(document).ready(function(){     
-
+$('.chosen-select').chosen();
    // buscar mensualidad
    $('#cmbAlumno').on('change', function(){
     $('#verificar_pagos').html("<img alt='cargando' src='"+app_url+"/img/ajax-loader.gif' style='left: 50%;top: 50%;position: absolute;'/>");

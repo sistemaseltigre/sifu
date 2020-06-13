@@ -1,3 +1,18 @@
+# Dev
+Desarrollado por Jesus Silva @elchuo160
+
+Linkedin: https://www.linkedin.com/in/jesus-silva-173399109/
+
+Youtube: https://www.youtube.com/channel/UC1NnvIV2hQ39JM_ICJxLXtw
+
+gmail: elchuo160gmail.com
+
+Para Donaciones:
+
+Paypal
+
+silvamarcanofrank@gmail.com
+
 # Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)

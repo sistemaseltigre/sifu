@@ -1,66 +1,66 @@
  $(function() {
-        $('#modal').on('hidden.bs.modal', function(){
-           $('#formulario').validate().resetForm();
-           $(".error").removeClass("error");
-           $(".success").removeClass("success");
-        });
-    });
+  $('#modal').on('hidden.bs.modal', function(){
+   $('#formulario').validate().resetForm();
+   $(".error").removeClass("error");
+   $(".success").removeClass("success");
+ });
+});
    //combo dinamicos
    $(document).ready(function(){  
     console.log("on");
     $("#formulario").validate({
-    rules: {
-      txtDesde: {
-        required: true
+      rules: {
+        txtDesde: {
+          required: true
+        },
+        txtHasta: {
+          required: true
+        }
       },
-      txtHasta: {
-        required: true
-      }
-    },
-    messages: {
-      txtDesde: "El campo desde es requerido.",
-       txtHasta: "El campo hasta es requerido."
-    },
-    highlight: function(element) {
-      $(element).addClass('error');
-    },
-    
+      messages: {
+        txtDesde: "El campo desde es requerido.",
+        txtHasta: "El campo hasta es requerido."
+      },
+      highlight: function(element) {
+        $(element).addClass('error');
+      },
+
     // Called when the element is valid:
     unhighlight: function(element) {
       $(element).removeClass('error').addClass('success');
     }
 
   });
-   jQuery.validator.addMethod("character", function (value, element) {
+    jQuery.validator.addMethod("character", function (value, element) {
         // allow any non-whitespace characters as the host part
         return this.optional(element) || /^[a-zA-Z\s]+$/.test(value);
       }, 'Introduzca solo letras');
-   jQuery.validator.addMethod("numbers", function (value, element) {
+    jQuery.validator.addMethod("numbers", function (value, element) {
         // allow any non-whitespace characters as the host part
         return this.optional(element) || /^[0-9]+$/.test(value);
       }, 'Introduzca solo números');
-   $.validator.addMethod("valueNotEquals", function(value, element, arg){
-    return arg != value;
-  }, "Seleccione una Opcion de la lista");
+    $.validator.addMethod("valueNotEquals", function(value, element, arg){
+      return arg != value;
+    }, "Seleccione una Opcion de la lista");
 
 
    //Horas datetimepicker
    $('#desde').datetimepicker({
     viewMode: 'years',
-                format: 'MM-YYYY'
+    format: 'MM-YYYY'
 
   });
    $('#hasta').datetimepicker({
     viewMode: 'years',
-                format: 'MM-YYYY'
+    format: 'MM-YYYY'
 
   });
-     });
+ });
 
-    var save_method; 
- function agregar()
- {
-  save_method = 'add';
+   var save_method; 
+   function agregar()
+   {
+    save_method = 'add';
       $('#formulario')[0].reset(); // reset form on modals
       $('#modal').modal('show'); // show bootstrap modal
     }
@@ -177,3 +177,59 @@
         } });
       
     }
+
+    function importar(id)
+    {
+      $('#id').val(id);
+      $('#modal-importar').modal('show'); // show bootstrap modal
+    }
+
+    function procesar()
+    {
+      var url;
+      var msj;
+     if (!$("#formulario-importar").valid()) { // Not Valid
+       return false;
+     } else {
+
+      url = "config_periodo/importar";
+      msj="se ha importado correctamente el periodo academico.";
+
+
+       // ajax adding data to database
+       $.ajax({
+        url : url,
+        type: "POST",
+        data: $('#formulario-importar').serializeArray(),
+        success: function(data)
+        {   
+          if(data=="1")
+          {
+           errorAlert('Error Importando Grado!', 'El Grado ya ha sido cargado! verifique la informacion!');      
+         }else         
+         if(data=="2")
+         {
+          errorAlert('Error Importando Seccion!', 'las secciones ya han sido cargadas! verifique la informacion!');      
+        }else
+        if(data=="3")
+        {
+          errorAlert('Error Importando Materia!', 'las materias ya han sido cargadas! verifique la informacion!');
+        }
+        else
+        {
+         $.jAlert({
+          'title': 'Informacion',
+          'content': msj,
+          'theme': 'blue',
+          'btns': { 'text': 'Aceptar' }
+        });
+         $('#modal-importar').modal('hide');
+       }
+     },
+     error: function (jqXHR, textStatus, errorThrown)
+     {
+      alert('Error procesando datos');
+    }
+  });
+     }
+   }

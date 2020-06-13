@@ -33,7 +33,7 @@
                 <div class="form-group">
                   <label class="col-lg-3 control-label">N# de Cuenta:</label>
                   <div class="col-lg-8">
-                    <input type="text" class="form-control" id="txtCuenta" name="txtCuenta" placeholder="Numero de cuenta de 20 Digitos">
+                    <input type="numbers" class="form-control" id="txtCuenta" name="txtCuenta" placeholder="Numero de cuenta">
                   </div>
                 </div>    
 <div class="form-group">
@@ -61,7 +61,7 @@
                 <div class="form-group">
                   <label class="col-lg-3 control-label">Email:</label>
                   <div class="col-lg-8">
-                    <input type="text" class="form-control" id="txtEmail" name="txtEmail" placeholder="Correo electronico del titular">
+                    <input type="email" class="form-control" id="txtEmail" name="txtEmail" placeholder="Correo electronico del titular">
                   </div>
                 </div>  
               </fieldset>
