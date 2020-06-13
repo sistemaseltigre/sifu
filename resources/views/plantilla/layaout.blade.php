@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>SIFU</title>
-  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/all.css') }}">
   <script>
     var app_url = {!! json_encode(url('/')) !!};
   </script>
@@ -48,19 +48,19 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section" >
               <h3><hr></h3>
-              <h3 style="margin-top: 50px;">Menú de Opciones</h3>             
-              <ul class="nav side-menu">     
-               @if(Session::get('dias_restantes')>0)         
+              <h3 style="margin-top: 50px;">Menú de Opciones</h3>
+              <ul class="nav side-menu">
+               @if(Session::get('dias_restantes')>0)
                @if($user->user()==1)
-               @include('plantilla.admin.menu') 
+               @include('plantilla.admin.menu')
                @elseif($user->user()==2)
-               @include('plantilla.profesor.menu') 
+               @include('plantilla.profesor.menu')
                @elseif($user->user()==3)
-               @include('plantilla.alumno.menu') 
+               @include('plantilla.alumno.menu')
                @elseif($user->user()==4)
-               @include('plantilla.representante.menu') 
-               @endif                    
-               @endif 
+               @include('plantilla.representante.menu')
+               @endif
+               @endif
              </ul>
 
            </div>
@@ -74,7 +74,7 @@
         <strong>Te quedan {{ Session::get('dias_restantes') }} dias</strong>
         <br> Paga aquí facil y rapido.
       </div>
-      
+
       <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
           <input type="image" border="0" alt="" src="{{ asset('img/payu.png') }}" onClick="this.form.urlOrigen.value = window.location.href;" class="img-circle" />
           <input name="buttonId" type="hidden" value="9T4Z25JjWD99rmJWciiFyZazpTqVDe122Gh2WDms0kIusZRxsMPqlA=="/>
@@ -98,10 +98,10 @@
 
   <!-- top navigation -->
   <div class="top_nav">
-    <div class="nav_menu">      
+    <div class="nav_menu">
       <nav>
         <div class="nav toggle">
-          <a id="menu_toggle"><i class="fa fa-bars"></i></a>            
+          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
         </div>
         <ul class="nav navbar-nav navbar-right">
         </ul>
@@ -115,13 +115,13 @@
               <li><a href="{{ asset('/cambiar-clave') }}"> Cambiar Contraseña</a></li>
               <li><a href="{{ asset('/logout') }}"><i class="fa fa-sign-out pull-right"></i>Cerrar Sesion</a></li>
             </ul>
-          </li>              
+          </li>
         </ul>
       </nav>
     </div>
   </div>
   <!-- /top navigation -->
-  <script src="{{ elixir('js/all.js') }}"></script>
+  <script src="{{ URL::asset('js/all.js') }}"></script>
   <!-- page content -->
   <div class="right_col" role="main">
     <div class="">
@@ -129,10 +129,10 @@
      <div class="row">
       <div class="col-xs-12">
         <div class="x_title">
-          @yield('content')            
+          @yield('content')
         </div>
       </div>
-    </div>   
+    </div>
   </div>
 </div>
 <!-- /page content -->

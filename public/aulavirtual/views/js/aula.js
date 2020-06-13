@@ -26,7 +26,7 @@ socket.on('mensajeSalida',function (e) {
 });
 
 socket.on('mensajeBienvenida',function (e) {
-	$( "#mensajes_chat" ).append( "<p><b><font color='#000'>"+e.username+"</font></b> <i>ingreso al aula.</i><span></span></p>" );
+	$( "#mensajes_chat" ).append( "<p><b><font color='#000'>"+e.username+"</font></b> <i>ingresó al aula.</i><span></span></p>" );
 	$("#mensajes_chat").animate({ scrollTop: $('#mensajes_chat')[0].scrollHeight}, 1000);
 });
 

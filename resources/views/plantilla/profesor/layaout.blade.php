@@ -10,12 +10,12 @@
   <meta name="author" content="">
 
   <title>S.I.F.U</title>
-  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <script>
     var app_url = {!! json_encode(url('/')) !!};
   </script>
-  <script src="{{ elixir('js/all.js') }}"></script>
+  <script src="{{ asset('js/all.js') }}"></script>
 </head>
 
 <body>
@@ -36,9 +36,9 @@
     </div>
 
    @if($user===1)
-    @include('plantilla.profesor.admin') 
+    @include('plantilla.profesor.admin')
     @elseif($user===2)
-    @include('plantilla.profesor.profesor') 
+    @include('plantilla.profesor.profesor')
     @endif
     <!-- /.navbar-header -->
 
@@ -53,18 +53,18 @@
               <ul class="nav nav-second-level">
               <li>
                   <a href="{{ asset('/profesor/materias') }}">Materias</a>
-                </li>  
+                </li>
                 <li>
                   <a href="{{ asset('/config_profesor') }}">Actualizar Datos</a>
-                </li>                
+                </li>
                 <li>
                   <a href="{{ asset('/config_grado') }}">Cambiar Clave</a>
                 </li>
               </ul>
-              
+
             </li>
             <li>
-              <a href="{{ asset('/profesor/cargar_notas') }}"><i class="fa fa-credit-card-alt"></i> Cargar Notas</a>             
+              <a href="{{ asset('/profesor/cargar_notas') }}"><i class="fa fa-credit-card-alt"></i> Cargar Notas</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-calendar"></i> Mi Horario<span class="fa arrow"></span></a>
@@ -79,7 +79,7 @@
                   <a href="morris.html">Salida</a>
                 </li>
               </ul>
-              
+
             </li>
             <li>
             <a href="#"><i class="fa fa-file"></i> Reportes<span class="fa arrow"></span></a>
@@ -97,7 +97,7 @@
                   <a href="morris.html">pagos</a>
                 </li>
               </ul>
-              
+
             </li>
           </ul>
         </div>
@@ -131,4 +131,3 @@
   </body>
 
   </html>
-

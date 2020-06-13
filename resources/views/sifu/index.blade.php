@@ -11,12 +11,12 @@
 
         <!--bootstrap -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }} ">
-       
+
         <!-- letras -->
         <!-- <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/') }} ">
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/fonts/Montsrrat-Regular.ttf') }} "> -->
 
-        
+
         <!-- Main Style -->
         <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/main.css') }} " >
 
@@ -34,7 +34,7 @@
         <!-- jQuery Load -->
         <script src="{{ asset('assets/js/jquery-min.js') }}"></script>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        
+
     </head>
     <?php if (@$send_res==1) {
         echo 'AQUIIIII'.@$send_res;
@@ -52,14 +52,14 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#home"><i><img class="logo" src="https://www.sifusp.com/img/logo.png" height="100%" width="10%"></i>
+                <a class="navbar-brand" href="#home"><i><img class="logo" src="{{ asset('img/logo.png') }} " height="100%" width="10%"></i>
                  SIFU</a>
              </div>
 
              <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav col-md-9 pull-right">
                     <li class="active"><a href="#hero-area"><i class="fa fa-home"></i> Inicio</a></li>
-                    <li><a href="#services"><i class="fa fa-cogs"></i> Servicios</a></li>                            
+                    <li><a href="#services"><i class="fa fa-cogs"></i> Servicios</a></li>
                     <li><a href="#sale"><span class="glyphicon glyphicon-plane"></span> Planes</a></li>
                     <li><a href="#about"><i class="fa fa-info"></i> Sobre Nosotros</a></li>
                     <li><a href="#contact"><i class="fa fa-envelope"></i> Contacto</a></li>
@@ -83,9 +83,9 @@
                 <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="assets/img/hero/macbook.gif" alt="">
 
                 <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
-                    
-                    <ul>            
-                        SIFU es una plataforma digital contenida en la nube, con una interface muy sencilla y amigable que te permite administrar tu colegio en diferentes niveles.           
+
+                    <ul>
+                        SIFU es una plataforma digital contenida en la nube, con una interface muy sencilla y amigable que te permite administrar tu colegio en diferentes niveles.
                         <ul >
                             <li type="disc">Lleva el control general de tu institución: Crea grados, secciones, asignaturas, horarios, modelos de pago, múltiples reportes, entre otras cosas.</li>
                             <li type="disc">Lleva el control de tus alumnos: pagos, horarios, calificaciones, secciones, permite mensajes alumno-alumno y alumno-profesor.</li>
@@ -157,12 +157,12 @@
             <div class="wow fadeInDown ">
                <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
                 <div class="precio1-des">
-                 
+
                     <span class="precio-total">Mensual</span>
                     <div class="contenedor-price">
                         <p class="body-price1"><span class="precio-total"><font color="black">$70.000</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Colombia-icon.png') }} " height="10%" width="10%"> Pesos al mes</p>            
-                        <p class="body-price1"></p>                   
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Colombia-icon.png') }} " height="10%" width="10%"> Pesos al mes</p>
+                        <p class="body-price1"></p>
                     </div>
 
                     <div class="footer-price1">
@@ -176,12 +176,12 @@
 
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
                 <div class="precio1-des">
-                 
+
                     <span class="precio-total">Mensual</span>
                     <div class="contenedor-price">
                         <p class="body-price1"><span class="precio-total"><font color="black">15.000Bs</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares al mes</p>            
-                        <p class="body-price1"></p>                   
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares al mes</p>
+                        <p class="body-price1"></p>
                     </div>
 
                     <div class="footer-price1">
@@ -195,12 +195,12 @@
 
             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
                 <div class="precio1-des">
-                 
+
                     <span class="precio-total">Mensual</span>
                     <div class="contenedor-price">
                         <p class="body-price1"><span class="precio-total"><font color="black">28.9$</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/globe-icon.png') }} " height="10%" width="10%"> Dolares al mes</p>            
-                        <p class="body-price1"></p>                   
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/globe-icon.png') }} " height="10%" width="10%"> Dolares al mes</p>
+                        <p class="body-price1"></p>
                     </div>
 
                     <div class="footer-price1">
@@ -259,12 +259,12 @@
                 {{ csrf_field() }}
                 <div class="col-md-6 wow fadeInLeft" data-wow-delay=".5s">
                     <div class="form-group">
-                        
-                        
+
+
                         <label>Nombre</label>
                         <input type="text" class="form-control name" placeholder="Nombre" name="name" id="nombre">
-                        
-                        
+
+
                     </div>
                     <div class="form-group">
                         <div class="controls">
@@ -311,7 +311,7 @@
  <!--    <p>
        <a href="http://www.simplepanas.com">-SimplePanas-</a><br>
    </p> -->
-   
+
 </div>
 
 </div>

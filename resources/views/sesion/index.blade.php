@@ -10,29 +10,29 @@
   <meta name="author" content="">
 
   <title>S.I.F.U</title>
-  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}"> 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <script>
     var app_url = {!! json_encode(url('/')) !!};
   </script>
-  <script src="{{ elixir('js/all.js') }}"></script>
+  <script src="{{ asset('js/all.js') }}"></script>
   <script type="text/javascript">
     $(document).ready(function (){
       $('.chosen-select').chosen({
         no_results_text: "No hemos encontrado resultados!",
         allow_single_deselect: true
-      }); 
-      $('.chosen-select-deselect').chosen({ allow_single_deselect: true });   
+      });
+      $('.chosen-select-deselect').chosen({ allow_single_deselect: true });
       $('.chosen-select').on('change', function(e) {
         var dbName=$('#cmbColegio').val();
         url = app_url+"/buscar/logo/"+dbName;
-        
+
         $.ajax({
           url : url,
           type: "GET",
           dataType: "JSON",
           success: function(data)
-          { 
+          {
            $("#logo").attr("src",app_url+"/logos/"+data.imagen);
 
          },
@@ -42,7 +42,7 @@
         }
       });
       });
-    });  
+    });
   </script>
 </head>
 
@@ -59,18 +59,18 @@
       <div class="modal-body">
        <form class="form col-md-12 center-block" method="post" action="{{ asset('sesion/entrar') }}">
          {{ csrf_field() }}
-         @if(isset($colegios))     
-         <div class="form-group">          
+         @if(isset($colegios))
+         <div class="form-group">
            <select class="chosen-select form-control input-lg" name="cmbColegio" id="cmbColegio" data-placeholder="Seleccione Colegio">
              <option value="default"></option>
              @foreach ($colegios as $colegio)
              <option value="sifu_{{ $colegio->codigo }}">{{ $colegio->colegio }}</option>
-             @endforeach           
-           </select>          
+             @endforeach
+           </select>
          </div>
          @endif
          <div class="form-group">
-          <input type="text" class="form-control input-lg" placeholder="Nombre de Usuario" name="txtUsuario" id="txtUsuario"> 
+          <input type="text" class="form-control input-lg" placeholder="Nombre de Usuario" name="txtUsuario" id="txtUsuario">
         </div>
         <div class="form-group">
           <input type="password" class="form-control input-lg" placeholder="Contraseña" name="txtPassword" id="txtPassword">
@@ -78,7 +78,7 @@
         @if (Session::has('error'))
         <div class="alert alert-danger">{{ Session::get('error') }}</div>
         @endif
-         
+
         <div class="form-group">
           <button class="btn btn-primary btn-lg btn-block">Iniciar Sesion</button>
         </div>

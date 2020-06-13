@@ -10,9 +10,9 @@
     <meta name="author" content="">
 
     <title>S.I.F.U</title>
-    <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
-    
+
 
 </head>
 
@@ -37,7 +37,7 @@
             <div class="navbar-default sidebar" role="navigation">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
-                        
+
                         <li>
                             <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
@@ -53,7 +53,7 @@
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
-                        
+
                     </ul>
                 </div>
                 <!-- /.sidebar-collapse -->
@@ -80,9 +80,8 @@
     <!-- /#wrapper -->
 
     <!-- jQuery -->
-   <script src="{{ elixir('js/all.js') }}"></script>
+   <script src="{{ asset('js/all.js') }}"></script>
 
 </body>
 
 </html>
-

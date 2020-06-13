@@ -10,12 +10,12 @@
   <meta name="author" content="">
 
   <title>S.I.F.U</title>
-  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}">
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
 <script>
 var app_url = {!! json_encode(url('/')) !!};
 </script>
-<script src="{{ elixir('js/all.js') }}"></script>
+<script src="{{ asset('js/all.js') }}"></script>
 </head>
 
 <body>
@@ -31,7 +31,7 @@ var app_url = {!! json_encode(url('/')) !!};
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">S.I.F.U V 2.0</a> 
+        <a class="navbar-brand" href="index.html">S.I.F.U V 2.0</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -46,13 +46,13 @@ var app_url = {!! json_encode(url('/')) !!};
               <ul class="nav nav-second-level">
                 <li>
                   <a href="{{ asset('/config_profesor') }}">Profesor</a>
-                </li>                
+                </li>
                 <li>
                   <a href="{{ asset('/config_grado') }}">Grados</a>
-                </li>                
+                </li>
                 <li>
                   <a href="{{ asset('/config_seccion') }}">Secciones</a>
-                </li>                
+                </li>
                 <li>
                   <a href="{{ asset('/config_materia') }}">Materias</a>
                 </li>
@@ -82,7 +82,7 @@ var app_url = {!! json_encode(url('/')) !!};
             </li>
             <li>
               <a href="#"><i class="fa fa-calendar"></i> Horarios<span class="fa arrow"></span></a>
-              <ul class="nav nav-second-level">                
+              <ul class="nav nav-second-level">
                 <li>
                   <a href="{{ asset('/config_horarios') }}">Crear Horario</a>
                 </li>
@@ -148,10 +148,9 @@ var app_url = {!! json_encode(url('/')) !!};
   <!-- /#wrapper -->
 
   <!-- jQuery -->
-  
-  
+
+
 
 </body>
 
 </html>
-

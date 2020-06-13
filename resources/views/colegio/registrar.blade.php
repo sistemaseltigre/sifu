@@ -10,12 +10,12 @@
   <meta name="author" content="">
   <meta name="_token" content="{{ csrf_token() }}"/>
   <title>S.I.F.U</title>
-  <link rel="stylesheet" type="text/css" href="{{ elixir('css/all.css') }}"> 
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/all.css') }}"> 
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
   <script>
     var app_url = {!! json_encode(url('/')) !!};
   </script>
-  <script src="{{ elixir('js/all.js') }}"></script>
+  <script src="{{ asset('js/all.js') }}"></script>
   <script src="{{ asset('js/scripts/registro.js') }}"></script>
 
 </head>
@@ -31,14 +31,14 @@
         <br><br><br>
         <h3>Registrese en SIFU</h3>
       </div>
-      
+
       <form enctype="multipart/form-data" class="form-horizontal col-md-12" method="post" action="{{ asset('/colegio/registro/create') }}" name="frmRegistro" id="frmRegistro" >
        {{ csrf_field() }}
        <br>
        <div class="form-group">
          <label class="col-lg-4 control-label">C&oacute;digo:</label>
          <div class="col-lg-8">
-          <input type="number" class="form-control input-md" placeholder="Código numerico identificador del colegio N.I.T/RIF" name="txtCodigo" id="txtCodigo"> 
+          <input type="number" class="form-control input-md" placeholder="Código numerico identificador del colegio N.I.T/RIF" name="txtCodigo" id="txtCodigo">
           <div id="error" style="display:none">error</div>
         </div>
       </div>
@@ -122,7 +122,7 @@
     <button class="btn btn-primary btn-lg btn-block" id="btnRegistrar" disabled="">Registrarse</button>
     <a class="btn btn-success btn-lg btn-block" href="{{ asset('/login/') }}" >Iniciar Sesion</a>
   </div>
-</form> 
+</form>
 
 </div>
 <div class="row" style="background:#ffffff">
@@ -143,7 +143,7 @@
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">X</span></button>
       </div>
-      <div class="modal-body form"> 
+      <div class="modal-body form">
         <div class="panel panel-primary">
           <div class="panel-heading">
             <h3 class="panel-title">Politicas SIFU</h3>
