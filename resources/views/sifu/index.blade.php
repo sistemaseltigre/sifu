@@ -81,23 +81,12 @@
             <div class="col-md-12" style=" text-align: justify;text-justify: inter-word;">
                 <h1 class="title">SIFU</h1>
                 <h2 class="subtitle">Llevar el control de tu colegio nunca fue tan fácil.</h2>
-
-<!--                <img class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" src="assets/img/hero/macbook.gif" alt="">-->
                     <iframe class="col-md-6 col-sm-6 col-xs-12 animated fadeInLeft" width="420" height="315"
                         src="https://www.youtube.com/embed/xN0hECCjUW4?autoplay=1">
                     </iframe>
-
-<<<<<<< HEAD
-                <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5">
-
-                    <ul>
-                        SIFU es una plataforma digital contenida en la nube, con una interface muy sencilla y amigable que te permite administrar tu colegio en diferentes niveles.
-=======
                 <div class="col-md-6 col-sm-6 col-xs-12 animated fadeInRight delay-0-5 font-ul">
-
                     <ul>
                         SIFU es una plataforma digital contenida en la nube, con una interface muy sencilla y amigable que te permite administrar tu colegio en diferentes niveles.
->>>>>>> d1bb3f40643dfa75ed20a56e073df5e09f55eb85
                         <ul >
                             <li type="disc">Lleva el control general de tu institución: Crea grados, secciones, asignaturas, horarios, modelos de pago, múltiples reportes, entre otras cosas.</li>
                             <li type="disc">Lleva el control de tus alumnos: pagos, horarios, calificaciones, secciones, permite mensajes alumno-alumno y alumno-profesor.</li>
@@ -167,81 +156,6 @@
             <h2 class="subtitle">Disfruta de una excelente plataforma</h2>
 
             <div class="wow fadeInDown ">
-<!--                <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
-                <div class="precio1-des">
-
-                    <span class="precio-total">Mensual</span>
-                    <div class="contenedor-price">
-                        <p class="body-price1"><span class="precio-total"><font color="black">$70.000</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Colombia-icon.png') }} " height="10%" width="10%"> Pesos al mes</p>
-                        <p class="body-price1"></p>
-                    </div>
-
-                    <div class="footer-price1"> -->
-
-
-                        <!-- Button trigger modal -->
-<!--                         <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanColombia">
-                          Comprar Plan
-                        </button> -->
-
-                        <!-- Modal -->
-                        <!-- <div class="modal fade" id="PlanColombia" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
-                              </div>
-                              <div class="modal-body">
-                                  <h2 class="subtitle">Transferencia ò Deposito Bancario</h2>
-                                   <table class="table table-hover">
-                                        <thead>
-                                          <tr class="">
-                                            <th>NOMBRE</th>
-                                            <th>NIT</th>
-                                            <th>BANCO</th>
-                                            <th>Nº DE CUENTA</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr class="">
-                                            <td>SIMPLEPANAS SAS</td>
-                                            <td>900999440-1</td>
-                                            <td>BANCOLOMBIA</td>
-                                            <td>67366490709</td>
-                                        </tbody>
-                                      </table>
-                                  <div class="h-divider"></div>
-                                         <h2 class="subtitle">On-Line</h2>
-                                          <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                              <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                             onClick="this.form.urlOrigen.value = window.location.href;" />
-                                              <input name="buttonId" type="hidden" value="9T4Z25JjWD99rmJWciiFyZazpTqVDe122Gh2WDms0kIusZRxsMPqlA=="/>
-                                              <input name="merchantId" type="hidden" value="585471"/>
-                                              <input name="accountId" type="hidden" value="588457"/>
-                                              <input name="description" type="hidden" value="Plan mensual"/>
-                                              <input name="referenceCode" type="hidden" value="C01"/>
-                                              <input name="amount" type="hidden" value="70000"/>
-                                              <input name="tax" type="hidden" value="0"/>
-                                              <input name="taxReturnBase" type="hidden" value="0"/>
-                                              <input name="shipmentValue" value="0" type="hidden"/>
-                                              <input name="currency" type="hidden" value="COP"/>
-                                              <input name="lng" type="hidden" value="es"/>
-                                              <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
-                                              <input name="buttonType" value="SIMPLE" type="hidden"/>
-                                              <input name="signature" value="f5025ae456b29a942f9e1c857751ed7e00eb9e6bc7e58a3cedbb0ba894466bd8" type="hidden"/>
-                                        </form>                                                                                  </div>
-
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-6  col-sm-6 col-xs-12 col-md-offset-2 precio1 ">
@@ -249,15 +163,10 @@
 
                     <span class="precio-total">Mensual</span>
                     <div class="contenedor-price">
-<<<<<<< HEAD
-                        <p class="body-price1"><span class="precio-total"><font color="black">15.000Bs</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares al mes</p>
+
+                        <p class="body-price1"><span class="precio-total"><font color="black">30$</font></span></p>
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/globe-icon.png') }} " height="10%" width="10%"> Dolares al mes</p>
                         <p class="body-price1"></p>
-=======
-                        <p class="body-price1"><span class="precio-total"><font color="black">30.000</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares al mes</p>
-                        <p class="body-price1"></p>
->>>>>>> d1bb3f40643dfa75ed20a56e073df5e09f55eb85
                     </div>
 
                     <div class="footer-price1">
@@ -265,78 +174,6 @@
                         <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanVnzMensual">
                           Comprar Plan
                         </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="PlanVnzMensual" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
-                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
-                              </div>
-
-                              <div class="modal-body">
-
-                                  <h2  class="subtitle">Transferencia ò Deposito Bancario</h2>
-                                   <table class="table table-hover">
-                                        <thead>
-                                          <tr class="">
-                                            <th>NOMBRE</th>
-                                            <th>RIF</th>
-                                            <th>BANCO</th>
-                                            <th>Nº DE CUENTA</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr class="">
-                                            <td>TEXOR COMPUTERS CA</td>
-                                            <td>J-29772075-8</td>
-                                            <td>BOD</td>
-                                            <td>0116-0152-96-0010357084</td>
-                                        </tbody>
-                                      </table>
-                                      <div class="h-divider"></div><br>
-                                        <h2 class="subtitle">Pago On-line</h2>
-                                         <div class="container text-center">
-                                           <div class="">
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/<<M></M>LV-></MLV->479140534-sistema-administrativo-para-colegios-sifu-_JM">
-                                                      <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
-                                                     </a>
-                                                </div>
-                                            </div>
-<!--                                         <div class="col-md-3">
-                                            <div>
-                                                <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;" />
-                                                      <input name="buttonId" type="hidden" value="rgi9g9Z3oIlP623+BSk3287x7ZXwTUgrBXxFnae7e3n0m55ppw3XPg=="/>
-                                                      <input name="merchantId" type="hidden" value="585471"/>
-                                                      <input name="accountId" type="hidden" value="588457"/>
-                                                      <input name="description" type="hidden" value="Plan mensual"/>
-                                                      <input name="referenceCode" type="hidden" value="VE01"/>
-                                                      <input name="amount" type="hidden" value="15000.00"/>
-                                                      <input name="tax" type="hidden" value="0.00"/>
-                                                      <input name="taxReturnBase" type="hidden" value="0"/>
-                                                      <input name="shipmentValue" value="0.00" type="hidden"/>
-                                                      <input name="currency" type="hidden" value="VEF"/>
-                                                      <input name="lng" type="hidden" value="es"/>
-                                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
-                                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
-                                                      <input name="signature" value="d2d1fca56ab5ff82ee339b41bc70125f39ee0e9968a6b14644a63399684ae891" type="hidden"/>
-                                                </form>
-                                            </div>
-                                        </div> -->
-                                    </div>
-                                </div>
-                              </div>
-
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -347,8 +184,8 @@
 
                     <span class="precio-total">Anual</span>
                     <div class="contenedor-price">
-                        <p class="body-price1"><span class="precio-total"><font color="black">300.000</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/Venezuela-icon.png') }} " height="10%" width="10%"> Bolivares Anual</p>
+                        <p class="body-price1"><span class="precio-total"><font color="black">300$</font></span></p>
+                        <p class="body-price1"><img src="{{ asset('assets/img/flags/globe-icon.png') }} " height="10%" width="10%"> Dolares Anual</p>
                         <p class="body-price1"></p>
                     </div>
 
@@ -357,79 +194,6 @@
                         <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanVnz">
                           Comprar Plan
                         </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="PlanVnz" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
-                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
-                              </div>
-
-                              <div class="modal-body">
-
-                                  <h2  class="subtitle">Transferencia ò Deposito Bancario</h2>
-                                   <table class="table table-hover">
-                                        <thead>
-                                          <tr class="">
-                                            <th>NOMBRE</th>
-                                            <th>RIF</th>
-                                            <th>BANCO</th>
-                                            <th>Nº DE CUENTA</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          <tr class="">
-                                            <td>TEXOR COMPUTERS CA</td>
-                                            <td>J-29772075-8</td>
-                                            <td>BOD</td>
-                                            <td>0116-0152-96-0010357084</td>
-                                        </tbody>
-                                      </table>
-                                      <div class="h-divider"></div><br>
-                                        <h2 class="subtitle">Pago On-line</h2>
-                                         <div class="container text-center">
-                                           <div class="">
-                                            <div class="col-md-6">
-                                                <div>
-                                                    <a class="btn-ml" target="_blank" href="http://articulo.mercadolibre.com.ve/MLV-488047358-sistema-de-gestion-para-escuelas-liceos-otros-plan-anual-_JM">
-                                                      <img  class="btn-ml" src="{{ asset('assets/img/services/mercadopago-2.png') }} "         alt="" >
-                                                     </a>
-                                                </div>
-                                            </div>
-<!--                                         <div class="col-md-3">
-                                            <div>
-                                                <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                         onClick="this.form.urlOrigen.value = window.location.href;" />
-                                                      <input name="buttonId" type="hidden" value="rgi9g9Z3oIlP623+BSk3287x7ZXwTUgrBXxFnae7e3n0m55ppw3XPg=="/>
-                                                      <input name="merchantId" type="hidden" value="585471"/>
-                                                      <input name="accountId" type="hidden" value="588457"/>
-                                                      <input name="description" type="hidden" value="Plan mensual"/>
-                                                      <input name="referenceCode" type="hidden" value="VE01"/>
-                                                      <input name="amount" type="hidden" value="15000.00"/>
-                                                      <input name="tax" type="hidden" value="0.00"/>
-                                                      <input name="taxReturnBase" type="hidden" value="0"/>
-                                                      <input name="shipmentValue" value="0.00" type="hidden"/>
-                                                      <input name="currency" type="hidden" value="VEF"/>
-                                                      <input name="lng" type="hidden" value="es"/>
-                                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
-                                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
-                                                      <input name="signature" value="d2d1fca56ab5ff82ee339b41bc70125f39ee0e9968a6b14644a63399684ae891" type="hidden"/>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                </div>
-                              </div>
-
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
                 </div>
 
             </div>
@@ -438,61 +202,6 @@
             </div>
             </div>
 
-<!--             <div class="col-md-3 col-md-3 col-sm-3 col-xs-12 col-md-offset-1 precio1 ">
-                <div class="precio1-des">
-
-                    <span class="precio-total">Mensual</span>
-                    <div class="contenedor-price">
-                        <p class="body-price1"><span class="precio-total"><font color="black">28.9$</font></span></p>
-                        <p class="body-price1"><img src="{{ asset('assets/img/flags/globe-icon.png') }} " height="10%" width="10%"> Dolares al mes</p>
-                        <p class="body-price1"></p>
-                    </div>
-
-                    <div class="footer-price1">
-                                                                        <! Button trigger modal -->
- <!--                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#PlanMundo">
-                          Comprar Plan
-                        </button>
- -->
-                        <!-- Modal -->
-                       <!--  <div class="modal fade" id="PlanMundo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                          <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>                        </button>
-                                <h2 class="modal-title" id="myModalLabel">Metodos de pago</h2>
-                              </div>
-                              <h2 class="subtitle">On-Line</h2>
-
-                              <div class="modal-body">
-                                  <form method="post" action="https://gateway.payulatam.com/ppp-web-gateway/pb.zul" accept-charset="UTF-8">
-                                      <input type="image" border="0" alt="" src="http://www.payulatam.com/img-secure-2015/boton_pagar_grande.png"                                     onClick="this.form.urlOrigen.value = window.location.href;" />
-                                      <input name="buttonId" type="hidden" value="oV8dAckyd/NigAZCICtI6EaTthgzyZiRb31eN+u+Wj7w47dIxBovWw==" />
-                                      <input name="merchantId" type="hidden" value="585471"/>
-                                      <input name="accountId" type="hidden" value="588457"/>
-                                      <input name="description" type="hidden" value="Plan mensual"/>
-                                      <input name="referenceCode" type="hidden" value="USD01"/>
-                                      <input name="amount" type="hidden" value="28.90"/>
-                                      <input name="tax" type="hidden" value="0.00"/>
-                                      <input name="taxReturnBase" type="hidden" value="0"/>
-                                      <input name="shipmentValue" value="0.00" type="hidden"/>
-                                      <input name="currency" type="hidden" value="USD"/>
-                                      <input name="lng" type="hidden" value="es"/>
-                                      <input name="sourceUrl" id="urlOrigen" value="" type="hidden"/>
-                                      <input name="buttonType" value="SIMPLE" type="hidden"/>
-                                      <input name="signature" value="1f4fb684c59c9813a4324d934249f0a5db093201ca11c2106fd70a3f3b27405c" type="hidden"/>
-                                    </form>
-
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div> -->
         </div>
     </div>
 </div>
@@ -539,18 +248,8 @@
                 {{ csrf_field() }}
                 <div class="col-md-6 wow fadeInLeft" data-wow-delay=".5s">
                     <div class="form-group">
-
-
                         <label>Nombre</label>
-<<<<<<< HEAD
-                        <input type="text" class="form-control name" placeholder="Nombre" name="name" id="nombre">
-
-
-=======
                         <input type="text" class="form-control name hover" placeholder="Nombre" name="name" id="nombre" required autocomplete="off" >
-
-
->>>>>>> d1bb3f40643dfa75ed20a56e073df5e09f55eb85
                     </div>
                     <div class="form-group">
                         <div class="controls">
@@ -585,22 +284,10 @@
         <a class="social" href="https://plus.google.com/105979885244281543631" target="_blank"><i class="fa fa-google-plus fa-2x"></i></a>
     </div>
     <div class="contact-info">
-<!--         <p><i class="fa fa-map-marker"></i> Colombia, Bogotá</p>
-        <p><i class="fa fa-envelope"></i> ventas@sifusp.com</p>
-        <p><span class="glyphicon glyphicon-phone"></span> +57 318 2852274</p>
-        <div class="h-divider"></div><br> -->
         <p><i class="fa fa-map-marker"></i> Venezuela</p>
         <p><i class="fa fa-envelope"></i> soporte@sifusp.com</p>
-        <!-- <p><span class="glyphicon glyphicon-phone"></span> +58 416 0815904</p> -->
-<!--         <div class="h-divider"></div><br>
-        <p><span class="glyphicon glyphicon-info-sign soporte"> </span> Soporte<br><i class="fa fa-envelope "></i> soporte@sifusp.com</p> -->
         <div class="h-divider"></div><br>
     </div>
-
- <!--    <p>
-       <a href="http://www.simplepanas.com">-SimplePanas-</a><br>
-   </p> -->
-
 </div>
 
 </div>
